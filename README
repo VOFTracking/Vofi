@@ -9,7 +9,7 @@ Build Process
 2. make all
 
 3. make check
-   (optional, runs the example programs and unit tests when possible)
+   (optional, runs the C, Fortran and CPP example programs and unit tests when possible)
    
 4. make install
 
