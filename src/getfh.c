@@ -68,12 +68,6 @@ real Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0)
 	xn2[i] = xn1[i] = x1[i];
       }
       /* DEBUG 1 */
-      /* DEBUG 1 */
-      fprintf(stderr,"k:%2d \n",k);
-      fprintf(stderr,"    x1,y1,z1:                   %17.9e %17.9e %17.9e \n",
- 	      x1[0],x1[1],x1[2]);
-      fprintf(stderr," f1,fx,fy,fz: %17.9e %17.9e %17.9e %17.9e \n",
-	      f1,der[0],der[1],der[2]);
 
       delta = sqrt(Sq3(der));
       if (delta < EPS_M) {
@@ -90,13 +84,7 @@ real Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0)
       f2 = impl_func(x2);
       k++;
     }
-    /* DEBUG 2 */ 
     /* DEBUG 2 */
-    fprintf(stderr,"    x2,y2,z2:                   %17.9e %17.9e %17.9e \n",
-	    x2[0],x2[1],x2[2]);
-    fprintf(stderr," f2,fx,fy,fz: %17.9e %17.9e %17.9e %17.9e \n",
-	    f2,der[0],der[1],der[2]);
-    fprintf(stderr,"k iterations:%2d \n",k);
 
     /* if k<kmax (same as f1*f2 < 0), get the zero on the segment */
     if (k < kmax) {
@@ -141,8 +129,6 @@ real Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0)
     }
   }
   /* DEBUG 3 */
-  /* DEBUG 3 */
-  fprintf(stderr,"fh: %17.9e  \n",fh);
 
   return fh;
 }

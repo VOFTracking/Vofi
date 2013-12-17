@@ -26,23 +26,28 @@ SUBROUTINE CHECK_VOLUME(volnum)
   h0 = C1 + ZC
   volana = MYPI*A1*B1*h0*h0*(1. - h0/(3.*C1))/C1
 
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '---------------- F: cap check (2 cells) ---------------'
+  write(*,100) volana
+  write(*,101) volnum
+  write(*,*) ' '
+  write(*,102) DABS(volnum-volana)
+  write(*,103) DABS(volnum-volana)/volana
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical volume:  9.4090699975015856E-03'
+  write(*,*) 'numerical  volume:  9.4090693179626327E-03'
+  write(*,*) ' '
+  write(*,*) 'absolute error   :  6.7953895288574984E-10'
+  write(*,*) 'relative error   :  7.2221691736397911E-08'
+  write(*,*) '-------------- F: end cap check (2 cells) -------------'
+  write(*,*) '-------------------------------------------------------'
 
-   write(*,*) ' '
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '--------------- F: cap check (2 cells) --------------'
-   write(*,*) ' '
-   write(*,100) volana
-   write(*,101) volnum
-   write(*,102) DABS(volnum-volana)
-   write(*,103) DABS(volnum-volana)/volana
-   write(*,*) '------------- F: end cap check (2 cells) ------------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
-
-   100 FORMAT('analytical volume:', ES23.16)
-   101 FORMAT('numerical  volume:', ES23.16)
-   102 FORMAT('absolute error   :', ES23.16)
-   103 FORMAT('relative error   :', ES23.16)
+  100 FORMAT(' analytical volume: ', ES23.16)
+  101 FORMAT(' numerical  volume: ', ES23.16)
+  102 FORMAT(' absolute error   : ', ES23.16)
+  103 FORMAT(' relative error   : ', ES23.16)
 
   RETURN
 

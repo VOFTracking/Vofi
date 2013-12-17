@@ -100,10 +100,6 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
     pt2[js] = pt0[js] + ds0;
   } 
   /* DEBUG 1 */
-  /* DEBUG 1
-  fprintf(stderr,"ini. pt. right : %17.9e %17.9e %17.9e \n", pt2[0],pt2[1],pt2[2]);
- */
-  fprintf(stderr,"sec/right : %17.9e %17.9e %17.9e \n", pt2[0],pt2[1],pt2[2]);
 
 
   /* get zero or boundary point pt1 along secondary direction with ss -> 0 */
@@ -116,30 +112,16 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
     pt1[js] = pt0[js] - ds0;
   }
   /* DEBUG 2 */
-  /* DEBUG 2
-  fprintf(stderr,"ini. pt. left  : %17.9e %17.9e %17.9e \n", pt1[0],pt1[1],pt1[2]);
- */
-  fprintf(stderr,"sec/left  : %17.9e %17.9e %17.9e \n", pt1[0],pt1[1],pt1[2]);
 
   for (i=0;i<NDIM;i++)
     pt0[i] = 0.5*(pt1[i] + pt2[i]);                  /* starting midpoint pt0 */
   fpt0 = f_iat*impl_func(pt0);
   ss0 = pt2[js]-pt1[js];
   /* DEBUG 3 */
-  /* DEBUG 3
-  fprintf(stderr,"ini. pt. centre: %17.9e %17.9e %17.9e \n", pt0[0],pt0[1],pt0[2]);
- */
-  fprintf(stderr,"sec/centre: %17.9e %17.9e %17.9e \n", pt0[0],pt0[1],pt0[2]);
 
   /* now get the two external limits along the tertiary direction */
   for (k=-1;k<=1;k=k+2) {
     /* DEBUG 4 */
-    /* DEBUG 4
-    fprintf(stderr,"-------------------------------------------------\n");
-    fprintf(stderr,"down/up (-1/1): %2d \n",k);
- */
-    fprintf(stderr,"-------------------------------------------------\n");
-    fprintf(stderr,"TOP/BOTTOM: %2d \n",k);
 
     iter = 0;
     not_conv = 1;
@@ -159,29 +141,19 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
     sss = ss0;
     while (not_conv  && iter < max_iter) {    /* iterative loop for the limit */
       /* DEBUG 5 */
-      /* DEBUG 5
-      fprintf(stderr,"iter: %2d, sss: %e sst: %e \n",iter+1,sss,sst);
- */
-      fprintf(stderr,"iter: %2d, sss: %e sst: %e \n",iter+1,sss,sst);
+
       if (fe[1] > 0.) {
 	ds0 = get_segment_zero(impl_func,fe,mp1,exdir,sst,f_iat);
 	sst = ds0;
       }
       /* DEBUG 6 */
-      /* DEBUG 6
-      fprintf(stderr,"sst (real): %e \n",sst);
- */
-      fprintf(stderr,"sst (real): %e \n",sst);
+
       for (i=0;i<NDIM;i++) {
 	pt1[i] = mp1[i] + sst*exdir[i];         /* zero along the secant line */
 	mp0[i] = mp1[i];
 	mp1[i] = pt2[i] = ptt[i] = pt1[i];
       }
       /* DEBUG 7 */
-      /* DEBUG 7
-      fprintf(stderr,"tp/bot: %17.9e %17.9e %17.9e \n", pt1[0],pt1[1],pt1[2]);
- */
-      fprintf(stderr,"tp/bot: %17.9e %17.9e %17.9e \n", pt1[0],pt1[1],pt1[2]);
 
       /* try to get other zero along the secondary direction */ 
       ipt = ist = 0;             
@@ -221,20 +193,13 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
 	    pt2[i] = ptt[i] + ds0*indir[i];
 	}
 	/* DEBUG 8 */
-	/* DEBUG 8
-	fprintf(stderr,"zero 2: %17.9e %17.9e %17.9e \n", pt2[0],pt2[1],pt2[2]);
- */
-	fprintf(stderr,"zero 2: %17.9e %17.9e %17.9e \n", pt2[0],pt2[1],pt2[2]);
+
 	for (i=0;i<NDIM;i++)                        /* get midpoint and width */ 
 	  mp1[i] = 0.5*(pt1[i] + pt2[i]);
 	fe[0] = f_iat*impl_func(mp1);
 	sss = fabs(pt1[js]-pt2[js]);
       }
       /* DEBUG 9 */
-      /* DEBUG 9
-      fprintf(stderr,"midpt : %17.9e %17.9e %17.9e \n", mp1[0],mp1[1],mp1[2]);
- */
-      fprintf(stderr,"midpt : %17.9e %17.9e %17.9e \n", mp1[0],mp1[1],mp1[2]);
 
       normdir = 0.;                             
       for (i=0;i<NDIM;i++) {
@@ -257,11 +222,7 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
       if (!ipt || sss < tol2 || sst < EPS_R) {       /* convergence criterion */ 
         not_conv = 0;                       
 	/* DEBUG 10 */
-	/* DEBUG 10
-        fprintf(stderr,"Converged! k: %2d, ipt:%2d sss,sst: %e %e \n",k,ipt,sss,sst);
- */
-        fprintf(stderr,"Converged! k: %2d, ipt:%2d sss,sst: %e %e \n",
-		k,ipt,sss,sst);
+
       }
       else {
         for (i=0;i<NDIM;i++) 
@@ -286,64 +247,3 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
 
   return;
 }
-
-/* -------------------------------------------------------------------------- */
-  /* GRAPHICS I 
-  double xx[3],yy[3],zz[3];
-  xx[0] = yy[0] = zz[0] = 0.;
-  if (sdir[0] < 0.5 && tdir[0] < 0.5) {
-    xx[1] = xx[2] = x0[0];
-  }
-  else if (sdir[1] < 0.5 && tdir[1] < 0.5) {
-    yy[1] = yy[2] = x0[1];
-  }
-  else {
-    zz[1] = zz[2] = x0[2];
-  }
-  
-  if (sdir[0] > 0.5) {
-    xx[1] = x0[0]; xx[2] = xx[1] + h0;
-  }
-  else if (sdir[1] > 0.5) {
-    yy[1] = x0[1]; yy[2] = yy[1] + h0;
-  }
-  else {
-    zz[1] = x0[2]; zz[2] = zz[1] + h0;
-  }
-   END GRAPHICS I */     
-
-
-  /* GRAPHICS II
-  if (extdir[0] > 0.5) {
-    xx[1] = xx[2] = x[0] + side[nseg-1];
-  }
-  else if (extdir[1] > 0.5) {
-    yy[1] = yy[2] = x[1] + side[nseg-1];
-  }
-  else {
-     zz[1] = zz[2] = x[2] + side[nseg-1];
-  }   
-  line_3D(xx,yy,zz,2,1,1,4,1,0,0);
-
-  if (extdir[0] > 0.5) {
-    xx[1] = xx[2] = x[0] + side[nseg-2];
-  }
-  else if (extdir[1] > 0.5) {
-    yy[1] = yy[2] = x[1] + side[nseg-2];
-  }
-  else {
-     zz[1] = zz[2] = x[2] + side[nseg-2];
-  }       
-  line_3D(xx,yy,zz,2,1,1,4,1,0,0);
- */
-  /* END GRAPHICS II */
-
-
-/*
-	  fprintf(stderr,"iteration for sss: fs1,fs0: %e %e sss, ssx %e %e \n",
-		  fs[1],fs[0],ssx,sss);
-          fprintf(stderr,"iteration for sst: fs1,fs0: %e %e sst, ss1 %e %e \n",
-                  fs[1],fs[0],sst,ss1);
-    ixs = MAX(0,k);
-    xgfs[ixs] = mp1[jt];
- */ 

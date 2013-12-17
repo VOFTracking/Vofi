@@ -33,15 +33,21 @@ void check_volume(creal vol_n)
 
   vol_a = 0.5;
 
-  fprintf (stderr,"\n-----------------------------------------------------\n");
-  fprintf (stderr,"------------ C: sinusoidal surface check ------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"------------- C: sinusoidal surface check -------------\n");
   fprintf (stderr,"analytical volume: %23.16e\n",vol_a);
   fprintf (stderr,"numerical  volume: %23.16e\n\n",vol_n);
   fprintf (stderr,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
-  fprintf (stderr,"relative error   : %23.16e\n\n",fabs(vol_a-vol_n)/vol_a); 
-  fprintf (stderr,"---------- F: end sinusoidal surface check ----------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical volume:  5.0000000000000000e-01\n");
+  fprintf (stderr,"numerical  volume:  5.0000000000000022e-01\n\n");
+  fprintf (stderr,"absolute error   :  2.2204460492503131e-16\n");
+  fprintf (stderr,"relative error   :  4.4408920985006262e-16\n");
+  fprintf (stderr,"----------- C: end sinusoidal surface check -----------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }
@@ -50,7 +56,7 @@ void check_volume(creal vol_n)
 int cont_line_3D(double *xx,double *yy,double *zz, int ntot)
 {
   int i,j;
-  double mypi,dx,dy,phi,x0,xi,y0,yi,z0,dz0,alx,aly;
+  double mypi,dx,dy,x0,xi,y0,yi,z0,dz0,alx,aly;
 
   mypi = 2.*acos(0.0);
   z0 = 0.5;

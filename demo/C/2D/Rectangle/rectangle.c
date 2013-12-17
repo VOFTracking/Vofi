@@ -48,15 +48,21 @@ void check_area(creal area_n)
   
   area_a = 4.*A1*B1;
 
-  fprintf (stderr,"-----------------------------------------------------\n");
-  fprintf (stderr,"----------------- C: rectangle check ----------------\n\n");
-
-  fprintf (stderr,"analytical area: %23.16e\n",area_a);
-  fprintf (stderr,"numerical  area: %23.16e\n\n",area_n);
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"------------------ C: rectangle check -----------------\n");
+  fprintf (stderr,"analytical area : %23.16e\n",area_a);
+  fprintf (stderr,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stderr,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stderr,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
-  fprintf (stderr,"-------------- C: end rectangle check ---------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical area :  2.3999999999999999e-01\n");
+  fprintf (stderr,"numerical  area :  2.3999999999999996e-01\n\n");
+  fprintf (stderr,"absolute error  :  2.7755575615628914e-17\n");
+  fprintf (stderr,"relative error  :  1.1564823173178715e-16\n");
+  fprintf (stderr,"--------------- C: end rectangle check ----------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

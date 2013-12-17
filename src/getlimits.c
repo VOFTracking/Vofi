@@ -35,14 +35,10 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
   else {                                /* get the external limits along tdir */
     for (k=0;k<2;k++) {                                         /* two planes */
       /* DEBUG 1 */
-      /* DEBUG 1 */
-      fprintf(stderr,"\nPlane: %2d \n",k+1);
 
       nvp = nvn = iv = 0;
       for (j=0;j<2;j++) {                                        /* two sides */
 	/* DEBUG 2 */
-	/* DEBUG 2 */
-	fprintf(stderr,"Check side: %2d \n",j+1);
 
 	for (i=0;i<NDIM;i++) { 
 	  x1[i] = x0[i] + k*pdir[i]*h0+j*sdir[i]*h0;
@@ -60,14 +56,10 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	}
 	get_side_intersections(impl_func,fe,x1,lim_intg,tdir,h0,&nsub);
 	/* DEBUG 3 */
-	/* DEBUG 3 */
-	fprintf(stderr,"nsub: %2d \n\n",nsub);
 
       }
       if (nvp == 4 || nvn == 4) {         /* get the extra limits in the face */
 	/* DEBUG 4 */
-	/* DEBUG 4 */
-	fprintf(stderr,"\nCheck whole face: %2d,  nvp,nvn: %2d %2d \n",k+1,nvp,nvn);
 
 	xfsa.iat = 0;
 	for (i=0;i<NDIM;i++) 
@@ -78,8 +70,6 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	if (xfsa.iat != 0)
 	  get_face_intersections(impl_func,xfsa,x1,lim_intg,sdir,tdir,h0,&nsub);
 	/* DEBUG 5 */
-	/* DEBUG 5 */
-	fprintf(stderr,"nsub: %2d \n\n",nsub);
 
       } 
     }
@@ -87,10 +77,6 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
   lim_intg[nsub] = h0;
 
   /* DEBUG 6 */
-  /* DEBUG 6 */
-  fprintf(stderr,"\n before ordering and removal \n");
-  for (i=0;i<=nsub;i++)
-    fprintf(stderr,"ns:%2d dx,dx/h: %.12f %.12f \n",i,lim_intg[i],lim_intg[i]/h0);
 
   for (j=2;j<nsub;j++) {                         /* order limits from 0 to h0 */
     ls = lim_intg[j];
@@ -115,16 +101,6 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
   lim_intg[0] = 0.;                                        /* just for safety */
   lim_intg[nsub] = h0;
   /* DEBUG 7 */
-  /* DEBUG 7 */
-  fprintf(stderr,"\n final \n");
-  for (i=0;i<=nsub;i++)
-    fprintf(stderr,"ns:%2d dx,dx/h: %.12f %.12f \n",i,lim_intg[i],lim_intg[i]/h0);
-
 
   return nsub;    
 }
-  /* DEBUG 7 
-  fprintf(stderr,"\n final \n");
-  for (i=0;i<=nsub;i++)
-    fprintf(stderr,"ns:%2d dx,dx/h: %f %f \n",i,lim_intg[i],lim_intg[i]/h0);
-*/

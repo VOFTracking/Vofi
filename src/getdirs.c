@@ -157,27 +157,7 @@ dir_data get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
   }
   
   /* DEBUG 1 */
-  /* DEBUG 1 */
-  fprintf(stderr,"nmax,np1,np0: %2d %2d %2d \n",nmax,np1,np0);
-  fprintf(stderr,"mindv,maxdv: %9.6f %9.6f \n",minomega,maxomega);
-  fprintf(stderr,"nc,ng,ns,ndiv: %2d %2d %2d %2d \n",
-	  icps.icc,icps.ipt,icps.isb,npt_with_grad);
-  fprintf(stderr,"jp,js,jt: %2d %2d %2d \n",jp,js,jt);
-
 
   return icps;
 }
 
-/*DEBUG 1
-  fprintf(stderr,"nmax,np1,np0: %2d %2d %2d \n",nmax,np1,np0);
-  fprintf(stderr,"mindv,maxdv: %9.6f %9.6f \n",minome,maxome);
-  fprintf(stderr,"nc,ng,ns: %2d %2d %2d \n",nc,ng,ns);
-  fprintf(stderr,"jp,js,jt,npt_grad: %2d %2d %2d %2d \n",jp,js,jt,npt_grad);
- */
-/*
-  fprintf(stderr,"       x,y,z: %17.9e %17.9e %17.9e %17.9e \n",
-  0.,x1[0],x1[1],x1[2]);
-  fprintf(stderr,"  f,fx,fy,fz: %17.9e %17.9e %17.9e %17.9e \n",
-  Myfunc(x1,ndim),dfx[k][i][j],dfy[k][i][j],dfz[k][i][j]);
-  Myfuncprt(x1,ndim);
-*/

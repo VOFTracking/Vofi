@@ -21,13 +21,12 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
   creal *ptinw, *ptinx;
 
   /* GRAPHICS I */
+
   area = 0.;
   for (i=0;i<NDIM;i++) 
     x1[i] = x0[i] + pdir[i]*h0;
 
   /* DEBUG 1 */
-  /* DEBUG 1 */
-  fprintf(stderr,"\nIntegration over %2d rectangles \n",nintsub);
 
   for (ns=1;ns<=nintsub;ns++) {                   /* loop over the rectangles */
     ds = int_lim_intg[ns] - int_lim_intg[ns-1];
@@ -46,6 +45,7 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
       if (fe[0] < 0.0)
 	area += ds*h0; 
       /* DEBUG 2 */
+
     }
     else {                   /* cut rectangle: internal numerical integration */
       if (ds < 0.1*h0) 
@@ -84,8 +84,6 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
 
       GL_1D = 0.;
       /* DEBUG 3 */
-      /* DEBUG 3 */
-      fprintf(stderr,"band: %2d; internal GL integration: %2d pts \n",ns,npt);
 
       for (k=0;k<npt;k++) {
 	xis = cs + 0.5*ds*(*ptinx);
@@ -97,20 +95,21 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
 	fe[1] = impl_func(x21);
 	ht = get_segment_zero(impl_func,fe,x20,pdir,h0,true_sign);
 	/* DEBUG 4 */
-	/* DEBUG 4 */
- 	fprintf(stderr,"k:%2d %17.10f %17.10f %17.10f \n",k,*ptinx,xis/h0,ht/h0);
 
 	GL_1D += (*ptinw)*ht;
 	ptinx++;
 	ptinw++;
 	/* GRAPHICS II */
+
       }
       /* GRAPHICS III */
+
       area += 0.5*ds*GL_1D;
     }
   }
 
   area = area/(h0*h0);                               /* normalized area value */
+
   return area;
 }                       
 
@@ -139,8 +138,6 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
   vol = 0.;
   
   /* DEBUG 1 */
-  /* DEBUG 1 */
-  fprintf(stderr,"\nIntegration over %2d hexahedra \n",nextsub);
 
   for (ns=1;ns<=nextsub;ns++) {        /* loop over the rectangular hexahedra */
     ds = ext_lim_intg[ns] - ext_lim_intg[ns-1];        
@@ -188,9 +185,7 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
     if (!cut_hexa) {                   /* no interface: full/empty hexahedron */ 
       if (f1 < 0.)
 	vol += ds;
-      /* DEBUG 2 */
-      /* DEBUG 2 */
-      fprintf(stderr,"band: %2d, empty/full: %e \n",ns,f1);
+        /* DEBUG 2 */
 
     }
     else {                  /* cut hexahedron: external numerical integration */
@@ -216,8 +211,6 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
       }
       GL_1D = 0.;
       /* DEBUG 3 */
-      /* DEBUG 3 */
-      fprintf(stderr,"band: %2d, external GL integration, %2d pts \n",ns,nexpt);
 
       for (k=0;k<nexpt;k++) {
 	xis = cs + 0.5*ds*(*ptexx);
@@ -226,8 +219,6 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
 	nintsub = get_limits(impl_func,x1,int_lim_intg,pdir,sdir,tdir,h0,stdir);
 	area_n = get_area(impl_func,x1,int_lim_intg,pdir,sdir,h0,nintsub,nintpt);
 	/* DEBUG 4 */
-	/* DEBUG 4 */
-        fprintf(stderr,"k: %2d glx,y,area: %22.15e %.15e %.15e \n",k,*ptexx,xis,area_n);
 
  	GL_1D += (*ptexw)*area_n;
 	ptexx++;
@@ -238,52 +229,6 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
   }
 
   vol = vol/h0;                                    /* normalized volume value */
+
   return vol;
 }                       
-
-/* -------------------------------------------------------------------------- *
- * Graphical and debug sections for get_area                                  *
- * -------------------------------------------------------------------------- */
-  /* GRAPHICS I
-  double xx[3],yy[3],zz[3],x3[21],y3[21],z3[21]; 
-  xx[0] = yy[0] = zz[0] = 0.;
-  x3[0] = y3[0] = z3[0] = 0.;
-  */
-
-      /* DEBUG 2 */
-      /* plot full/empty circles */
-      /*
-      if (fabs(ds-h0) < EPS_M && ndim == 2) {      
-	xx[1] = x0[0] + 0.5*h0;
-	yy[1] = x0[1] + 0.5*h0;
-	if(fs[0] < 0.0)
-	  line_2D(xx,yy,1,0,0,0,5,13,4);
-	else
-	  line_2D(xx,yy,1,0,0,0,5,12,4);
-      }  */                                                       /* end plot */
-	/* GRAPHICS II */
-        /* plot segment
-	if (fs[0] < 0.0) {                                    
-	  xx[1] = x20[0]; xx[2] = xx[1] + pdir[0]*ht;
-	  yy[1] = x20[1]; yy[2] = yy[1] + pdir[1]*ht;
-	  zz[1] = x20[2]; zz[2] = zz[1] + pdir[2]*ht;
-	}
-	else {
-	  xx[1] = x21[0]; xx[2] = xx[1] - pdir[0]*ht;
-	  yy[1] = x21[1]; yy[2] = yy[1] - pdir[1]*ht;
-	  zz[1] = x21[2]; zz[2] = zz[1] - pdir[2]*ht;
-	}
-	if (ndim == 3)
-	  x3[k+1] = xx[2]; y3[k+1] = yy[2]; z3[k+1] = zz[2]; 
- */
-
-      /* GRAPHICS III */
-      /* plot line in 3D     
-      if (ndim == 3)
-	line_3D(x3,y3,z3,npt,1,1,5,1,13,0);
-*/
-
-/* -------------------------------------------------------------------------- *
- * Graphical and debug sections for get_volume                                *
- * -------------------------------------------------------------------------- */
-

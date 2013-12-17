@@ -62,13 +62,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
  
   iter = 0;   
   /* DEBUG 1 */
-  /* DEBUG 1 */
-  fprintf(stderr,"\ni: %2d \n",iter); 
-  fprintf(stderr,"sa,sb: %11.4e %11.4e; del: %11.4e \n",sa,sb,fabs(sa-sb));
-  fprintf(stderr,"ss,fs: %11.4e %11.4e \n",ss,fs);
-  fprintf(stderr,"st,ft: %11.4e %11.4e \n",st,ft);
-  fprintf(stderr,"sv,fv: %11.4e %11.4e \n",sv,fv);
-
 
   while (not_conv  && iter < max_iter) { 
     sc = 0.5*(sa + sb);
@@ -76,8 +69,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
     t2 = 2.0*tol;
 
     /* DEBUG 2 */
-    /* DEBUG 2 */
-    fprintf(stderr," ds<=deps?: %15.8e < %15.8e ?\n",fabs(ss - sc), t2 - 0.5*(sb - sa));
 
     /* check if the stopping criterion is satisfied */
     if ( fabs(ss - sc) <= t2 - 0.5*(sb - sa) )      
@@ -102,11 +93,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	se = sd;
       }
       /* DEBUG 3 */
-      /* DEBUG 3 */
-      fprintf(stderr,"      p, q: %15.8e , %15.8e \n", p, q);
-      fprintf(stderr,"     p<qr?: %15.8e < %15.8e ?\n",fabs(p), fabs(0.5*q*r));
-      fprintf(stderr,"    p>dsa?: %15.8e > %15.8e ?\n",p , q*(sa - ss));
-      fprintf(stderr,"    p<dsb?: %15.8e < %15.8e ?\n",p , q*(sb - ss));
 
       /* check if the parabolic interpolation step is OK, but the function 
                                   must not be evaluated too close to sa or sb */
@@ -120,8 +106,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	    sd = - tol;
 	}	
 	/* DEBUG 4 */
-	/* DEBUG 4 */ 
-	fprintf(stderr,"parabolic step, sd: %.3e \n",sd);
 
       }  
       /* otherwise take a golden-section step */
@@ -133,8 +117,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	sd = GRIS*se; 
 	igold++;
 	/* DEBUG 5 */
-	/* DEBUG 5 */
-	fprintf(stderr,"golden step, sd: %.3e igold: %2d \n",sd,igold);
 
       }
       
@@ -154,8 +136,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	not_conv = 0;
 
       /* DEBUG 6 */
-      /* DEBUG 6 */
-      fprintf(stderr,"su,fu: %11.4e %11.4e \n",su,fu); 
 
       /* update when fu <= fs */
       if (fu <= fs) { 
@@ -183,12 +163,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
       }
 
       /* DEBUG 7 */
-      /* DEBUG 7 */
-      fprintf(stderr,"\ni: %2d \n",iter); 
-      fprintf(stderr,"sa,sb: %15.8e %15.8e \n",sa,sb);
-      fprintf(stderr,"ss,fs: %15.8e %15.8e \n",ss,fs);
-      fprintf(stderr,"st,ft: %15.8e %15.8e \n",st,ft);
-      fprintf(stderr,"sv,fv: %15.8e %15.8e \n",sv,fv);
 
       /* every other golden-section step, check a linear extrapolation step */
       if (igold == 2 && not_conv == 1) {
@@ -214,18 +188,10 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	
         /* check if the intersection is OK and is a minimum */
 	/* DEBUG 8 */
-	/* DEBUG 8 */
-        fprintf(stderr,"  sa,fa: %15.8e %15.8e \n",sa,fa);
-        fprintf(stderr,"  sm,fm: %15.8e %15.8e \n",sm,fm);
-	fprintf(stderr,"  sp,fp: %15.8e %15.8e \n",sp,fp);
-        fprintf(stderr,"  sb,fb: %15.8e %15.8e \n",sb,fb);
 
 	sm = MIN(sa,sm);
 	sp = MAX(sb,sp);
 	/* DEBUG 9 */
-	/* DEBUG 9 */
-	fprintf(stderr,"secant step \n"); 
-	fprintf(stderr,"   p, q*sm, q*sp: %15.8e %15.8e %15.8e \n", p, q*sm, q*sp);
 
 	if ( p > q*sm  && p < q*sp ) {
 	  su = p/q;
@@ -233,8 +199,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
             xs[i] = x0[i] + su*dir[i];
           fu = f_sign*impl_func(xs);
 	  /* DEBUG 10 */
-	  /* DEBUG 10 */
-       	  fprintf(stderr,"  su,fu: %15.8e %15.8e \n",su,fu);
 
 	  iseca = 0;
 	  if (fu < fs) {    
@@ -254,8 +218,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
 	      sb = sz;
 	      sa = sz - 2.*tol;
 	      /* DEBUG 11 */
-	      /* DEBUG 11 */
-	      fprintf(stderr,"got the minimum! \n");
 
 	    }
 	  }
@@ -265,10 +227,6 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
   }     /* end external while */
   
   /* DEBUG 12 */  
-  /* DEBUG 12 */
-  fprintf(stderr,"# of iter:%3d, not_conv:%2d, f_zero:%2d \n",iter,not_conv,
-	  xfsa.iat);
-  fprintf(stderr,"x,y: %.3e %.3e; f(x): %e \n",xs[0],xs[1],f_sign*fs);
 
   for (i=0; i<NDIM; i++)
     xfsa.xval[i] = xs[i];
@@ -367,9 +325,6 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
   iter = k = ipt = 0;
   while (not_conv  && iter < max_iter) {                    /* iterative loop */
     /* DEBUG 1 */
-    /* DEBUG 1 */
-    fprintf(stderr,"-------------------------------------------------\n");
-    fprintf(stderr,"CG iter: %2d, ss0: %e \n",iter+1,ss0);
 
     xfsa = get_segment_min(impl_func,fe,xs0,nmdr,ss0,ivga.iat,max_iter_line); 
 
@@ -388,9 +343,6 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
       }
       ss0 = xfsa.sval;
       /* DEBUG 2 */
-      /* DEBUG 2 */
-      fprintf(stderr,"\nss0: %e \n",ss0);
-
 
       fs1 = ivga.iat*impl_func(xs1);
       fs2 = ivga.iat*impl_func(xs2);
@@ -415,8 +367,6 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
       beta = (delnew-delmid)/delold;      
       k++;          
       /* DEBUG 3 */
-      /* DEBUG 3 */
-      fprintf(stderr,"k,beta: %2d %e \n",k,beta);
 
       if (k == 2 || beta <= 0.) {
 	beta = 0.;
@@ -444,8 +394,6 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
       if (delnew < eps2*del0 || ss0 < EPS_R) {   
         not_conv = 0;   
 	/* DEBUG 4 */
-	/* DEBUG 4 */
-	fprintf(stderr,"Converged! \n");
 
       }
       else {
@@ -469,17 +417,3 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
   
   return xfsa;
 } 
-/* -------------------------------------------------------------------------- */
-/* DEBUG SECTION FOR FUNCTION get_segment_min */
-
-/* -------------------------------------------------------------------------- */
-/* DEBUG SECTION FOR FUNCTION get_face_min */
-/*
-      fprintf(stderr,"x,y,z: %17.9e %17.9e %17.9e \n",xs0[0],xs0[1],xs0[2]);
-      fprintf(stderr,"f,fx,fy: %17.9e %17.9e %17.9e \n",fe[0],df1,df2);
-      res1 = Myfuncprt(xs0,ndim);
-      fprintf(stderr,"new ss0: %e res: %e maxres: %e \n",ss0,delnew,eps2*del0);
-	  fprintf(stderr,"iteration for ss: fs1,fs0: %e %e ss0, ss1 %e %e \n",
-		  fe[1],fs[0],ss0,ss1);
-
-*/

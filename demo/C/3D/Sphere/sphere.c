@@ -52,15 +52,21 @@ void check_volume(creal vol_n)
   inv_frac = 8.;
   vol_a = 4.*MYPI*A1*B1*C1/(3.*inv_frac);
 
-  fprintf (stderr,"\n-----------------------------------------------------\n");
-  fprintf (stderr,"---------------- F: 1/8 sphere check ----------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"----------------- C: 1/8 sphere check -----------------\n");
   fprintf (stderr,"analytical volume: %23.16e\n",vol_a);
   fprintf (stderr,"numerical  volume: %23.16e\n\n",vol_n);
   fprintf (stderr,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
-  fprintf (stderr,"relative error   : %23.16e\n\n",fabs(vol_a-vol_n)/vol_a); 
-  fprintf (stderr,"-------------- F: end 1/8 sphere check --------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical volume:  5.2359877559829882e-01\n");
+  fprintf (stderr,"numerical  volume:  5.2359877559829937e-01\n\n");
+  fprintf (stderr,"absolute error   :  5.5511151231257827e-16\n");
+  fprintf (stderr,"relative error   :  1.0601848938211723e-15\n");
+  fprintf (stderr,"--------------- C: end 1/8 sphere check ---------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

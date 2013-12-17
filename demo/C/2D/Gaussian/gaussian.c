@@ -35,15 +35,21 @@ void check_area(creal area_n)
   /* integration with MATHEMATICA with the given values of Y0,A0,GA,X0 */  
   area_a = 0.3364089454607542483401167;
 
-  fprintf (stderr,"-----------------------------------------------------\n");
-  fprintf (stderr,"----------------- C: gaussian check -----------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"------------------ C: gaussian check ------------------\n");
   fprintf (stderr,"analytical area : %23.16e\n",area_a);
   fprintf (stderr,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stderr,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stderr,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
-  fprintf (stderr,"--------------- C: end gaussian check ---------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical area :  3.3640894546075423e-01\n");
+  fprintf (stderr,"numerical  area :  3.3640894546075711e-01\n\n");
+  fprintf (stderr,"absolute error  :  2.8865798640254070e-15\n");
+  fprintf (stderr,"relative error  :  8.5805680942041364e-15\n");
+  fprintf (stderr,"---------------- C: end gaussian check ----------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

@@ -48,21 +48,19 @@ int main()
   for (i=0; i<nx; i++)
     for (j=0; j<ny; j++) 
       for (k=0; k<nz; k++) {
-      /* DEBUG 1 */
-      /* DEBUG 1 */
+      /* DEBUG 1 
       fprintf(stderr,"----------------------------------\n");
       fprintf(stderr,"cell (%2d,%2d,%2d) \n",i+1,j+1,k+1);      
-
+      */
       xloc[0] = x0[0] + i*h0;
       xloc[1] = x0[1] + j*h0;
       xloc[2] = x0[2] + k*h0;
-      fprintf(stderr,"min vertex (%6.3f,%6.3f,%6.3f) \n",xloc[0],xloc[1],xloc[2]);
       
       cc[i][j][k] = Get_cc(impl_func,xloc,h0,fh,ndim0);
-      /* DEBUG 2 */      
-      /* DEBUG 2 */
+      /* DEBUG 2 
+      fprintf(stderr,"min vertex (%6.3f,%6.3f,%6.3f) \n",xloc[0],xloc[1],xloc[2]);
       fprintf(stderr,"\ncc: %.16e \n",cc[i][j][k]);
-
+      */      
    }
 
   /* final global check */     

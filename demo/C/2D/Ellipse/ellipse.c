@@ -50,15 +50,21 @@ void check_area(creal area_n)
   
   area_a = MYPI*A1*B1;
 
-  fprintf (stderr,"-----------------------------------------------------\n");
-  fprintf (stderr,"------------------- Ellipse check -------------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"------------------- C: ellipse check ------------------\n");
   fprintf (stderr,"analytical area : %23.16e\n",area_a);
   fprintf (stderr,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stderr,"absolute error  : %23.16e\n",fabs(area_a-area_n));
-  fprintf (stderr,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
-  fprintf (stderr,"----------------- End ellipse check -----------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a);
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical area :  1.1215485773315563e-01\n");
+  fprintf (stderr,"numerical  area :  1.1215485773315680e-01\n\n");
+  fprintf (stderr,"absolute error  :  1.1657341758564144e-15\n");
+  fprintf (stderr,"relative error  :  1.0393969547266394e-14\n");
+  fprintf (stderr,"----------------- C: end ellipse check ----------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

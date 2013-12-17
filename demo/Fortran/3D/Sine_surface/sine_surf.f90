@@ -11,7 +11,7 @@ SUBROUTINE CHECK_VOLUME(volnum)
 
   REAL(8), PARAMETER ::  MYPI = 3.141592653589793238462643D0
   REAL(8), PARAMETER ::  A0 = 0.5D0, B0 = (1.D0/6.D0), C1 = 1.6D0
-  REAL(8), PARAMETER ::  D1 = (1.D0/7.D0), E1 = (1.6D0/5.D0)
+  REAL(8), PARAMETER ::  D1 = (1.D0/7.D0), E1 = (1.D0/5.D0)
  
   REAL(8) :: volana
 
@@ -19,22 +19,28 @@ SUBROUTINE CHECK_VOLUME(volnum)
 
   volana = 0.5D0;
 
-   write(*,*) ' '
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '------------ F: sinusoidal surface check ------------'
-   write(*,*) ' '
-   write(*,100) volana
-   write(*,101) volnum
-   write(*,102) DABS(volnum-volana)
-   write(*,103) DABS(volnum-volana)/volana
-   write(*,*) '---------- F: end sinusoidal surface check ----------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '------------- F: sinusoidal surface check -------------'
+  write(*,100) volana
+  write(*,101) volnum
+  write(*,*) ' '
+  write(*,102) DABS(volnum-volana)
+  write(*,103) DABS(volnum-volana)/volana
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical volume:  5.0000000000000000E-01'
+  write(*,*) 'numerical  volume:  5.0000000000000000E-01'
+  write(*,*) ' '
+  write(*,*) 'absolute error   :  0.0000000000000000E+00'
+  write(*,*) 'relative error   :  0.0000000000000000E+00'
+   write(*,*) '----------- F: end sinusoidal surface check -----------'
+   write(*,*) '-------------------------------------------------------'
 
-   100 FORMAT('analytical volume:', ES23.16)
-   101 FORMAT('numerical  volume:', ES23.16)
-   102 FORMAT('absolute error   :', ES23.16)
-   103 FORMAT('relative error   :', ES23.16)
+   100 FORMAT(' analytical volume: ', ES23.16)
+   101 FORMAT(' numerical  volume: ', ES23.16)
+   102 FORMAT(' absolute error   : ', ES23.16)
+   103 FORMAT(' relative error   : ', ES23.16)
 
   RETURN
 
@@ -49,7 +55,7 @@ REAL(8) FUNCTION IMPL_FUNC (xyz)
 
   REAL(8), PARAMETER ::  MYPI = 3.141592653589793238462643D0
   REAL(8), PARAMETER ::  A0 = 0.5D0, B0 = (1.D0/6.D0), C1 = 1.6D0
-  REAL(8), PARAMETER ::  D1 = (1.D0/7.D0), E1 = (1.6D0/5.D0)
+  REAL(8), PARAMETER ::  D1 = (1.D0/7.D0), E1 = (1.D0/5.D0)
 
   REAL(8) :: x,y,z
 

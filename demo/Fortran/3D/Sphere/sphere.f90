@@ -26,22 +26,28 @@ SUBROUTINE CHECK_VOLUME(volnum)
   invfrac = 8.D0
   volana = 4.D0*MYPI*A1*B1*C1/(3.D0*invfrac);
 
-   write(*,*) ' '
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '---------------- F: 1/8 sphere check ----------------'
-   write(*,*) ' '
-   write(*,100) volana
-   write(*,101) volnum
-   write(*,102) DABS(volnum-volana)
-   write(*,103) DABS(volnum-volana)/volana
-   write(*,*) '-------------- F: end 1/8 sphere check --------------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '----------------- F: 1/8 sphere check -----------------'
+  write(*,100) volana
+  write(*,101) volnum
+  write(*,*) ' '
+  write(*,102) DABS(volnum-volana)
+  write(*,103) DABS(volnum-volana)/volana
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical volume:  5.2359877559829882E-01'
+  write(*,*) 'numerical  volume:  5.2359877559829937E-01'
+  write(*,*) ' '
+  write(*,*) 'absolute error   :  5.5511151231257827E-16'
+  write(*,*) 'relative error   :  1.0601848938211723E-15'
+  write(*,*) '--------------- F: end 1/8 sphere check ---------------'
+  write(*,*) '-------------------------------------------------------'
 
-   100 FORMAT('analytical volume:', ES23.16)
-   101 FORMAT('numerical  volume:', ES23.16)
-   102 FORMAT('absolute error   :', ES23.16)
-   103 FORMAT('relative error   :', ES23.16)
+  100 FORMAT(' analytical volume: ', ES23.16)
+  101 FORMAT(' numerical  volume: ', ES23.16)
+  102 FORMAT(' absolute error   : ', ES23.16)
+  103 FORMAT(' relative error   : ', ES23.16)
 
   RETURN
 

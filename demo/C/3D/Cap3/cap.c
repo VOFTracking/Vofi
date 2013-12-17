@@ -53,15 +53,21 @@ void check_volume(creal vol_n)
   h0 = C1 + ZC;
   vol_a = MYPI*A1*B1*h0*h0*(1. - h0/(3.*C1))/C1;
 
-  fprintf (stderr,"\n-----------------------------------------------------\n");
-  fprintf (stderr,"--------------- C: cap check (3 cells) --------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"---------------- C: cap check (3 cells) ---------------\n");
   fprintf (stderr,"analytical volume: %23.16e\n",vol_a);
   fprintf (stderr,"numerical  volume: %23.16e\n\n",vol_n);
   fprintf (stderr,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
-  fprintf (stderr,"relative error   : %23.16e\n\n",fabs(vol_a-vol_n)/vol_a); 
-  fprintf (stderr,"------------- C: end cap check (3 cells) ------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical volume:  9.4090699975015856e-03\n");
+  fprintf (stderr,"numerical  volume:  9.4090697360379658e-03\n\n");
+  fprintf (stderr,"absolute error   :  2.6146361985224242e-10\n");
+  fprintf (stderr,"relative error   :  2.7788465801792262e-08\n");
+  fprintf (stderr,"-------------- C: end cap check (3 cells) -------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

@@ -35,15 +35,21 @@ void check_area(creal area_n)
 
   area_a = A0 + B0*(-cos((C0 + 1./D0)*MYPI) + cos(MYPI/D0))/(C0*MYPI);
 
-  fprintf (stderr,"-----------------------------------------------------\n");
-  fprintf (stderr,"----------------- C: sine line check ----------------\n\n");
-
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"------------------ C: sine line check -----------------\n");
   fprintf (stderr,"analytical area : %23.16e\n",area_a);
   fprintf (stderr,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stderr,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stderr,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
-  fprintf (stderr,"-------------- C: end sine line check ---------------\n");
-  fprintf (stderr,"-----------------------------------------------------\n\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
+  fprintf (stderr,"analytical area :  5.0000000000000000e-01\n");
+  fprintf (stderr,"numerical  area :  4.9999999999993749e-01\n\n");
+  fprintf (stderr,"absolute error  :  6.2505556286396313e-14\n");
+  fprintf (stderr,"relative error  :  1.2501111257279263e-13\n");
+  fprintf (stderr,"--------------- C: end sine line check ----------------\n");
+  fprintf (stderr,"-------------------------------------------------------\n");
 
   return;
 }

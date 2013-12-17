@@ -24,20 +24,27 @@ SUBROUTINE CHECK_AREA(areanum)
 
   areana = MYPI*A1*B1
 
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '----------------- F: ellipse check ------------------'
-   write(*,*) ' '
-   write(*,100) areana
-   write(*,101) areanum
-   write(*,102) DABS(areanum-areana)
-   write(*,103) DABS(areanum-areana)/areana
-   write(*,*) '--------------- F: end ellipse check ----------------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
-   100 FORMAT('analytical area :', ES23.16)
-   101 FORMAT('numerical area  :', ES23.16)
-   102 FORMAT('absolute error  :', ES23.16)
-   103 FORMAT('relative error  :', ES23.16)
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '------------------ F: ellipse check -------------------'
+  write(*,100) areana
+  write(*,101) areanum
+  write(*,*) ' '
+  write(*,102) DABS(areanum-areana)
+  write(*,103) DABS(areanum-areana)/areana
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical area :  1.1215485773315563E-01'
+  write(*,*) 'numerical  area :  1.1215485773315677E-01'
+  write(*,*) ' '
+  write(*,*) 'absolute error  :  1.1379786002407855E-15'
+  write(*,*) 'relative error  :  1.0146494081855289E-14'
+  write(*,*) '---------------- F: end ellipse check -----------------'
+  write(*,*) '-------------------------------------------------------'
+  100 FORMAT(' analytical area : ', ES23.16)
+  101 FORMAT(' numerical area  : ', ES23.16)
+  102 FORMAT(' absolute error  : ', ES23.16)
+  103 FORMAT(' relative error  : ', ES23.16)
 
   RETURN
 

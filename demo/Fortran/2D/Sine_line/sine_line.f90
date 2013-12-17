@@ -19,20 +19,27 @@ SUBROUTINE CHECK_AREA(areanum)
 
   areana = A0 + B0*(-DCOS((C0 + 1./D0)*MYPI) + DCOS(MYPI/D0))/(C0*MYPI)
 
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '----------------- F: sine line check ----------------'
-   write(*,*) ' '
-   write(*,100) areana
-   write(*,101) areanum
-   write(*,102) DABS(areanum-areana)
-   write(*,103) DABS(areanum-areana)/areana
-   write(*,*) '-------------- F: end sine line check ---------------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
-   100 FORMAT('analytical area :', ES23.16)
-   101 FORMAT('numerical area  :', ES23.16)
-   102 FORMAT('absolute error  :', ES23.16)
-   103 FORMAT('relative error  :', ES23.16)
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '------------------ F: sine line check -----------------'
+  write(*,100) areana
+  write(*,101) areanum
+  write(*,*) ' '
+  write(*,102) DABS(areanum-areana)
+  write(*,103) DABS(areanum-areana)/areana
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical area :  5.0000000000000000E-01'
+  write(*,*) 'numerical  area :  4.9999999999993749E-01'
+  write(*,*) ' '
+  write(*,*) 'absolute error  :  6.2505556286396313E-14'
+  write(*,*) 'relative error  :  1.2501111257279263E-13'
+  write(*,*) '-------------- F: end sine line check ---------------'
+  write(*,*) '-----------------------------------------------------'
+  100 FORMAT(' analytical area : ', ES23.16)
+  101 FORMAT(' numerical area  : ', ES23.16)
+  102 FORMAT(' absolute error  : ', ES23.16)
+  103 FORMAT(' relative error  : ', ES23.16)
 
   RETURN
 

@@ -16,20 +16,27 @@ SUBROUTINE CHECK_AREA(areanum)
 
   areana = 0.3364089454607542483401167D0
 
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) '----------------- F: gaussian check -----------------'
-   write(*,*) ' '
-   write(*,100) areana
-   write(*,101) areanum
-   write(*,102) DABS(areanum-areana)
-   write(*,103) DABS(areanum-areana)/areana
-   write(*,*) '--------------- F: end gaussian check ---------------'
-   write(*,*) '-----------------------------------------------------'
-   write(*,*) ' '
-   100 FORMAT('analytical area :', ES23.16)
-   101 FORMAT('numerical area  :', ES23.16)
-   102 FORMAT('absolute error  :', ES23.16)
-   103 FORMAT('relative error  :', ES23.16)
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) '------------------ F: gaussian check ------------------'
+  write(*,100) areana
+  write(*,101) areanum
+  write(*,*) ' '
+  write(*,102) DABS(areanum-areana)
+  write(*,103) DABS(areanum-areana)/areana
+   write(*,*) '-------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2'
+  write(*,*) '-------------------------------------------------------'
+  write(*,*) 'analytical area :  3.3640894546075423E-01'
+  write(*,*) 'numerical  area :  3.3640894546075717E-01'
+  write(*,*) ' '
+  write(*,*) 'absolute error  :  2.9420910152566648E-15'
+  write(*,*) 'relative error  :  8.7455790190926772E-15'
+  write(*,*) '---------------- F: end gaussian check ----------------'
+  write(*,*) '-------------------------------------------------------'
+  100 FORMAT(' analytical area : ', ES23.16)
+  101 FORMAT(' numerical area  : ', ES23.16)
+  102 FORMAT(' absolute error  : ', ES23.16)
+  103 FORMAT(' relative error  : ', ES23.16)
 
   RETURN
 

@@ -42,21 +42,18 @@ int main()
   xloc[2] = 0.;                /* xloc: minor vertex of each cell of the grid */
   for (i=0; i<nx; i++)
     for (j=0; j<ny; j++) {
-      /* DEBUG 1 */
-      /* DEBUG 1 */
+      /* DEBUG 1 
       fprintf(stderr,"----------------------------------\n");
       fprintf(stderr,"cell (%2d,%2d) \n",i+1,j+1);      
-
+      */
       xloc[0] = x0[0] + i*h0;
       xloc[1] = x0[1] + j*h0;
       
       cc[i][j] = Get_cc(impl_func,xloc,h0,fh,ndim0);
-      /* DEBUG 2 */      
-      /* DEBUG 2 */
+      /* DEBUG 2 
       fprintf(stderr,"cc: %.8e \n",cc[i][j]);
-
+      */      
    }
-
 
   /* final global check */     
   area_n = 0.0;
