@@ -36,17 +36,19 @@ RANLIB          = @RANLIB@
 
 #targets
 
-all: lib demo-c demo-f
+all: lib demo-c demo-f demo-cpp
 
 lib: $(LIB)
 
-check: runtests-c runtests-f
+check: runtests-c runtests-f runtests-cpp
 
 demo-c: ellipse-c sine_line-c gaussian-c rectangle-c cap1-c cap2-c cap3-c sphere-c sine_surf-c
 
 demo-f: ellipse-f sine_line-f gaussian-f rectangle-f cap1-f cap2-f cap3-f sphere-f sine_surf-f
 
-demo-cpp: ellipse-cpp sine_line-cpp gaussian-cpp rectangle-cpp cap1-cpp cap2-cpp cap3-cpp sphere-cpp sine_surf-cpp
+demo-cpp: ellipse-cpp gaussian-cpp
+
+# sine_line-cpp rectangle-cpp cap1-cpp cap2-cpp cap3-cpp sphere-cpp sine_surf-cpp
 
 install: lib
 	$(INSTALL) -m 755 -d $(DESTDIR)$(libdir) \
@@ -258,6 +260,18 @@ SIN3_SRC_F      = $(demodir)/Fortran/3D/Sine_surface/sine_surf.f90   $(demodir)/
  
 sine_surf-f: $(SIN3_SRC_F) $(COMMON_CDEPS) $(LIB)
 	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_F) $(LIB) $(LIBS)
+	 
+# 2D CPP examples 
+
+ELLI_SRC_CPP    = $(demodir)/CPP/2D/Ellipse/ellipse.cpp   $(demodir)/CPP/2D/Ellipse/main2D.cpp
+
+ellipse-cpp: $(ELLI_SRC_CPP) $(ELLI_DEPS) $(COMMON_CDEPS) $(LIB)
+	     $(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_CPP) $(LIB) $(LIBS)
+	     
+GAUSS_SRC_CPP   = $(demodir)/CPP/2D/Gaussian/gaussian.cpp   $(demodir)/CPP/2D/Gaussian/main2D.cpp
+
+gaussian-cpp: $(GAUSS_SRC_CPP) $(GAUSS_DEPS) $(COMMON_CDEPS) $(LIB)
+	 $(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_CPP) $(LIB) $(LIBS)
 
 # run tests
 
@@ -302,24 +316,24 @@ runtests-f:
 	./sine_surf-f
 
 runtests-cpp: 
-	@echo "Running Ellipse-cpp example";  
-	$(PATH_EXCPP_SRC_EL)/ellipse;
-	@echo "Running Sine_line-cpp example"
-	$(PATH_EXCPP_SRC_SL)/sine_line
+	@echo "Running Ellipse-cpp example" 
+	./ellipse-cpp
+#	@echo "Running Sine_line-cpp example"
+#	$(PATH_EXCPP_SRC_SL)/sine_line
 	@echo "Running Gaussian-cpp example"
-	$(PATH_EXCPP_SRC_GA)/gaussian
-	@echo "Running Rectangle-cpp example"
-	$(PATH_EXCPP_SRC_RE)/rectangle
-	@echo "Running Cap1-cpp example"
-	$(PATH_EXCPP_SRC_C1)/cap1 
-	@echo "Running Cap2-cpp example"
-	$(PATH_EXCPP_SRC_C2)/cap2 
-	@echo "Running Cap3-cpp example"
-	$(PATH_EXCPP_SRC_C3)/cap3 
-	@echo "Running Sphere-cpp example"
-	$(PATH_EXCPP_SRC_SP)/sphere 
-	@echo "Running Sine_surface-cpp example"
-	$(PATH_EXCPP_SRC_SW)/sine_surf
+	./gaussian-cpp
+# 	@echo "Running Rectangle-cpp example"
+# 	$(PATH_EXCPP_SRC_RE)/rectangle
+# 	@echo "Running Cap1-cpp example"
+# 	$(PATH_EXCPP_SRC_C1)/cap1 
+# 	@echo "Running Cap2-cpp example"
+# 	$(PATH_EXCPP_SRC_C2)/cap2 
+# 	@echo "Running Cap3-cpp example"
+# 	$(PATH_EXCPP_SRC_C3)/cap3 
+# 	@echo "Running Sphere-cpp example"
+# 	$(PATH_EXCPP_SRC_SP)/sphere 
+# 	@echo "Running Sine_surface-cpp example"
+# 	$(PATH_EXCPP_SRC_SW)/sine_surf
 
 clean:
 	@echo "Cleaning library files"
