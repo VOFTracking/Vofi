@@ -342,6 +342,7 @@ distclean:
 	@echo "Cleaning library files"
 	$(RM) -f ./ellipse-c ./sine_line-c ./gaussian-c ./rectangle-c ./cap1-c ./cap2-c ./cap3-c ./sphere-c ./sine_surf-c
 	$(RM) -f ./ellipse-f ./sine_line-f ./gaussian-f ./rectangle-f ./cap1-f ./cap2-f ./cap3-f ./sphere-f ./sine_surf-f
+	$(RM) -f ./ellipse-cpp ./gaussian-cpp
 	$(RM) -f $(LIB)
 	$(RM) -f makefile
 	$(RM) -f config.log
