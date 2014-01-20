@@ -1,141 +1,139 @@
-# ************************************************** #
-#        Makefile for the VOFI library               #
-# ************************************************** #
+# ******************************************* #
+#        Makefile for the VOFI library        #
+# ******************************************* #
 
-# C, F and C++ COMPILERS AND FLAGS
-CC        = @CC@
-CFLAGS    = @CFLAGS@ 
-FC        = @FC@
-FCFLAGS   = @FCFLAGS@
-CXX       = @CXX@
-CXXFLAGS  = @CXXFLAGS@
+# C, F and CPP compilers and flags
+CC       = @CC@
+CFLAGS   = @CFLAGS@ 
+FC       = @FC@
+FCFLAGS  = @FCFLAGS@
+CXX      = @CXX@
+CXXFLAGS = @CXXFLAGS@
 
-# programs 
-RM        = @RM@
-AR        = @AR@
+# utilities
+RM     = @RM@
+AR     = @AR@
+RANLIB = @RANLIB@
 
-# libs
-LIBS      = @LIBS@
+# libraries
+LIBS = @LIBS@
 
-# paths
-prefix          = @prefix@
-libdir          = @libdir@
-includedir      = @includedir@
-exec_prefix     = @exec_prefix@
-srcdir          = ./src
-demodir         = ./demo
-incdir          = ./include
+# local paths
+srcdir  = ./src
+incdir  = ./include
+demodir = ./demo_src
+demobin = ./demo_bin
+libvdir = ./lib
+libv    = -lvofi
+
+# paths to install
+prefix      = @prefix@
+exec_prefix = @exec_prefix@
+libdir      = @libdir@
+includedir  = @includedir@
 
 # lib
-HEADERS         = vofi.h
+HEADERS         = ./include/vofi.h
 LIB             = libvofi.a
 INSTALL         = @INSTALL@
 INSTALL_DATA    = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
-RANLIB          = @RANLIB@
 
-#targets
+# ************* #
+#    Targets    #
+# ************* #
 
 all: lib demo-c demo-f demo-cpp
 
 lib: $(LIB)
 
-check: runtests-c runtests-f runtests-cpp
-
 demo-c: ellipse-c sine_line-c gaussian-c rectangle-c cap1-c cap2-c cap3-c sphere-c sine_surf-c
 
 demo-f: ellipse-f sine_line-f gaussian-f rectangle-f cap1-f cap2-f cap3-f sphere-f sine_surf-f
 
-demo-cpp: ellipse-cpp gaussian-cpp
+demo-cpp: ellipse-cpp sine_line-cpp gaussian-cpp rectangle-cpp cap1-cpp cap2-cpp cap3-cpp sphere-cpp sine_surf-cpp
 
-# sine_line-cpp rectangle-cpp cap1-cpp cap2-cpp cap3-cpp sphere-cpp sine_surf-cpp
+check: runtests-c runtests-f runtests-cpp
 
-install: lib
+install: 
 	$(INSTALL) -m 755 -d $(DESTDIR)$(libdir) \
 			     $(DESTDIR)$(includedir)
-	$(INSTALL_DATA) $(LIB) $(DESTDIR)$(libdir)
+	$(INSTALL_DATA) $(libvdir)/$(LIB) $(DESTDIR)$(libdir)
 	for f in $(HEADERS) ; do \
 	    $(INSTALL_DATA) `test -f $$f || echo ./`$$f $(DESTDIR)$(includedir); \
 	done
 
+# ****************** #
+#    VOFI library    #
+# ****************** #
 
-COMMON_CDEPS = ./include/stddecl.h ./include/vofi.h ./include/GL.h
+COMMON_CDEPS = $(incdir)/stddecl.h $(incdir)/GL.h
 
 CHECKCONSISTENCY_DEPS = 
 CHECKCONSISTENCY_C = $(srcdir)/checkconsistency.c
-
 $(LIB)(checkconsistency.o): $(CHECKCONSISTENCY_C) $(CHECKCONSISTENCY_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o checkconsistency.o $(CHECKCONSISTENCY_C)
 	$(AR) $(ARFLAGS) $(LIB) checkconsistency.o
 	$(RM) checkconsistency.o
-	
+
 GETCC_DEPS = 
 GETCC_C = $(srcdir)/getcc.c
-	
 $(LIB)(getcc.o): $(GETCC_C) $(GETCC_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getcc.o $(GETCC_C)
 	$(AR) $(ARFLAGS) $(LIB) getcc.o
 	$(RM) getcc.o
-	
+
 GETDIRS_DEPS = 
 GETDIRS_C = $(srcdir)/getdirs.c
-	
 $(LIB)(getdirs.o): $(GETDIRS_C) $(GETDIRS_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getdirs.o $(GETDIRS_C)
 	$(AR) $(ARFLAGS) $(LIB) getdirs.o
 	$(RM) getdirs.o
-	
+
 GETFH_DEPS = 
 GETFH_C = $(srcdir)/getfh.c
-	
 $(LIB)(getfh.o): $(GETFH_C) $(GETFH_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getfh.o $(GETFH_C)
 	$(AR) $(ARFLAGS) $(LIB) getfh.o
 	$(RM) getfh.o
-	
+
 GETINTERSECTIONS_DEPS = 
 GETINTERSECTIONS_C = $(srcdir)/getintersections.c
-	
 $(LIB)(getintersections.o): $(GETINTERSECTIONS_C) $(GETINTERSECTIONS_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getintersections.o $(GETINTERSECTIONS_C)
 	$(AR) $(ARFLAGS) $(LIB) getintersections.o
 	$(RM) getintersections.o
-	
+
 GETLIMITS_DEPS = 
 GETLIMITS_C = $(srcdir)/getlimits.c
-	
 $(LIB)(getlimits.o): $(GETLIMITS_C) $(GETLIMITS_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getlimits.o $(GETLIMITS_C)
 	$(AR) $(ARFLAGS) $(LIB) getlimits.o
 	$(RM) getlimits.o
-	
+
 GETMIN_DEPS = 
 GETMIN_C = $(srcdir)/getmin.c
-	
 $(LIB)(getmin.o): $(GETMIN_C) $(GETMIN_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getmin.o $(GETMIN_C)
 	$(AR) $(ARFLAGS) $(LIB) getmin.o
 	$(RM) getmin.o
-	
+
 GETZERO_DEPS = 
 GETZERO_C = $(srcdir)/getzero.c
-	
 $(LIB)(getzero.o): $(GETZERO_C) $(GETZERO_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o getzero.o $(GETZERO_C)
 	$(AR) $(ARFLAGS) $(LIB) getzero.o
 	$(RM) getzero.o
-	
+
 INTEGRATE_DEPS = 
 INTEGRATE_C = $(srcdir)/integrate.c
-	
 $(LIB)(integrate.o): $(INTEGRATE_C) $(INTEGRATE_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o integrate.o $(INTEGRATE_C)
 	$(AR) $(ARFLAGS) $(LIB) integrate.o
 	$(RM) integrate.o
-	
+
 INTERFACE_DEPS = 
 INTERFACE_C = $(srcdir)/interface.c
-	
 $(LIB)(interface.o): $(INTERFACE_C) $(INTERFACE_DEPS) $(COMMON_CDEPS) 
 	$(CC) $(CFLAGS) -I$(incdir) -c -o interface.o $(INTERFACE_C)
 	$(AR) $(ARFLAGS) $(LIB) interface.o
@@ -152,199 +150,278 @@ $(LIB): $(LIB)(checkconsistency.o) \
 	$(LIB)(integrate.o)        \
 	$(LIB)(interface.o)
 	-$(RANLIB) $(LIB)
+	mv $(LIB) $(libvdir)
 
-# 2D C examples 
+# ************************** #
+#    Compile C tests (2D)    #
+# ************************** #
 
-ELLI_SRC_C      = $(demodir)/C/2D/Ellipse/ellipse.c   $(demodir)/C/2D/Ellipse/main2D.c
-ELLI_DEPS       = $(demodir)/C/2D/Ellipse/ellipse.h
+ELLI_SRC_C = $(demodir)/C/2D/Ellipse/ellipse.c $(demodir)/C/2D/Ellipse/main2D.c
+ELLI_DEPS  = $(demodir)/C/2D/Ellipse/ellipse.h $(incdir)/vofi.h
+ellipse-c: $(ELLI_SRC_C) $(ELLI_DEPS) 
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-ellipse-c: $(ELLI_SRC_C) $(ELLI_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_C) $(LIB) $(LIBS)
+SIN2_SRC_C = $(demodir)/C/2D/Sine_line/sine_line.c $(demodir)/C/2D/Sine_line/main2D.c
+SIN2_DEPS  = $(demodir)/C/2D/Sine_line/sine_line.h $(incdir)/vofi.h
+sine_line-c: $(SIN2_SRC_C) $(SIN2_DEPS) 
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SIN2_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-SIN2_SRC_C      = $(demodir)/C/2D/Sine_line/sine_line.c   $(demodir)/C/2D/Sine_line/main2D.c
-SIN2_DEPS       = $(demodir)/C/2D/Sine_line/sine_line.h
+GAUSS_SRC_C = $(demodir)/C/2D/Gaussian/gaussian.c $(demodir)/C/2D/Gaussian/main2D.c
+GAUSS_DEPS  = $(demodir)/C/2D/Gaussian/gaussian.h $(incdir)/vofi.h
+gaussian-c: $(GAUSS_SRC_C) $(GAUSS_DEPS) 
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-sine_line-c: $(SIN2_SRC_C) $(SIN2_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SIN2_SRC_C) $(LIB) $(LIBS)
+RECT_SRC_C = $(demodir)/C/2D/Rectangle/rectangle.c $(demodir)/C/2D/Rectangle/main2D.c
+RECT_DEPS  = $(demodir)/C/2D/Rectangle/rectangle.h $(incdir)/vofi.h
+rectangle-c: $(RECT_SRC_C) $(RECT_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(RECT_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-GAUSS_SRC_C      = $(demodir)/C/2D/Gaussian/gaussian.c   $(demodir)/C/2D/Gaussian/main2D.c
-GAUSS_DEPS       = $(demodir)/C/2D/Gaussian/gaussian.h
+# ************************** #
+#    Compile C tests (3D)    #
+# ************************** #
 
-gaussian-c: $(GAUSS_SRC_C) $(GAUSS_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_C) $(LIB) $(LIBS)
+CAP1_SRC_C = $(demodir)/C/3D/Cap1/cap.c $(demodir)/C/3D/Cap1/main3D.c
+CAP1_DEPS  = $(demodir)/C/3D/Cap1/cap.h $(incdir)/vofi.h
+cap1-c: $(CAP1_SRC_C) $(CAP1_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP1_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-RECT_SRC_C      = $(demodir)/C/2D/Rectangle/rectangle.c   $(demodir)/C/2D/Rectangle/main2D.c
-RECT_DEPS       = $(demodir)/C/2D/Rectangle/rectangle.h
- 
-rectangle-c: $(RECT_SRC_C) $(RECT_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(RECT_SRC_C) $(LIB) $(LIBS)
+CAP2_SRC_C = $(demodir)/C/3D/Cap2/cap.c $(demodir)/C/3D/Cap2/main3D.c
+CAP2_DEPS  = $(demodir)/C/3D/Cap2/cap.h $(incdir)/vofi.h
+cap2-c: $(CAP2_SRC_C) $(CAP2_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP2_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-# 3D C examples 
+CAP3_SRC_C = $(demodir)/C/3D/Cap3/cap.c $(demodir)/C/3D/Cap3/main3D.c
+CAP3_DEPS  = $(demodir)/C/3D/Cap3/cap.h $(incdir)/vofi.h 
+cap3-c: $(CAP3_SRC_C) $(CAP1_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP3_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-CAP1_SRC_C      = $(demodir)/C/3D/Cap1/cap.c   $(demodir)/C/3D/Cap1/main3D.c
-CAP1_DEPS       = $(demodir)/C/3D/Cap1/cap.h
- 
-cap1-c: $(CAP1_SRC_C) $(CAP1_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP1_SRC_C) $(LIB) $(LIBS)
-	 
-CAP2_SRC_C      = $(demodir)/C/3D/Cap2/cap.c   $(demodir)/C/3D/Cap2/main3D.c
-CAP2_DEPS       = $(demodir)/C/3D/Cap2/cap.h
- 
-cap2-c: $(CAP2_SRC_C) $(CAP2_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP2_SRC_C) $(LIB) $(LIBS)
-	 
-CAP3_SRC_C      = $(demodir)/C/3D/Cap3/cap.c   $(demodir)/C/3D/Cap3/main3D.c
-CAP3_DEPS       = $(demodir)/C/3D/Cap3/cap.h
- 
-cap3-c: $(CAP3_SRC_C) $(CAP1_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(CAP3_SRC_C) $(LIB) $(LIBS)
-	 
-SPHE_SRC_C      = $(demodir)/C/3D/Sphere/sphere.c   $(demodir)/C/3D/Sphere/main3D.c
-SPHE_DEPS       = $(demodir)/C/3D/Sphere/sphere.h
- 
-sphere-c: $(SPHE_SRC_C) $(SPHE_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SPHE_SRC_C) $(LIB) $(LIBS)
-	 
-SIN3_SRC_C      = $(demodir)/C/3D/Sine_surface/sine_surf.c   $(demodir)/C/3D/Sine_surface/main3D.c
-SIN3_DEPS       = $(demodir)/C/3D/Sine_surface/sine_surf.h
- 
-sine_surf-c: $(SIN3_SRC_C) $(SIN3_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_C) $(LIB) $(LIBS)
+SPHE_SRC_C = $(demodir)/C/3D/Sphere/sphere.c $(demodir)/C/3D/Sphere/main3D.c
+SPHE_DEPS  = $(demodir)/C/3D/Sphere/sphere.h $(incdir)/vofi.h
+sphere-c: $(SPHE_SRC_C) $(SPHE_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SPHE_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
+SIN3_SRC_C = $(demodir)/C/3D/Sine_surface/sine_surf.c $(demodir)/C/3D/Sine_surface/main3D.c
+SIN3_DEPS  = $(demodir)/C/3D/Sine_surface/sine_surf.h $(incdir)/vofi.h
+sine_surf-c: $(SIN3_SRC_C) $(SIN3_DEPS)
+	$(CC) $(CFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_C) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-# 2D F examples 
+# ******************************** #
+#    Compile Fortran tests (2D)    #
+# ******************************** #
 
-ELLI_SRC_F      = $(demodir)/Fortran/2D/Ellipse/ellipse.f90   $(demodir)/Fortran/2D/Ellipse/main2D.f90
+ELLI_SRC_F = $(demodir)/Fortran/2D/Ellipse/ellipse.f90 $(demodir)/Fortran/2D/Ellipse/main2D.f90
+ellipse-f: $(ELLI_SRC_F)  
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-ellipse-f: $(ELLI_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_F) $(LIB) $(LIBS)
-	 
-SIN2_SRC_F      = $(demodir)/Fortran/2D/Sine_line/sine_line.f90   $(demodir)/Fortran/2D/Sine_line/main2D.f90
+SIN2_SRC_F = $(demodir)/Fortran/2D/Sine_line/sine_line.f90 $(demodir)/Fortran/2D/Sine_line/main2D.f90
+sine_line-f: $(SIN2_SRC_F) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SIN2_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-sine_line-f: $(SIN2_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SIN2_SRC_F) $(LIB) $(LIBS)
-	 
-GAUSS_SRC_F      = $(demodir)/Fortran/2D/Gaussian/gaussian.f90   $(demodir)/Fortran/2D/Gaussian/main2D.f90
+GAUSS_SRC_F = $(demodir)/Fortran/2D/Gaussian/gaussian.f90 $(demodir)/Fortran/2D/Gaussian/main2D.f90
+gaussian-f: $(GAUSS_SRC_F)
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-gaussian-f: $(GAUSS_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_F) $(LIB) $(LIBS)
-	 
-RECT_SRC_F      = $(demodir)/Fortran/2D/Rectangle/rectangle.f90   $(demodir)/Fortran/2D/Rectangle/main2D.f90
+RECT_SRC_F = $(demodir)/Fortran/2D/Rectangle/rectangle.f90 $(demodir)/Fortran/2D/Rectangle/main2D.f90
+rectangle-f: $(RECT_SRC_F) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(RECT_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-rectangle-f: $(RECT_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(RECT_SRC_F) $(LIB) $(LIBS)
-	 
-# 3D F examples 
+# ******************************** #
+#    Compile Fortran tests (3D)    #
+# ******************************** #
 
-CAP1_SRC_F      = $(demodir)/Fortran/3D/Cap1/cap.f90   $(demodir)/Fortran/3D/Cap1/main3D.f90
- 
-cap1-f: $(CAP1_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP1_SRC_F) $(LIB) $(LIBS)
+CAP1_SRC_F = $(demodir)/Fortran/3D/Cap1/cap.f90 $(demodir)/Fortran/3D/Cap1/main3D.f90
+cap1-f: $(CAP1_SRC_F)
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP1_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-CAP2_SRC_F      = $(demodir)/Fortran/3D/Cap2/cap.f90   $(demodir)/Fortran/3D/Cap2/main3D.f90
- 
-cap2-f: $(CAP2_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP2_SRC_F) $(LIB) $(LIBS)
-	 
-CAP3_SRC_F      = $(demodir)/Fortran/3D/Cap3/cap.f90   $(demodir)/Fortran/3D/Cap3/main3D.f90
- 
-cap3-f: $(CAP3_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP3_SRC_F) $(LIB) $(LIBS)
-	 
-SPHERE_SRC_F      = $(demodir)/Fortran/3D/Sphere/sphere.f90   $(demodir)/Fortran/3D/Sphere/main3D.f90
- 
-sphere-f: $(SPHERE_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SPHERE_SRC_F) $(LIB) $(LIBS)
-	 
-SIN3_SRC_F      = $(demodir)/Fortran/3D/Sine_surface/sine_surf.f90   $(demodir)/Fortran/3D/Sine_surface/main3D.f90
- 
-sine_surf-f: $(SIN3_SRC_F) $(COMMON_CDEPS) $(LIB)
-	 $(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_F) $(LIB) $(LIBS)
-	 
-# 2D CPP examples 
+CAP2_SRC_F = $(demodir)/Fortran/3D/Cap2/cap.f90 $(demodir)/Fortran/3D/Cap2/main3D.f90
+cap2-f: $(CAP2_SRC_F) $(COMMON_CDEPS) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP2_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-ELLI_SRC_CPP    = $(demodir)/CPP/2D/Ellipse/ellipse.cpp   $(demodir)/CPP/2D/Ellipse/main2D.cpp
+CAP3_SRC_F = $(demodir)/Fortran/3D/Cap3/cap.f90 $(demodir)/Fortran/3D/Cap3/main3D.f90
 
-ellipse-cpp: $(ELLI_SRC_CPP) $(ELLI_DEPS) $(COMMON_CDEPS) $(LIB)
-	     $(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_CPP) $(LIB) $(LIBS)
-	     
-GAUSS_SRC_CPP   = $(demodir)/CPP/2D/Gaussian/gaussian.cpp   $(demodir)/CPP/2D/Gaussian/main2D.cpp
+cap3-f: $(CAP3_SRC_F) $(COMMON_CDEPS) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(CAP3_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-gaussian-cpp: $(GAUSS_SRC_CPP) $(GAUSS_DEPS) $(COMMON_CDEPS) $(LIB)
-	 $(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_CPP) $(LIB) $(LIBS)
+SPHERE_SRC_F = $(demodir)/Fortran/3D/Sphere/sphere.f90 $(demodir)/Fortran/3D/Sphere/main3D.f90
+sphere-f: $(SPHERE_SRC_F) $(COMMON_CDEPS) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SPHERE_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
 
-# run tests
+SIN3_SRC_F = $(demodir)/Fortran/3D/Sine_surface/sine_surf.f90 $(demodir)/Fortran/3D/Sine_surface/main3D.f90
+sine_surf-f: $(SIN3_SRC_F) $(COMMON_CDEPS) 
+	$(FC) $(FFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_F) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+# **************************** #
+#    Compile CPP tests (2D)    #
+# **************************** #
+
+ELLI_SRC_CPP = $(demodir)/CPP/2D/Ellipse/ellipse.cpp $(demodir)/CPP/2D/Ellipse/main2D.cpp
+ELLIP_DEPS  = $(demodir)/CPP/2D/Ellipse/ellipse.h $(incdir)/vofi.h
+ellipse-cpp: $(ELLI_SRC_CPP) $(ELLIP_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(ELLI_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+SIN2_SRC_CPP = $(demodir)/CPP/2D/Sine_line/sine_line.cpp $(demodir)/CPP/2D/Sine_line/main2D.cpp
+SIN2P_DEPS  = $(demodir)/CPP/2D/Sine_line/sine_line.h $(incdir)/vofi.h
+sine_line-cpp: $(SIN2_SRC_CPP) $(SIN2P_DEPS) 
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(SIN2_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+GAUSS_SRC_CPP = $(demodir)/CPP/2D/Gaussian/gaussian.cpp $(demodir)/CPP/2D/Gaussian/main2D.cpp
+GAUSSP_DEPS  = $(demodir)/CPP/2D/Gaussian/gaussian.h $(incdir)/vofi.h
+gaussian-cpp: $(GAUSS_SRC_CPP) $(GAUSSP_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(GAUSS_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+RECT_SRC_CPP = $(demodir)/CPP/2D/Rectangle/rectangle.cpp $(demodir)/CPP/2D/Rectangle/main2D.cpp
+RECTP_DEPS  = $(demodir)/CPP/2D/Rectangle/rectangle.h $(incdir)/vofi.h
+rectangle-cpp: $(RECT_SRC_CPP) $(RECTP_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(RECT_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+# **************************** #
+#    Compile CPP tests (3D)    #
+# **************************** #
+
+CAP1_SRC_CPP = $(demodir)/CPP/3D/Cap1/cap.cpp $(demodir)/CPP/3D/Cap1/main3D.cpp
+CAP1P_DEPS  = $(demodir)/CPP/3D/Cap1/cap.h $(incdir)/vofi.h
+cap1-cpp: $(CAP1_SRC_CPP) $(CAP1P_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(CAP1_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+CAP2_SRC_CPP = $(demodir)/CPP/3D/Cap2/cap.cpp $(demodir)/CPP/3D/Cap2/main3D.cpp
+CAP2P_DEPS  = $(demodir)/CPP/3D/Cap2/cap.h $(incdir)/vofi.h
+cap2-cpp: $(CAP2_SRC_CPP) $(CAP2P_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(CAP2_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+CAP3_SRC_CPP = $(demodir)/CPP/3D/Cap3/cap.cpp $(demodir)/CPP/3D/Cap3/main3D.cpp
+CAP3P_DEPS  = $(demodir)/CPP/3D/Cap3/cap.h $(incdir)/vofi.h 
+cap3-cpp: $(CAP3_SRC_CPP) $(CAP3P_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(CAP3_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+SPHE_SRC_CPP = $(demodir)/CPP/3D/Sphere/sphere.cpp $(demodir)/CPP/3D/Sphere/main3D.cpp
+SPHEP_DEPS  = $(demodir)/CPP/3D/Sphere/sphere.h $(incdir)/vofi.h
+sphere-cpp: $(SPHE_SRC_CPP) $(SPHEP_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(SPHE_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+SIN3_SRC_CPP = $(demodir)/CPP/3D/Sine_surface/sine_surf.cpp $(demodir)/CPP/3D/Sine_surface/main3D.cpp
+SIN3P_DEPS  = $(demodir)/CPP/3D/Sine_surface/sine_surf.h $(incdir)/vofi.h
+sine_surf-cpp: $(SIN3_SRC_CPP) $(SIN3P_DEPS)
+	$(CXX) $(CXXFLAGS) -I$(incdir) -I. -o $@ $(SIN3_SRC_CPP) -L$(libvdir) $(libv) $(LIBS)
+	mv $@ $(demobin)
+
+# *************************************** #
+#    Run all C, Fortran and  CPP tests    #
+# *************************************** #
 
 runtests-c:
-	@echo "Running Ellipse-c example"  
-	./ellipse-c
-	@echo "Running Sine_line-c example"
-	./sine_line-c
-	@echo "Running Gaussian-c example"
-	./gaussian-c
-	@echo "Running Rectangle-c example"
-	./rectangle-c
-	@echo "Running Cap1-c example"
-	./cap1-c 
-	@echo "Running Cap2-c example"
-	./cap2-c 
-	@echo "Running Cap3-c example"
-	./cap3-c 
-	@echo "Running Sphere-c example"
-	./sphere-c 
-	@echo "Running Sine_surface-c example"
-	./sine_surf-c
+	@echo " "  
+	@echo "               RUNNING C TESTS"  
+	@echo " "  
+	@echo "Running Ellipse-c (2D example)"  
+	$(demobin)/ellipse-c
+	@echo "Running Sine_line-c (2D example)"
+	$(demobin)/sine_line-c
+	@echo "Running Gaussian-c (2D example)"
+	$(demobin)/gaussian-c
+	@echo "Running Rectangle-c (2D example)"
+	$(demobin)/rectangle-c
+	@echo "Running Cap1-c (3D example)"
+	$(demobin)/cap1-c 
+	@echo "Running Cap2-c (3D example)"
+	$(demobin)/cap2-c 
+	@echo "Running Cap3-c (3D example)"
+	$(demobin)/cap3-c 
+	@echo "Running Sphere-c (3D example)"
+	$(demobin)/sphere-c 
+	@echo "Running Sine_surface-c (3D example)"
+	$(demobin)/sine_surf-c
 
 runtests-f: 
-	@echo "Running Ellipse-f example"  
-	./ellipse-f
-	@echo "Running Sine_line-f example"
-	./sine_line-f
-	@echo "Running Gaussian-f example"
-	./gaussian-f
-	@echo "Running Rectangle-f example"
-	./rectangle-f
-	@echo "Running Cap1-f example"
-	./cap1-f 
-	@echo "Running Cap2-f example"
-	./cap2-f 
-	@echo "Running Cap3-f example"
-	./cap3-f 
-	@echo "Running Sphere-f example"
-	./sphere-f 
-	@echo "Running Sine_surface-f example"
-	./sine_surf-f
+	@echo " "  
+	@echo "               RUNNING FORTRAN TESTS"  
+	@echo " "  
+	@echo "Running Ellipse-f (2D example)"  
+	$(demobin)/ellipse-f
+	@echo "Running Sine_line-f (2D example)"
+	$(demobin)/sine_line-f
+	@echo "Running Gaussian-f (2D example)"
+	$(demobin)/gaussian-f
+	@echo "Running Rectangle-f (2D example)"
+	$(demobin)/rectangle-f
+	@echo "Running Cap1-f (3D example)"
+	$(demobin)/cap1-f 
+	@echo "Running Cap2-f (3D example)"
+	$(demobin)/cap2-f 
+	@echo "Running Cap3-f (3D example)"
+	$(demobin)/cap3-f 
+	@echo "Running Sphere-f (3D example)"
+	$(demobin)/sphere-f 
+	@echo "Running Sine_surface-f (3D example)"
+	$(demobin)/sine_surf-f
 
 runtests-cpp: 
-	@echo "Running Ellipse-cpp example" 
-	./ellipse-cpp
-#	@echo "Running Sine_line-cpp example"
-#	$(PATH_EXCPP_SRC_SL)/sine_line
-	@echo "Running Gaussian-cpp example"
-	./gaussian-cpp
-# 	@echo "Running Rectangle-cpp example"
-# 	$(PATH_EXCPP_SRC_RE)/rectangle
-# 	@echo "Running Cap1-cpp example"
-# 	$(PATH_EXCPP_SRC_C1)/cap1 
-# 	@echo "Running Cap2-cpp example"
-# 	$(PATH_EXCPP_SRC_C2)/cap2 
-# 	@echo "Running Cap3-cpp example"
-# 	$(PATH_EXCPP_SRC_C3)/cap3 
-# 	@echo "Running Sphere-cpp example"
-# 	$(PATH_EXCPP_SRC_SP)/sphere 
-# 	@echo "Running Sine_surface-cpp example"
-# 	$(PATH_EXCPP_SRC_SW)/sine_surf
+	@echo " "  
+	@echo "               RUNNING CPP TESTS"  
+	@echo " "  
+	@echo "Running Ellipse-cpp (2D example)" 
+	$(demobin)/ellipse-cpp
+	@echo "Running Sine_line-cpp (2D example)"
+	$(demobin)/sine_line-cpp
+	@echo "Running Gaussian-cpp (2D example)"
+	$(demobin)/gaussian-cpp
+	@echo "Running Rectangle-cpp (2D example)"
+	$(demobin)/rectangle-cpp
+	@echo "Running Cap1-cpp (3D example)"
+	$(demobin)/cap1-cpp
+	@echo "Running Cap2-cpp (3D example)"
+	$(demobin)/cap2-cpp
+	@echo "Running Cap3-cpp (3D example)"
+	$(demobin)/cap3-cpp
+	@echo "Running Sphere-cpp (3D example)"
+	$(demobin)/sphere-cpp
+	@echo "Running Sine_surface-cpp (3D example)"
+	$(demobin)/sine_surf-cpp
 
-clean:
-	@echo "Cleaning library files"
+
+# ************** #
+#    Cleaning    #
+# ************** #
+
+#clean:
+#	@echo "Cleaning library files"
 
 distclean:
-	@echo "Cleaning library files"
-	$(RM) -f ./ellipse-c ./sine_line-c ./gaussian-c ./rectangle-c ./cap1-c ./cap2-c ./cap3-c ./sphere-c ./sine_surf-c
-	$(RM) -f ./ellipse-f ./sine_line-f ./gaussian-f ./rectangle-f ./cap1-f ./cap2-f ./cap3-f ./sphere-f ./sine_surf-f
-	$(RM) -f ./ellipse-cpp ./gaussian-cpp
-	$(RM) -f $(LIB)
+#	@echo " "  
+	@echo "Cleaning binary directory"
+	$(RM) -f ./demo_bin/*
+	@echo " "  
+	@echo "Cleaning library directory"
+	$(RM) -f $(libvdir)/*
+	@echo " "  
+	@echo "Removing local files"
 	$(RM) -f makefile
 	$(RM) -f config.log
 	$(RM) -f config.status
+#	@echo " "  
 
