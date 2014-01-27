@@ -40,7 +40,7 @@ void check_volume(creal vol_n)
   fprintf (stdout,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
   fprintf (stdout,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3 \n");
+  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"analytical volume:  5.0000000000000000e-01\n");
   fprintf (stdout,"numerical  volume:  5.0000000000000022e-01\n\n");

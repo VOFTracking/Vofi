@@ -52,13 +52,13 @@ SUBROUTINE CHECK_VOLUME(volnum)
   write(*,102) DABS(volnum-volana)
   write(*,103) DABS(volnum-volana)/volana
   write(*,*) '-----------------------------------------------------------'
-  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
   write(*,*) '-----------------------------------------------------------'
   write(*,*) 'analytical volume:  5.0000000000000000E-01'
-  write(*,*) 'numerical  volume:  5.0000000000000000E-01'
+  write(*,*) 'numerical  volume:  4.9999999999999994E-01'
   write(*,*) ' '
-  write(*,*) 'absolute error   :  0.0000000000000000E+00'
-  write(*,*) 'relative error   :  0.0000000000000000E+00'
+  write(*,*) 'absolute error   :  5.5511151231257827E-17'
+  write(*,*) 'relative error   :  1.1102230246251565E-16'
   write(*,*) '------------- F: end sinusoidal surface check -------------'
   write(*,*) '-----------------------------------------------------------'
   write(*,*) ' '

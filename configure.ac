@@ -26,7 +26,7 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
 AC_MSG_CHECKING([C compiler flags...])
 AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],[
   AS_IF([test "$GCC" = "yes"],[
-    CFLAGS="${CFLAGS} -O3 -fomit-frame-pointer -ffast-math -Wall"
+    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
   ])
   AC_MSG_RESULT([use default: $CFLAGS])
 ],[

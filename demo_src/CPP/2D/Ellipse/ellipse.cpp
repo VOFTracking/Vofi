@@ -51,21 +51,21 @@ void check_area(creal area_n)
 
   cout << "-----------------------------------------------------------" << endl;
   cout << "-------------------- CPP: ellipse check -------------------" << endl;
-  cout << "analytical  area : " << scientific << setw(23) << setprecision(16) 
+  cout << "analytical area : " << scientific << setw(23) << setprecision(16) 
        << area_a << endl;
-  cout << "numerical  area  : " << scientific << setw(23) << setprecision(16) 
+  cout << "numerical  area : " << scientific << setw(23) << setprecision(16) 
        << area_n << endl << endl;
-  cout << "absolute error   : " << scientific << setw(23) << setprecision(16) 
+  cout << "absolute error  : " << scientific << setw(23) << setprecision(16) 
        << fabs(area_a-area_n) << endl;
-  cout << "relative error   : " << scientific << setw(23) << setprecision(16) 
+  cout << "relative error  : " << scientific << setw(23) << setprecision(16) 
        << fabs(area_a-area_n)/area_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-  cout << "with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3" << endl;
+  cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
   cout << "-----------------------------------------------------------" << endl;
   cout << "analytical area :  1.1215485773315563e-01" << endl;
-  cout << "numerical  area :  1.1215485773315680e-01" << endl << endl;
-  cout << "absolute error  :  1.1657341758564144e-15" << endl;
-  cout << "relative error  :  1.0393969547266394e-14" << endl;
+  cout << "numerical  area :  1.1215485773315677e-01" << endl << endl;
+  cout << "absolute error  :  1.1379786002407855e-15" << endl;
+  cout << "relative error  :  1.0146494081855289e-14" << endl;
   cout << "------------------ CPP: end ellipse check -----------------" << endl;
   cout << "-----------------------------------------------------------" << endl 
        << endl;

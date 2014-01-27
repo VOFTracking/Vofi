@@ -66,7 +66,7 @@ void check_volume(creal vol_n)
   cout << "relative error   : " << scientific << setw(23) << setprecision(16) 
        << fabs(vol_a-vol_n)/vol_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-  cout << "with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3" << endl;
+  cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
   cout << "-----------------------------------------------------------" << endl;
   cout << "analytical volume:  5.2359877559829882e-01" << endl;	     
   cout << "numerical  volume:  5.2359877559829937e-01" << endl << endl; 

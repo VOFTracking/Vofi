@@ -60,12 +60,12 @@ void check_volume(creal vol_n)
   fprintf (stdout,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
   fprintf (stdout,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3 \n");
+  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"analytical volume:  9.4090699975015856e-03\n");
-  fprintf (stdout,"numerical  volume:  9.4090697360379658e-03\n\n");
-  fprintf (stdout,"absolute error   :  2.6146361985224242e-10\n");
-  fprintf (stdout,"relative error   :  2.7788465801792262e-08\n");
+  fprintf (stdout,"numerical  volume:  9.4090697360379640e-03\n\n");
+  fprintf (stdout,"absolute error   :  2.6146362158696590e-10\n");
+  fprintf (stdout,"relative error   :  2.7788465986159419e-08\n");
   fprintf (stdout,"---------------- C: end cap check (3 cells) ---------------\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"\n");

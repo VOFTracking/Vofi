@@ -1,31 +1,62 @@
+                  VOFI Library
+                  ============
+
+The  VOFI library initializes the volume fraction scalar field 
+in a computational mesh with cubic cells given an analytic expression 
+f(x,y,z) for the interface. The implicit function f is specified
+by the user, the interface is located where f(x,y,z) = 0 and 
+the reference phase where f(x,y,z) < 0. 
+Each routine in the directory src contains a brief description
+of what it does and of the I/O variables. 
+
 vofi-specific configuration options
 ======================================
+
 
 Build Process
 -------------
 
-1. ./configure --prefix=/path/to/vofi/install
+[1] ./configure --prefix=/installing_directory
 
-2. make all
+[2] make all
+    (to build the library and to compile tests) 
 
-3. make check
-   (optional, runs the C, Fortran and CPP example programs and unit tests when possible)
+    if separately:
+
+    make lib 
+    (to build only the library) 
+
+    make demo-c demo-f demo-cpp
+    (to compile C, Fortran, CPP tests, respectively)
+
+[3] make check
+    (to run all C, Fortran and CPP tests)
    
+    if separately:
+
+    make runtests-c 
+    (to run only C tests) 
+    (for Fortran: make runtests-f, for CPP: make runtests-cpp ) 
+
 4. make install
+   (if the /installing_directory is /usr/local, then
+    libvofi.a will be located in /usr/local/lib64, 
+    while vofi.h in /usr/local/include)
 
-
-METHODS
--------
-
-to be completed
-
-
-Dependencies
-============
 
 Requirements
 ------------
 
-vofi has no required dependencies other than a reasonably modern C, Fortran
-& C++ compiler.  
+The vofi library has no particular requirement other than a 
+reasonably modern C, Fortran and C++ compiler.  
 
+
+Notes
+-----
+
+The two interface functions get_fh and get_cc, that are used 
+in Fortran codes, are compiled both with no underscore and 
+with a single underscore, i.e. get_fh_ and get_cc_, for 
+compatibility with most compilers. If another version is 
+required, the relevant changes should be made in the include 
+file stddecl.h  and in makefile.in

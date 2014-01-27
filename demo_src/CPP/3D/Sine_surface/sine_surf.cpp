@@ -48,12 +48,12 @@ void check_volume(creal vol_n)
   cout << "relative error   : " << scientific << setw(23) << setprecision(16) 
        << fabs(vol_a-vol_n)/vol_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-  cout << "with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3" << endl;
+  cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
   cout << "-----------------------------------------------------------" << endl;
   cout << "analytical volume:  5.0000000000000000e-01" << endl;	     
-  cout << "numerical  volume:  5.0000000000000022e-01" << endl << endl; 
-  cout << "absolute error   :  2.2204460492503131e-16" << endl;	     
-  cout << "relative error   :  4.4408920985006262e-16" << endl;         
+  cout << "numerical  volume:  5.0000000000000011e-01" << endl << endl; 
+  cout << "absolute error   :  1.1102230246251565e-16" << endl;	     
+  cout << "relative error   :  2.2204460492503131e-16" << endl;         
   cout << "--------------- CPP: sinusoidal surface check -------------" << endl;
   cout << "-----------------------------------------------------------" << endl 
        << endl;

@@ -40,12 +40,12 @@ void check_area(creal area_n)
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stdout,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3 \n");
+  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"analytical area :  3.3640894546075423e-01\n");
-  fprintf (stdout,"numerical  area :  3.3640894546075711e-01\n\n");
-  fprintf (stdout,"absolute error  :  2.8865798640254070e-15\n");
-  fprintf (stdout,"relative error  :  8.5805680942041364e-15\n");
+  fprintf (stdout,"numerical  area :  3.3640894546075722e-01\n\n");
+  fprintf (stdout,"absolute error  :  2.9976021664879227e-15\n");
+  fprintf (stdout,"relative error  :  8.9105899439812180e-15\n");
   fprintf (stdout,"------------------ C: end gaussian check ------------------\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"\n");

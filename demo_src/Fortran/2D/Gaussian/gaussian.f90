@@ -47,8 +47,8 @@ SUBROUTINE CHECK_AREA(areanum)
   write(*,*) ' '
   write(*,102) DABS(areanum-areana)
   write(*,103) DABS(areanum-areana)/areana
-   write(*,*) '----------------------------------------------------------'
-  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3 '
+  write(*,*) '-----------------------------------------------------------'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
   write(*,*) '-----------------------------------------------------------'
   write(*,*) 'analytical area :  3.3640894546075423E-01'
   write(*,*) 'numerical  area :  3.3640894546075717E-01'
@@ -59,7 +59,7 @@ SUBROUTINE CHECK_AREA(areanum)
   write(*,*) '-----------------------------------------------------------'
   write(*,*) ' '
   100 FORMAT(' analytical area : ', ES23.16)
-  101 FORMAT(' numerical area  : ', ES23.16)
+  101 FORMAT(' numerical  area : ', ES23.16)
   102 FORMAT(' absolute error  : ', ES23.16)
   103 FORMAT(' relative error  : ', ES23.16)
 

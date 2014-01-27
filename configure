@@ -3444,7 +3444,7 @@ if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
 
   if test "$GCC" = "yes"; then :
 
-    CFLAGS="${CFLAGS} -O3 -fomit-frame-pointer -ffast-math -Wall"
+    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
 
 fi
   { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $CFLAGS" >&5

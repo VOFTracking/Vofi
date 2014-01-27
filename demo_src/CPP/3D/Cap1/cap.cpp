@@ -66,12 +66,12 @@ void check_volume(creal vol_n)
   cout << "relative error   : " << scientific << setw(23) << setprecision(16) 
        << fabs(vol_a-vol_n)/vol_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-  cout << "with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3" << endl;
+  cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
   cout << "-----------------------------------------------------------" << endl;
   cout << "analytical volume:  9.4090699975015856e-03" << endl;	    
-  cout << "numerical  volume:  9.4090641039292142e-03" << endl << endl;
-  cout << "absolute error   :  5.8935723714487187e-09" << endl;	    
-  cout << "relative error   :  6.2637140259490625e-07" << endl;         
+  cout << "numerical  volume:  9.4090641039290823e-03" << endl << endl;
+  cout << "absolute error   :  5.8935725032877029e-09" << endl;	    
+  cout << "relative error   :  6.2637141660681008e-07" << endl;         
   cout << "--------------- CPP: end cap check (1 cell) ---------------" << endl;
   cout << "-----------------------------------------------------------" << endl 
        << endl;

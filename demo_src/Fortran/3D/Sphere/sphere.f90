@@ -73,7 +73,7 @@ SUBROUTINE CHECK_VOLUME(volnum)
   write(*,102) DABS(volnum-volana)
   write(*,103) DABS(volnum-volana)/volana
   write(*,*) '-----------------------------------------------------------'
-  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3'
+  write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
   write(*,*) '-----------------------------------------------------------'
   write(*,*) 'analytical volume:  5.2359877559829882E-01'
   write(*,*) 'numerical  volume:  5.2359877559829937E-01'

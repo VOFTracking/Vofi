@@ -40,7 +40,7 @@ void check_area(creal area_n)
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stdout,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a); 
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 12.3 + gcc 4.7.2 -O3 \n");
+  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"analytical area :  5.0000000000000000e-01\n");
   fprintf (stdout,"numerical  area :  4.9999999999993749e-01\n\n");
