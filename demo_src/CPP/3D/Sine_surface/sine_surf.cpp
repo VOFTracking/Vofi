@@ -54,7 +54,7 @@ void check_volume(creal vol_n)
   cout << "numerical  volume:  5.0000000000000011e-01" << endl << endl; 
   cout << "absolute error   :  1.1102230246251565e-16" << endl;	     
   cout << "relative error   :  2.2204460492503131e-16" << endl;         
-  cout << "--------------- CPP: sinusoidal surface check -------------" << endl;
+  cout << "------------- CPP: end sinusoidal surface check -----------" << endl;
   cout << "-----------------------------------------------------------" << endl 
        << endl;
   

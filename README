@@ -16,9 +16,14 @@ vofi-specific configuration options
 Build Process
 -------------
 
-[1] ./configure --prefix=/installing_directory
+[1] Extract vofi_lib.tgz archive into any temporary directory
 
-[2] make all
+[2] Choose a local (e.g. /home/username) or system (e.g. /usr/local)
+    destination for '/installing_directory' which is write-able
+
+[3] ./configure --prefix=/installing_directory
+
+[4] make all
     (to build the library and to compile tests) 
 
     if separately:
@@ -26,20 +31,22 @@ Build Process
     make lib 
     (to build only the library) 
 
-    make demo-c demo-f demo-cpp
-    (to compile C, Fortran, CPP tests, respectively)
+    make demo
+    (to compile all C, Fortran, CPP tests)
 
-[3] make check
+    make demo-c (or demo-f or demo-cpp)
+    (to compile only C (or Fortran or CPP) tests) 
+
+[5] make tests
     (to run all C, Fortran and CPP tests)
    
     if separately:
 
-    make runtests-c 
-    (to run only C tests) 
-    (for Fortran: make runtests-f, for CPP: make runtests-cpp ) 
+    make tests-c (or tests-f or tests-cpp)
+    (to run only C (or Fortran or CPP) tests) 
 
-4. make install
-   (if the /installing_directory is /usr/local, then
+[6] make install
+    (if the /installing_directory is /usr/local, then
     libvofi.a will be located in /usr/local/lib64, 
     while vofi.h in /usr/local/include)
 
@@ -48,7 +55,7 @@ Requirements
 ------------
 
 The vofi library has no particular requirement other than a 
-reasonably modern C, Fortran and C++ compiler.  
+reasonably modern C, Fortran and C++ compiler  
 
 
 Notes
