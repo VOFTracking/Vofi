@@ -45,6 +45,10 @@ C_BIN := $(addsuffix -c, $(TESTNAMES))
 F_BIN := $(addsuffix -f, $(TESTNAMES)) 
 CPP_BIN := $(addsuffix -cpp, $(TESTNAMES)) 
 
+# tar archive
+TARDIR = @PACKAGE_NAME@-@PACKAGE_VERSION@
+TARFILE = $(TARDIR).tar.gz
+
 # ************* #
 #    Targets    #
 # ************* #
@@ -81,7 +85,12 @@ install:
 #    VOFI library    #
 # ****************** #
 
+# header files
 COMMON_CDEPS = $(incdir)/stddecl.h $(incdir)/GL.h
+
+# src files
+SRCS = $(srcdir)/checkconsistency.c $(srcdir)/getcc.c $(srcdir)/getdirs.c $(srcdir)/getfh.c $(srcdir)/getintersections.c \
+       $(srcdir)/getlimits.c $(srcdir)/getmin.c $(srcdir)/getzero.c $(srcdir)/integrate.c $(srcdir)/interface_.c
 
 # library members with the same compilation rule
 OBJS = checkconsistency.o getcc.o getdirs.o getfh.o getintersections.o \
@@ -337,7 +346,30 @@ tests-cpp:
 	@echo "Running Sine_surface-cpp (3D example)"
 	$(demobin)/sine_surf-cpp
 
+# ************** #
+#  Tar Archive   #
+# ************** #
 
+TARCONTENTS = ./README ./configure ./configure.ac ./install-sh \
+              ./makefile.in $(COMMON_CDEPS) $(HEADERS) $(SRCS) \
+              $(ELLI_SRC_C) $(ELLI_DIR_C)/ellipse.h $(SIN2_SRC_C) $(SIN2_DIR_C)/sine_line.h \
+              $(GAUSS_SRC_C) $(GAUSS_DIR_C)/gaussian.h $(RECT_SRC_C) $(RECT_DIR_C)/rectangle.h \
+              $(CAP1_SRC_C) $(CAP1_DIR_C)/cap.h $(CAP2_SRC_C) $(CAP2_DIR_C)/cap.h $(CAP3_SRC_C) \
+              $(CAP3_DIR_C)/cap.h $(SPHE_SRC_C) $(SPHE_DIR_C)/sphere.h $(SIN3_SRC_C) $(SIN3_DIR_C)/sine_surf.h \
+              $(ELLI_SRC_F) $(SIN2_SRC_F) $(GAUSS_SRC_F) $(RECT_SRC_F) \
+              $(CAP1_SRC_F) $(CAP2_SRC_F) $(CAP3_SRC_F) $(SPHE_SRC_F) $(SIN3_SRC_F) \
+              $(ELLI_SRC_CPP) $(ELLI_DIR_CPP)/ellipse.h $(SIN2_SRC_CPP) $(SIN2_DIR_CPP)/sine_line.h \
+              $(GAUSS_SRC_CPP) $(GAUSS_DIR_CPP)/gaussian.h $(RECT_SRC_CPP) $(RECT_DIR_CPP)/rectangle.h \
+              $(CAP1_SRC_CPP) $(CAP1_DIR_CPP)/cap.h $(CAP2_SRC_CPP) $(CAP2_DIR_CPP)/cap.h $(CAP3_SRC_CPP) \
+              $(CAP3_DIR_CPP)/cap.h $(SPHE_SRC_CPP) $(SPHE_DIR_CPP)/sphere.h $(SIN3_SRC_CPP) $(SIN3_DIR_CPP)/sine_surf.h \
+  
+dist:
+	ln -s . $(TARDIR)
+	tar cvfzh $(TARFILE) --owner=root --group=root \
+	  $(patsubst ./%,$(TARDIR)/%, $(sort $(TARCONTENTS)))
+	$(RM) $(TARDIR)
+
+	
 # ************** #
 #    Cleaning    #
 # ************** #
@@ -353,3 +385,4 @@ distclean:
 	$(RM) -f makefile
 	$(RM) -f config.log
 	$(RM) -f config.status
+	$(RM) -f $(TARFILE)
