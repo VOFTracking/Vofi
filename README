@@ -16,14 +16,18 @@ vofi-specific configuration options
 Build Process
 -------------
 
-[1] Extract vofi_lib.tgz archive into any temporary directory
+[1] Extract vofi-<package_version>.tar.gz archive into any temporary directory
 
 [2] Choose a local (e.g. /home/username) or system (e.g. /usr/local)
     destination for '/installing_directory' which is write-able
 
-[3] ./configure --prefix=/installing_directory
+[3] The default c-compiler flags are "-O2 -fomit-frame-pointer -ffast-math -Wall". 
+    The user can change the default value by setting the environment variable CFLAGS 
+    (e.g. "export CFLAGS=-g" to compile the library in debug mode)
+    
+[4] ./configure --prefix=/installing_directory
 
-[4] make all
+[5] make all
     (to build the library and to compile tests) 
 
     if separately:
@@ -37,7 +41,7 @@ Build Process
     make demo-c (or demo-f or demo-cpp)
     (to compile only C (or Fortran or CPP) tests) 
 
-[5] make tests
+[6] make tests
     (to run all C, Fortran and CPP tests)
    
     if separately:
@@ -45,7 +49,7 @@ Build Process
     make tests-c (or tests-f or tests-cpp)
     (to run only C (or Fortran or CPP) tests) 
 
-[6] make install
+[7] make install
     (if the /installing_directory is /usr/local, then
     libvofi.a will be located in /usr/local/lib64, 
     while vofi.h in /usr/local/include)
