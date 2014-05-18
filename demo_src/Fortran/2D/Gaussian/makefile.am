@@ -1,0 +1,6 @@
+TESTS               = gaussian_f
+bin_PROGRAMS        = gaussian_f
+gaussian_f_SOURCES  = main2D.f90 gaussian.f90 
+LDADD               = $(abs_top_srcdir)/src/libvofi.la 
+AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
+AM_LDFLAGS          = -rpath $(libdir) 

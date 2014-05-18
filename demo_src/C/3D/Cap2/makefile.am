@@ -1,0 +1,6 @@
+TESTS              = cap2_c
+bin_PROGRAMS       = cap2_c 
+cap2_c_SOURCES     = main3D.c cap.c 
+LDADD              = $(abs_top_srcdir)/src/libvofi.la 
+AM_CPPFLAGS        = -I$(abs_top_srcdir)/include 
+AM_LDFLAGS         = -rpath $(libdir) 
