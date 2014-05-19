@@ -633,6 +633,7 @@ ac_includes_default="\
 
 ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
+LTLIBOBJS
 LIBOBJS
 CXXCPP
 OTOOL64
@@ -661,7 +662,6 @@ build_vendor
 build_cpu
 build
 LIBTOOL
-LTLIBOBJS
 RM
 AR
 ac_ct_FC
@@ -1565,52 +1565,6 @@ fi
 
 } # ac_fn_c_try_compile
 
-# ac_fn_c_try_link LINENO
-# -----------------------
-# Try to link conftest.$ac_ext, and return whether this succeeded.
-ac_fn_c_try_link ()
-{
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  rm -f conftest.$ac_objext conftest$ac_exeext
-  if { { ac_try="$ac_link"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
-$as_echo "$ac_try_echo"; } >&5
-  (eval "$ac_link") 2>conftest.err
-  ac_status=$?
-  if test -s conftest.err; then
-    grep -v '^ *+' conftest.err >conftest.er1
-    cat conftest.er1 >&5
-    mv -f conftest.er1 conftest.err
-  fi
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest$ac_exeext && {
-	 test "$cross_compiling" = yes ||
-	 test -x conftest$ac_exeext
-       }; then :
-  ac_retval=0
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ac_retval=1
-fi
-  # Delete the IPA/IPO (Inter Procedural Analysis/Optimization) information
-  # created by the PGI compiler (conftest_ipa8_conftest.oo), as it would
-  # interfere with the next link command; also delete a directory that is
-  # left behind by Apple's compiler.  We do this before executing the actions.
-  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status $ac_retval
-
-} # ac_fn_c_try_link
-
 # ac_fn_c_try_cpp LINENO
 # ----------------------
 # Try to preprocess conftest.$ac_ext, and return whether this succeeded.
@@ -1811,6 +1765,52 @@ $as_echo "$ac_res" >&6; }
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
 
 } # ac_fn_c_check_header_compile
+
+# ac_fn_c_try_link LINENO
+# -----------------------
+# Try to link conftest.$ac_ext, and return whether this succeeded.
+ac_fn_c_try_link ()
+{
+  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+  rm -f conftest.$ac_objext conftest$ac_exeext
+  if { { ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:${as_lineno-$LINENO}: $ac_try_echo\""
+$as_echo "$ac_try_echo"; } >&5
+  (eval "$ac_link") 2>conftest.err
+  ac_status=$?
+  if test -s conftest.err; then
+    grep -v '^ *+' conftest.err >conftest.er1
+    cat conftest.er1 >&5
+    mv -f conftest.er1 conftest.err
+  fi
+  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext && {
+	 test "$cross_compiling" = yes ||
+	 test -x conftest$ac_exeext
+       }; then :
+  ac_retval=0
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ac_retval=1
+fi
+  # Delete the IPA/IPO (Inter Procedural Analysis/Optimization) information
+  # created by the PGI compiler (conftest_ipa8_conftest.oo), as it would
+  # interfere with the next link command; also delete a directory that is
+  # left behind by Apple's compiler.  We do this before executing the actions.
+  rm -rf conftest.dSYM conftest_ipa8_conftest.oo
+  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+  as_fn_set_status $ac_retval
+
+} # ac_fn_c_try_link
 
 # ac_fn_c_check_func LINENO FUNC VAR
 # ----------------------------------
@@ -2437,6 +2437,13 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
+$as_echo "---------------------------------------------" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ----------- Configuring vofi ----------------" >&5
+$as_echo "----------- Configuring vofi ----------------" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
+$as_echo "---------------------------------------------" >&6; }
+
 # Compiler flags
 # by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
 if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
@@ -2505,13 +2512,6 @@ else
 $as_echo "use user-supplied: $CXXFLAGS" >&6; }
 
 fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
-$as_echo "---------------------------------------------" >&6; }
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ----------- Configuring vofi ----------------" >&5
-$as_echo "----------- Configuring vofi ----------------" >&6; }
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
-$as_echo "---------------------------------------------" >&6; }
 
 
 
@@ -3155,7 +3155,7 @@ fi
 
 
 
-# Checks for libraries.
+# Checks for header files.
 DEPDIR="${am__leading_dot}deps"
 
 ac_config_commands="$ac_config_commands depfiles"
@@ -4137,53 +4137,6 @@ fi
 
 
 
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for cos in -lm" >&5
-$as_echo_n "checking for cos in -lm... " >&6; }
-if ${ac_cv_lib_m_cos+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lm  $LIBS"
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char cos ();
-int
-main ()
-{
-return cos ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_lib_m_cos=yes
-else
-  ac_cv_lib_m_cos=no
-fi
-rm -f core conftest.err conftest.$ac_objext \
-    conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_m_cos" >&5
-$as_echo "$ac_cv_lib_m_cos" >&6; }
-if test "x$ac_cv_lib_m_cos" = xyes; then :
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_LIBM 1
-_ACEOF
-
-  LIBS="-lm $LIBS"
-
-fi
-
-
-# Checks for header files.
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -4595,6 +4548,53 @@ done
 
 
 # Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for libraries.
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for cos in -lm" >&5
+$as_echo_n "checking for cos in -lm... " >&6; }
+if ${ac_cv_lib_m_cos+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lm  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char cos ();
+int
+main ()
+{
+return cos ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_lib_m_cos=yes
+else
+  ac_cv_lib_m_cos=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_m_cos" >&5
+$as_echo "$ac_cv_lib_m_cos" >&6; }
+if test "x$ac_cv_lib_m_cos" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_LIBM 1
+_ACEOF
+
+  LIBS="-lm $LIBS"
+
+fi
+
 
 # Checks for library functions.
 for ac_func in sqrt
@@ -5967,6 +5967,7 @@ $as_echo "no" >&6; }
 fi
 
 
+RM="$RM -f"
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for an ANSI C-conforming const" >&5
 $as_echo_n "checking for an ANSI C-conforming const... " >&6; }
@@ -6090,12 +6091,6 @@ case $ac_cv_c_inline in
 _ACEOF
     ;;
 esac
-
-
-#AC_SUBST
-Xsed="sed -e s/^X//"
-LTLIBOBJS=`echo X"$LIBOBJS"|\
-           $Xsed -e "s,\.[^.]* ,.lo ,g;s,\.[^.]*$,.lo,"`
 
 
 #-----------------------------------------------------
@@ -22209,10 +22204,14 @@ $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
 
 
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: " >&5
+$as_echo "" >&6; }
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: -------------------------------------------------------------------------------" >&5
 $as_echo "-------------------------------------------------------------------------------" >&6; }
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: Configure complete" >&5
-$as_echo "Configure complete" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: Configure complete now type 'make' and then 'make install'" >&5
+$as_echo "Configure complete now type 'make' and then 'make install'" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: " >&5
+$as_echo "" >&6; }
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
 $as_echo "---------------------------------------------" >&6; }

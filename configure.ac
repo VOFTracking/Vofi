@@ -4,6 +4,10 @@
 AC_INIT([Vofi], [1.0], [simone.bna@unibo.it])
 AC_PREREQ([2.69])
 
+AC_MSG_RESULT(---------------------------------------------)
+AC_MSG_RESULT(----------- Configuring vofi ----------------)
+AC_MSG_RESULT(---------------------------------------------)
+
 # Compiler flags
 # by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
 AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],
@@ -42,10 +46,6 @@ AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
 ],[
   AC_MSG_RESULT([use user-supplied: $CXXFLAGS])
 ])
-
-AC_MSG_RESULT(---------------------------------------------)
-AC_MSG_RESULT(----------- Configuring vofi ----------------)
-AC_MSG_RESULT(---------------------------------------------)
 
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -93,14 +93,14 @@ AM_SILENT_RULES(yes)
 # work on systems with no autotools
 AM_MAINTAINER_MODE([enable])
 
-# Checks for libraries.
-AC_CHECK_LIB([m],[cos])
-
 # Checks for header files.
 AC_HEADER_STDC
 AC_CHECK_HEADERS([stdlib.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for libraries.
+AC_CHECK_LIB([m],[cos])
 
 # Checks for library functions.
 AC_CHECK_FUNCS([sqrt])
@@ -118,15 +118,10 @@ AC_PROG_FC
 #AM_PROG_AR
 AC_PATH_PROG(AR, ar, /bin/ar)
 AC_PATH_PROG(RM, rm, /bin/rm)
+RM="$RM -f"
 AC_PROG_INSTALL
 AC_C_CONST
 AC_C_INLINE
-
-#AC_SUBST
-Xsed="sed -e s/^X//"
-LTLIBOBJS=`echo X"$LIBOBJS"|\
-           [$Xsed -e "s,\.[^.]* ,.lo ,g;s,\.[^.]*$,.lo,"]`
-AC_SUBST(LTLIBOBJS)
 
 #-----------------------------------------------------
 # Initialize libtool.  By default, we will build
@@ -159,8 +154,10 @@ AC_SUBST(SED)
 # Create output files. Also configures any subpackages
 AC_OUTPUT
 
+AC_MSG_RESULT()
 AC_MSG_RESULT(-------------------------------------------------------------------------------)
-AC_MSG_RESULT(Configure complete, now type 'make' and then 'make install'.)
+AC_MSG_RESULT(Configure complete now type 'make' and then 'make install')
+AC_MSG_RESULT()
 
 AC_MSG_RESULT(---------------------------------------------)
 AC_MSG_RESULT(--------- Done Configuring vofi -------------)
