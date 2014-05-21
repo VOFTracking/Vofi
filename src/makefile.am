@@ -6,5 +6,12 @@ lib_LTLIBRARIES     = libvofi.la
 libvofi_la_SOURCES  = checkconsistency.c getcc.c getdirs.c getfh.c getintersections.c getlimits.c getmin.c getzero.c integrate.c \
                      interface.c 
 libvofi_la_LDFLAGS  = -avoid-version -rpath $(libdir)
-libvofi_la_CPPFLAGS = -I../include 
+libvofi_la_CPPFLAGS = -I../include
+
+## For having included files in DISTribution & INSTallation (public headers) 
 include_HEADERS     = ../include/vofi.h
+
+## For having included files in  INSTallation (public headers)
+
+## For having included files in DISTribution only (private headers)
+noinst_HEADERS = ../include/stddecl.h ../include/GL.h
