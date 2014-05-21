@@ -2353,75 +2353,6 @@ $as_echo "----------- Configuring vofi ----------------" >&6; }
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: ---------------------------------------------" >&5
 $as_echo "---------------------------------------------" >&6; }
 
-# Compiler flags
-# by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
-if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
-  CFLAGS=""
-fi
-if test "x${ac_cv_env_FCFLAGS_set}" = "x"; then :
-  FCFLAGS=""
-fi
-if test "x${ac_cv_env_CXXFLAGS_set}" = "x"; then :
-  CXXFLAGS=""
-fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking C compiler flags..." >&5
-$as_echo_n "checking C compiler flags...... " >&6; }
-if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
-
-  if test "$GCC" = "yes"; then :
-
-    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
-
-fi
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $CFLAGS" >&5
-$as_echo "use default: $CFLAGS" >&6; }
-
-else
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $CFLAGS" >&5
-$as_echo "use user-supplied: $CFLAGS" >&6; }
-
-fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking Fortran compiler flags..." >&5
-$as_echo_n "checking Fortran compiler flags...... " >&6; }
-if test "x${ac_cv_env_FCFLAGS_set}" = "x"; then :
-
-  if test "$GCC" = "yes"; then :
-
-    FCFLAGS="${FCFLAGS} -O2 -Wall"
-
-fi
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $FCFLAGS" >&5
-$as_echo "use default: $FCFLAGS" >&6; }
-
-else
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $FCFLAGS" >&5
-$as_echo "use user-supplied: $FCFLAGS" >&6; }
-
-fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking C++ compiler flags..." >&5
-$as_echo_n "checking C++ compiler flags...... " >&6; }
-if test "x${ac_cv_env_CXXFLAGS_set}" = "x"; then :
-
-  if test "$GCC" = "yes"; then :
-
-    CXXFLAGS="${CXXFLAGS} -O2 -Wall"
-
-fi
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $CXXFLAGS" >&5
-$as_echo "use default: $CXXFLAGS" >&6; }
-
-else
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $CXXFLAGS" >&5
-$as_echo "use user-supplied: $CXXFLAGS" >&6; }
-
-fi
-
 
 
 # Makefiles
@@ -5973,6 +5904,75 @@ _ACEOF
     ;;
 esac
 
+
+# Compiler flags
+# by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
+if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
+  CFLAGS=""
+fi
+if test "x${ac_cv_env_FCFLAGS_set}" = "x"; then :
+  FCFLAGS=""
+fi
+if test "x${ac_cv_env_CXXFLAGS_set}" = "x"; then :
+  CXXFLAGS=""
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking C compiler flags..." >&5
+$as_echo_n "checking C compiler flags...... " >&6; }
+if test "x${ac_cv_env_CFLAGS_set}" = "x"; then :
+
+  if test "$GCC" = "yes"; then :
+
+    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
+
+fi
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $CFLAGS" >&5
+$as_echo "use default: $CFLAGS" >&6; }
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $CFLAGS" >&5
+$as_echo "use user-supplied: $CFLAGS" >&6; }
+
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking Fortran compiler flags..." >&5
+$as_echo_n "checking Fortran compiler flags...... " >&6; }
+if test "x${ac_cv_env_FCFLAGS_set}" = "x"; then :
+
+  if test "$GCC" = "yes"; then :
+
+    FCFLAGS="${FCFLAGS} -O2 -Wall"
+
+fi
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $FCFLAGS" >&5
+$as_echo "use default: $FCFLAGS" >&6; }
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $FCFLAGS" >&5
+$as_echo "use user-supplied: $FCFLAGS" >&6; }
+
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking C++ compiler flags..." >&5
+$as_echo_n "checking C++ compiler flags...... " >&6; }
+if test "x${ac_cv_env_CXXFLAGS_set}" = "x"; then :
+
+  if test "$GCC" = "yes"; then :
+
+    CXXFLAGS="${CXXFLAGS} -O2 -Wall"
+
+fi
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use default: $CXXFLAGS" >&5
+$as_echo "use default: $CXXFLAGS" >&6; }
+
+else
+
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: use user-supplied: $CXXFLAGS" >&5
+$as_echo "use user-supplied: $CXXFLAGS" >&6; }
+
+fi
 
 #-----------------------------------------------------
 # Initialize libtool.  By default, we will build

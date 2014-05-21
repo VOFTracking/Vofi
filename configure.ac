@@ -8,45 +8,6 @@ AC_MSG_RESULT(---------------------------------------------)
 AC_MSG_RESULT(----------- Configuring vofi ----------------)
 AC_MSG_RESULT(---------------------------------------------)
 
-# Compiler flags
-# by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
-AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],
-      [CFLAGS=""])
-AS_IF([test "x${ac_cv_env_FCFLAGS_set}" = "x"],
-      [FCFLAGS=""])
-AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
-      [CXXFLAGS=""])
-
-AC_MSG_CHECKING([C compiler flags...])
-AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],[
-  AS_IF([test "$GCC" = "yes"],[
-    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
-  ])
-  AC_MSG_RESULT([use default: $CFLAGS])
-],[
-  AC_MSG_RESULT([use user-supplied: $CFLAGS])
-])      
-
-AC_MSG_CHECKING([Fortran compiler flags...])
-AS_IF([test "x${ac_cv_env_FCFLAGS_set}" = "x"],[
-  AS_IF([test "$GCC" = "yes"],[
-    FCFLAGS="${FCFLAGS} -O2 -Wall"
-  ])
-  AC_MSG_RESULT([use default: $FCFLAGS])
-],[
-  AC_MSG_RESULT([use user-supplied: $FCFLAGS])
-]) 
-      
-AC_MSG_CHECKING([C++ compiler flags...])
-AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
-  AS_IF([test "$GCC" = "yes"],[
-    CXXFLAGS="${CXXFLAGS} -O2 -Wall"
-  ])
-  AC_MSG_RESULT([use default: $CXXFLAGS])
-],[
-  AC_MSG_RESULT([use user-supplied: $CXXFLAGS])
-])
-
 AC_CONFIG_MACRO_DIR([m4])
 
 # Makefiles 
@@ -122,6 +83,45 @@ RM="$RM -f"
 AC_PROG_INSTALL
 AC_C_CONST
 AC_C_INLINE
+
+# Compiler flags
+# by default CFLAGS and CXXFLAGS are set to '-g -O2' on systems that support them.
+AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],
+      [CFLAGS=""])
+AS_IF([test "x${ac_cv_env_FCFLAGS_set}" = "x"],
+      [FCFLAGS=""])
+AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],
+      [CXXFLAGS=""])
+
+AC_MSG_CHECKING([C compiler flags...])
+AS_IF([test "x${ac_cv_env_CFLAGS_set}" = "x"],[
+  AS_IF([test "$GCC" = "yes"],[
+    CFLAGS="${CFLAGS} -O2 -fomit-frame-pointer -ffast-math -Wall"
+  ])
+  AC_MSG_RESULT([use default: $CFLAGS])
+],[
+  AC_MSG_RESULT([use user-supplied: $CFLAGS])
+])      
+
+AC_MSG_CHECKING([Fortran compiler flags...])
+AS_IF([test "x${ac_cv_env_FCFLAGS_set}" = "x"],[
+  AS_IF([test "$GCC" = "yes"],[
+    FCFLAGS="${FCFLAGS} -O2 -Wall"
+  ])
+  AC_MSG_RESULT([use default: $FCFLAGS])
+],[
+  AC_MSG_RESULT([use user-supplied: $FCFLAGS])
+]) 
+      
+AC_MSG_CHECKING([C++ compiler flags...])
+AS_IF([test "x${ac_cv_env_CXXFLAGS_set}" = "x"],[
+  AS_IF([test "$GCC" = "yes"],[
+    CXXFLAGS="${CXXFLAGS} -O2 -Wall"
+  ])
+  AC_MSG_RESULT([use default: $CXXFLAGS])
+],[
+  AC_MSG_RESULT([use user-supplied: $CXXFLAGS])
+])
 
 #-----------------------------------------------------
 # Initialize libtool.  By default, we will build
