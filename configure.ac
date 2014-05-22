@@ -9,6 +9,7 @@ AC_MSG_RESULT(----------- Configuring vofi ----------------)
 AC_MSG_RESULT(---------------------------------------------)
 
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([.])
 
 # Makefiles 
 AC_CONFIG_FILES([makefile 

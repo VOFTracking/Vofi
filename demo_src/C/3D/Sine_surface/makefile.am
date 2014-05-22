@@ -1,6 +1,6 @@
 TESTS               = sine_surf_c
 bin_PROGRAMS        = sine_surf_c 
 sine_surf_c_SOURCES = main3D.c sine_surf.c 
-LDADD               = $(abs_top_srcdir)/src/libvofi.la 
+LDADD               = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS          = -rpath $(libdir) 

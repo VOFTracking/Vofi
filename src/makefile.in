@@ -326,12 +326,12 @@ top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = = -I m4
 lib_LTLIBRARIES = libvofi.la
 libvofi_la_SOURCES = checkconsistency.c getcc.c getdirs.c getfh.c getintersections.c getlimits.c getmin.c getzero.c integrate.c \
-                     interface.c 
+                      interface.c 
 
 libvofi_la_LDFLAGS = -avoid-version -rpath $(libdir)
-libvofi_la_CPPFLAGS = -I../include
-include_HEADERS = ../include/vofi.h
-noinst_HEADERS = ../include/stddecl.h ../include/GL.h
+libvofi_la_CPPFLAGS = -I$(abs_top_srcdir)/include
+include_HEADERS = $(abs_top_srcdir)/include/vofi.h
+noinst_HEADERS = $(abs_top_srcdir)/include/stddecl.h $(abs_top_srcdir)/include/GL.h
 all: all-am
 
 .SUFFIXES:

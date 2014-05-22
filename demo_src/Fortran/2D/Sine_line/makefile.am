@@ -1,6 +1,6 @@
 TESTS               = sine_line_f
 bin_PROGRAMS        = sine_line_f
 sine_line_f_SOURCES = main2D.f90 sine_line.f90 
-LDADD               = $(abs_top_srcdir)/src/libvofi.la 
+LDADD               = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS          = -rpath $(libdir) 

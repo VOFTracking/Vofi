@@ -98,7 +98,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_gaussian_cpp_OBJECTS = main2D.$(OBJEXT) gaussian.$(OBJEXT)
 gaussian_cpp_OBJECTS = $(am_gaussian_cpp_OBJECTS)
 gaussian_cpp_LDADD = $(LDADD)
-gaussian_cpp_DEPENDENCIES = $(abs_top_srcdir)/src/libvofi.la
+gaussian_cpp_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -493,7 +493,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 gaussian_cpp_SOURCES = main2D.cpp gaussian.cpp 
-LDADD = $(abs_top_srcdir)/src/libvofi.la 
+LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS = -rpath $(libdir) 
 all: all-am

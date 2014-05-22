@@ -1,6 +1,6 @@
 TESTS               = ellipse_cpp
 bin_PROGRAMS        = ellipse_cpp 
 ellipse_cpp_SOURCES = main2D.cpp ellipse.cpp 
-LDADD               = $(abs_top_srcdir)/src/libvofi.la 
+LDADD               = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS          = -rpath $(libdir) 

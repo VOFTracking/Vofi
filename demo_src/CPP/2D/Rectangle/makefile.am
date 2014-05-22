@@ -1,6 +1,6 @@
 TESTS                 = rectangle_cpp
 bin_PROGRAMS          = rectangle_cpp 
 rectangle_cpp_SOURCES = main2D.cpp rectangle.cpp 
-LDADD                 = $(abs_top_srcdir)/src/libvofi.la 
+LDADD                 = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS           = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS            = -rpath $(libdir) 

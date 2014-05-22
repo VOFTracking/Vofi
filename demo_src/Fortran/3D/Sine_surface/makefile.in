@@ -98,7 +98,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_sine_surf_f_OBJECTS = main3D.$(OBJEXT) sine_surf.$(OBJEXT)
 sine_surf_f_OBJECTS = $(am_sine_surf_f_OBJECTS)
 sine_surf_f_LDADD = $(LDADD)
-sine_surf_f_DEPENDENCIES = $(abs_top_srcdir)/src/libvofi.la
+sine_surf_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -487,7 +487,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 sine_surf_f_SOURCES = main3D.f90 sine_surf.f90 
-LDADD = $(abs_top_srcdir)/src/libvofi.la 
+LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS = -rpath $(libdir) 
 all: all-am

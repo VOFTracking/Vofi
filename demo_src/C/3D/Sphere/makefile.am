@@ -1,6 +1,6 @@
 TESTS              = sphere_c
 bin_PROGRAMS       = sphere_c 
 sphere_c_SOURCES   = main3D.c sphere.c 
-LDADD              = $(abs_top_srcdir)/src/libvofi.la 
+LDADD              = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS        = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS         = -rpath $(libdir) 
