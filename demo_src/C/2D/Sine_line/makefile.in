@@ -515,9 +515,9 @@ $(srcdir)/makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu demo_src/C/2D/Sine_line/makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign demo_src/C/2D/Sine_line/makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu demo_src/C/2D/Sine_line/makefile
+	  $(AUTOMAKE) --foreign demo_src/C/2D/Sine_line/makefile
 .PRECIOUS: makefile
 makefile: $(srcdir)/makefile.in $(top_builddir)/config.status
 	@case '$?' in \
