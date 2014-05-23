@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS    = -I m4
 
 TESTS              = ellipse_c
 bin_PROGRAMS       = ellipse_c 
-ellipse_c_SOURCES  = main2D.c ellipse.c 
+ellipse_c_SOURCES  = main2D.c ellipse.c ellipse.h
 LDADD              = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS        = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS         = -rpath $(libdir) 

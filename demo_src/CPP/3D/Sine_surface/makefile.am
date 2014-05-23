@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS       = -I m4
 TESTS                 = sine_surf_cpp
 bin_PROGRAMS          = sine_surf_cpp 
-sine_surf_cpp_SOURCES = main3D.cpp sine_surf.cpp 
+sine_surf_cpp_SOURCES = main3D.cpp sine_surf.cpp sine_surf.h
 LDADD                 = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS           = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS            = -rpath $(libdir) 
