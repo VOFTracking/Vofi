@@ -52,12 +52,12 @@ AC_CONFIG_FILES([makefile
 AM_INIT_AUTOMAKE
 
 # use silent rules - automake 1.11
-AM_SILENT_RULES(yes)
+# AM_SILENT_RULES(yes)
 
 # by default we want 'maintainer mode', which means automake will generate rules to recreate e.g. Makefile.in from
 # Makefile.am. But this adds support for --disable-maintainer-mode, which may be useful for forcing configure to
 # work on systems with no autotools
-AM_MAINTAINER_MODE([enable])
+AM_MAINTAINER_MODE([disable])
 
 # Checks for header files.
 AC_HEADER_STDC
