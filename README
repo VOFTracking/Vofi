@@ -16,58 +16,47 @@ vofi-specific configuration options
 Build Process
 -------------
 
-[1] Extract vofi-<package_version>.tar.gz archive into any temporary directory
+[1] Extract vofi-<package_version>.tar.gz archive into any temporary directory.
 
 [2] Choose a local (e.g. /home/username) or system (e.g. /usr/local)
-    destination for '/installing_directory' which is write-able
+    destination for '/installing_directory' which is write-able.
 
 [3] The default c-compiler flags are "-O2 -fomit-frame-pointer -ffast-math -Wall". 
     The user can change the default value by setting the environment variable CFLAGS 
-    (e.g. "export CFLAGS=-g" to compile the library in debug mode)
+    (e.g. "export CFLAGS=-g" to compile the library in debug mode).
     
 [4] ./configure --prefix=/installing_directory
+    By default, a shared library is built on platforms that support it.
+    The user can specify modified forms of the configure flags --enable-shared and 
+    --enable-static to choose whether shared and/or static libraries are built.
 
 [5] make all
     (to build the library and to compile tests) 
 
     if separately:
 
-    make lib 
+    cd src
+    make all 
     (to build only the library) 
 
-    make demo
-    (to compile all C, Fortran, CPP tests)
+    cd demo_src
+    make all
+    (to compile all C, Fortran and CPP tests)
 
-    make demo-c (or demo-f or demo-cpp)
-    (to compile only C (or Fortran or CPP) tests) 
-
-[6] make tests
+[6] make check
     (to run all C, Fortran and CPP tests)
    
-    if separately:
-
-    make tests-c (or tests-f or tests-cpp)
-    (to run only C (or Fortran or CPP) tests) 
-
 [7] make install
     (if the /installing_directory is /usr/local, then
-    libvofi.a will be located in /usr/local/lib64, 
-    while vofi.h in /usr/local/include)
+    libvofi.a (or libvofi.so) will be located in /usr/local/lib64, 
+    vofi.h in /usr/local/include and the demo executables in /usr/local/bin)
 
 
 Requirements
 ------------
 
 The vofi library has no particular requirement other than a 
-reasonably modern C, Fortran and C++ compiler  
+reasonably modern C, Fortran and C++ compiler.  
 
 
-Notes
------
 
-The two interface functions get_fh and get_cc, that are used 
-in Fortran codes, are compiled both with no underscore and 
-with a single underscore, i.e. get_fh_ and get_cc_, for 
-compatibility with most compilers. If another version is 
-required, the relevant changes should be made in the include 
-file stddecl.h  and in makefile.in
