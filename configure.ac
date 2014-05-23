@@ -11,6 +11,10 @@ AC_MSG_RESULT(---------------------------------------------)
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([.])
 
+AC_CANONICAL_BUILD
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+
 # Makefiles 
 AC_CONFIG_FILES([makefile 
                  src/makefile 
