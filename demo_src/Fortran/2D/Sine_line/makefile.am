@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = sine_line_f
 bin_PROGRAMS        = sine_line_f
 sine_line_f_SOURCES = main2D.f90 sine_line.f90 

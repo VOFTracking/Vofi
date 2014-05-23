@@ -491,6 +491,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+ACLOCAL_AMFLAGS = -I m4
 cap1_f_SOURCES = main3D.f90 cap.f90 
 LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 

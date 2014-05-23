@@ -323,7 +323,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 
 # Makefile on top 
-ACLOCAL_AMFLAGS = = -I m4
+ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = src demo_src
 all: all-recursive
 

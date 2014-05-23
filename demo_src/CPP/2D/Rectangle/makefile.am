@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS       = -I m4
 TESTS                 = rectangle_cpp
 bin_PROGRAMS          = rectangle_cpp 
 rectangle_cpp_SOURCES = main2D.cpp rectangle.cpp 

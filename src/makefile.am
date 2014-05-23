@@ -1,6 +1,6 @@
 # makefile for the library
 
-ACLOCAL_AMFLAGS     = = -I m4
+ACLOCAL_AMFLAGS     = -I m4
 
 lib_LTLIBRARIES     = libvofi.la
 libvofi_la_SOURCES  = checkconsistency.c getcc.c getdirs.c getfh.c getintersections.c getlimits.c getmin.c getzero.c integrate.c \

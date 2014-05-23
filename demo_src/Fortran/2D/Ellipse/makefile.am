@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = ellipse_f
 bin_PROGRAMS        = ellipse_f
 ellipse_f_SOURCES   = main2D.f90 ellipse.f90 

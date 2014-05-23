@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = ellipse_cpp
 bin_PROGRAMS        = ellipse_cpp 
 ellipse_cpp_SOURCES = main2D.cpp ellipse.cpp 

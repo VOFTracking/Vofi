@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = cap3_f
 bin_PROGRAMS        = cap3_f
 cap3_f_SOURCES      = main3D.f90 cap.f90 

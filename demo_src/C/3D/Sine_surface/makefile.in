@@ -497,6 +497,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+ACLOCAL_AMFLAGS = -I m4
 sine_surf_c_SOURCES = main3D.c sine_surf.c 
 LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 

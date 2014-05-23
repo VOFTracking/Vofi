@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = sphere_f
 bin_PROGRAMS        = sphere_f
 sphere_f_SOURCES    = main3D.f90 sphere.f90 

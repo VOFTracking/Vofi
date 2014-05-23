@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = sphere_cpp
 bin_PROGRAMS        = sphere_cpp 
 sphere_cpp_SOURCES  = main3D.cpp sphere.cpp 

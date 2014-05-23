@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = cap2_cpp
 bin_PROGRAMS        = cap2_cpp 
 cap2_cpp_SOURCES    = main3D.cpp cap.cpp 

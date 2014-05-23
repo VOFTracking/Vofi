@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I m4
+
 SUBDIRS = ./C/2D/Ellipse ./C/2D/Gaussian ./C/2D/Rectangle ./C/2D/Sine_line \
           ./C/3D/Cap1 ./C/3D/Cap2 ./C/3D/Cap3 ./C/3D/Sine_surface ./C/3D/Sphere \
           ./CPP/2D/Ellipse ./CPP/2D/Gaussian ./CPP/2D/Rectangle ./CPP/2D/Sine_line \

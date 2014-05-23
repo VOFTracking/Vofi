@@ -1,3 +1,4 @@
+ACLOCAL_AMFLAGS     = -I m4
 TESTS               = sine_surf_f
 bin_PROGRAMS        = sine_surf_f
 sine_surf_f_SOURCES = main3D.f90 sine_surf.f90 
