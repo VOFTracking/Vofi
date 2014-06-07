@@ -1,7 +1,0 @@
-ACLOCAL_AMFLAGS     = -I m4
-TESTS               = cap1_f
-bin_PROGRAMS        = cap1_f
-cap1_f_SOURCES      = main3D.f90 cap.f90 
-LDADD               = $(abs_top_builddir)/src/libvofi.la 
-AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
-AM_LDFLAGS          = -rpath $(libdir) 

@@ -1,7 +1,0 @@
-ACLOCAL_AMFLAGS     = -I m4
-TESTS               = rectangle_c
-bin_PROGRAMS        = rectangle_c 
-rectangle_c_SOURCES = main2D.c rectangle.c rectangle.h
-LDADD               = $(abs_top_builddir)/src/libvofi.la 
-AM_CPPFLAGS         = -I$(abs_top_srcdir)/include 
-AM_LDFLAGS          = -rpath $(libdir) 

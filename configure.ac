@@ -19,33 +19,9 @@ AC_CANONICAL_TARGET
 AC_CONFIG_FILES([makefile 
                  src/makefile 
                  demo_src/makefile
-                 demo_src/C/2D/Ellipse/makefile
-                 demo_src/C/2D/Gaussian/makefile
-                 demo_src/C/2D/Rectangle/makefile
-                 demo_src/C/2D/Sine_line/makefile
-                 demo_src/C/3D/Cap1/makefile
-                 demo_src/C/3D/Cap2/makefile
-                 demo_src/C/3D/Cap3/makefile
-                 demo_src/C/3D/Sine_surface/makefile
-                 demo_src/C/3D/Sphere/makefile
-                 demo_src/CPP/2D/Ellipse/makefile
-                 demo_src/CPP/2D/Gaussian/makefile
-                 demo_src/CPP/2D/Rectangle/makefile
-                 demo_src/CPP/2D/Sine_line/makefile
-                 demo_src/CPP/3D/Cap1/makefile
-                 demo_src/CPP/3D/Cap2/makefile
-                 demo_src/CPP/3D/Cap3/makefile
-                 demo_src/CPP/3D/Sine_surface/makefile
-                 demo_src/CPP/3D/Sphere/makefile
-                 demo_src/Fortran/2D/Ellipse/makefile
-                 demo_src/Fortran/2D/Gaussian/makefile
-                 demo_src/Fortran/2D/Rectangle/makefile
-                 demo_src/Fortran/2D/Sine_line/makefile
-                 demo_src/Fortran/3D/Cap1/makefile
-                 demo_src/Fortran/3D/Cap2/makefile
-                 demo_src/Fortran/3D/Cap3/makefile
-                 demo_src/Fortran/3D/Sine_surface/makefile
-                 demo_src/Fortran/3D/Sphere/makefile
+                 demo_src/C/makefile
+                 demo_src/CPP/makefile
+                 demo_src/Fortran/makefile
                 ])
 
 # require automake 
