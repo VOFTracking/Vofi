@@ -6,7 +6,7 @@
  * INPUT and OUTPUT: see Get_fh                                        *
  * ------------------------------------------------------------------- */
 
-real SUFFIX(get_fh)(integrand impl_func,creal x0[],creal *H0,cint *Ndim0,cint *iX0)
+real EXPORT(get_fh)(integrand impl_func,creal x0[],creal *H0,cint *Ndim0,cint *iX0)
 {
   creal h0 = *H0;
   cint ndim0 = *Ndim0, ix0 = *iX0;
@@ -23,7 +23,7 @@ real SUFFIX(get_fh)(integrand impl_func,creal x0[],creal *H0,cint *Ndim0,cint *i
  * INPUT and OUTPUT: see Get_cc                                        *
  * ------------------------------------------------------------------- */
 
-real SUFFIX(get_cc)(integrand impl_func,creal x0[],creal *H0,creal *Fh,cint *Ndim0)
+real EXPORT(get_cc)(integrand impl_func,creal x0[],creal *H0,creal *Fh,cint *Ndim0)
 {
   creal h0= *H0, fh = *Fh;
   cint ndim0 = *Ndim0;
