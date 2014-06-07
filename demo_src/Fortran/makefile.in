@@ -14,6 +14,8 @@
 
 @SET_MAKE@
 
+# Fortran examples makefile
+
 VPATH = @srcdir@
 am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
 am__make_running_with_option = \
@@ -169,24 +171,6 @@ AM_V_FCLD = $(am__v_FCLD_@AM_V@)
 am__v_FCLD_ = $(am__v_FCLD_@AM_DEFAULT_V@)
 am__v_FCLD_0 = @echo "  FCLD    " $@;
 am__v_FCLD_1 = 
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
-	$(AM_CFLAGS) $(CFLAGS)
-AM_V_CC = $(am__v_CC_@AM_V@)
-am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
-am__v_CC_0 = @echo "  CC      " $@;
-am__v_CC_1 = 
-CCLD = $(CC)
-LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-AM_V_CCLD = $(am__v_CCLD_@AM_V@)
-am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
-am__v_CCLD_0 = @echo "  CCLD    " $@;
-am__v_CCLD_1 = 
 SOURCES = $(cap1_f_SOURCES) $(cap2_f_SOURCES) $(cap3_f_SOURCES) \
 	$(ellipse_f_SOURCES) $(gaussian_f_SOURCES) \
 	$(rectangle_f_SOURCES) $(sine_line_f_SOURCES) \
@@ -553,18 +537,18 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-ellipse_f_SOURCES = ./2D/Ellipse/main_ellipse.f90   ./2D/Ellipse/ellipse.f90   ./2D/Ellipse/ellipse.h
-gaussian_f_SOURCES = ./2D/Gaussian/main_gaussian.f90  ./2D/Gaussian/gaussian.f90  ./2D/Gaussian/gaussian.h
-rectangle_f_SOURCES = ./2D/Rectangle/main_rectangle.f90 ./2D/Rectangle/rectangle.f90 ./2D/Rectangle/rectangle.h
-sine_line_f_SOURCES = ./2D/Sine_line/main_sine_line.f90 ./2D/Sine_line/sine_line.f90 ./2D/Sine_line/sine_line.h 
-cap1_f_SOURCES = ./3D/Cap1/main_cap1.f90      ./3D/Cap1/cap1.f90       ./3D/Cap1/cap1.h
-cap2_f_SOURCES = ./3D/Cap2/main_cap2.f90      ./3D/Cap2/cap2.f90       ./3D/Cap2/cap2.h
-cap3_f_SOURCES = ./3D/Cap3/main_cap3.f90      ./3D/Cap3/cap3.f90       ./3D/Cap3/cap3.h
-sine_surf_f_SOURCES = ./3D/Sine_surface/main_sine_surf.f90 ./3D/Sine_surface/sine_surf.f90 ./3D/Sine_surface/sine_surf.h
-sphere_f_SOURCES = ./3D/Sphere/main_sphere.f90    ./3D/Sphere/sphere.f90    ./3D/Sphere/sphere.h
+ellipse_f_SOURCES = ./2D/Ellipse/main_ellipse.f90   ./2D/Ellipse/ellipse.f90   
+gaussian_f_SOURCES = ./2D/Gaussian/main_gaussian.f90  ./2D/Gaussian/gaussian.f90  
+rectangle_f_SOURCES = ./2D/Rectangle/main_rectangle.f90 ./2D/Rectangle/rectangle.f90 
+sine_line_f_SOURCES = ./2D/Sine_line/main_sine_line.f90 ./2D/Sine_line/sine_line.f90 
+cap1_f_SOURCES = ./3D/Cap1/main_cap1.f90      ./3D/Cap1/cap1.f90       
+cap2_f_SOURCES = ./3D/Cap2/main_cap2.f90      ./3D/Cap2/cap2.f90       
+cap3_f_SOURCES = ./3D/Cap3/main_cap3.f90      ./3D/Cap3/cap3.f90       
+sine_surf_f_SOURCES = ./3D/Sine_surface/main_sine_surf.f90 ./3D/Sine_surface/sine_surf.f90 
+sphere_f_SOURCES = ./3D/Sphere/main_sphere.f90    ./3D/Sphere/sphere.f90    
 LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 
-AM_LDFLAGS = -rpath $(libdir) 
+AM_LDFLAGS = -rpath $(libdir)
 all: all-am
 
 .SUFFIXES:
@@ -1130,8 +1114,6 @@ uninstall: uninstall-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
-
-installcheck: installcheck-am
 install-strip:
 	if test -z '$(STRIP)'; then \
 	  $(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
@@ -1241,6 +1223,14 @@ uninstall-am: uninstall-binPROGRAMS
 	recheck tags tags-am uninstall uninstall-am \
 	uninstall-binPROGRAMS
 
+
+installcheck:
+	@echo ""
+	@echo "*********************************************************"
+	@echo "***** Running Fortran-examples on install directory *****"
+	@echo "*********************************************************"
+	@echo ""
+	@for f in $(TESTS); do $(bindir)/$$f; done
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

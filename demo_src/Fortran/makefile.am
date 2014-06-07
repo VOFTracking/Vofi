@@ -1,16 +1,26 @@
+# Fortran examples makefile
+
 ACLOCAL_AMFLAGS       = -I m4
 
 TESTS                 = ellipse_f gaussian_f rectangle_f sine_line_f cap1_f cap2_f cap3_f sine_surf_f sphere_f
 bin_PROGRAMS          = ellipse_f gaussian_f rectangle_f sine_line_f cap1_f cap2_f cap3_f sine_surf_f sphere_f
-ellipse_f_SOURCES   = ./2D/Ellipse/main_ellipse.f90   ./2D/Ellipse/ellipse.f90   ./2D/Ellipse/ellipse.h
-gaussian_f_SOURCES  = ./2D/Gaussian/main_gaussian.f90  ./2D/Gaussian/gaussian.f90  ./2D/Gaussian/gaussian.h
-rectangle_f_SOURCES = ./2D/Rectangle/main_rectangle.f90 ./2D/Rectangle/rectangle.f90 ./2D/Rectangle/rectangle.h
-sine_line_f_SOURCES = ./2D/Sine_line/main_sine_line.f90 ./2D/Sine_line/sine_line.f90 ./2D/Sine_line/sine_line.h 
-cap1_f_SOURCES      = ./3D/Cap1/main_cap1.f90      ./3D/Cap1/cap1.f90       ./3D/Cap1/cap1.h
-cap2_f_SOURCES      = ./3D/Cap2/main_cap2.f90      ./3D/Cap2/cap2.f90       ./3D/Cap2/cap2.h
-cap3_f_SOURCES      = ./3D/Cap3/main_cap3.f90      ./3D/Cap3/cap3.f90       ./3D/Cap3/cap3.h
-sine_surf_f_SOURCES = ./3D/Sine_surface/main_sine_surf.f90 ./3D/Sine_surface/sine_surf.f90 ./3D/Sine_surface/sine_surf.h
-sphere_f_SOURCES    = ./3D/Sphere/main_sphere.f90    ./3D/Sphere/sphere.f90    ./3D/Sphere/sphere.h
+ellipse_f_SOURCES   = ./2D/Ellipse/main_ellipse.f90   ./2D/Ellipse/ellipse.f90   
+gaussian_f_SOURCES  = ./2D/Gaussian/main_gaussian.f90  ./2D/Gaussian/gaussian.f90  
+rectangle_f_SOURCES = ./2D/Rectangle/main_rectangle.f90 ./2D/Rectangle/rectangle.f90 
+sine_line_f_SOURCES = ./2D/Sine_line/main_sine_line.f90 ./2D/Sine_line/sine_line.f90 
+cap1_f_SOURCES      = ./3D/Cap1/main_cap1.f90      ./3D/Cap1/cap1.f90       
+cap2_f_SOURCES      = ./3D/Cap2/main_cap2.f90      ./3D/Cap2/cap2.f90       
+cap3_f_SOURCES      = ./3D/Cap3/main_cap3.f90      ./3D/Cap3/cap3.f90       
+sine_surf_f_SOURCES = ./3D/Sine_surface/main_sine_surf.f90 ./3D/Sine_surface/sine_surf.f90 
+sphere_f_SOURCES    = ./3D/Sphere/main_sphere.f90    ./3D/Sphere/sphere.f90    
 LDADD                 = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS           = -I$(abs_top_srcdir)/include 
-AM_LDFLAGS            = -rpath $(libdir) 
+AM_LDFLAGS            = -rpath $(libdir)
+
+installcheck:
+	@echo ""
+	@echo "*********************************************************"
+	@echo "***** Running Fortran-examples on install directory *****"
+	@echo "*********************************************************"
+	@echo ""
+	@for f in $(TESTS); do $(bindir)/$$f; done
