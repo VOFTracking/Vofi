@@ -19,8 +19,8 @@ AM_LDFLAGS            = -rpath $(libdir)
 
 installcheck:
 	@echo ""
-	@echo "*********************************************************"
-	@echo "***** Running Fortran-examples on install directory *****"
-	@echo "*********************************************************"
+	@echo "*************************************************************"
+	@echo "***** Running Fortran-examples in the install directory *****"
+	@echo "*************************************************************"
 	@echo ""
 	@for f in $(TESTS); do $(bindir)/$$f; done

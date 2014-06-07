@@ -1432,9 +1432,9 @@ uninstall-am: uninstall-binPROGRAMS
 
 installcheck:
 	@echo ""
-	@echo "*********************************************************"
-	@echo "******* Running Cpp-examples on install directory *******"
-	@echo "*********************************************************"
+	@echo "*************************************************************"
+	@echo "******* Running Cpp-examples in the install directory *******"
+	@echo "*************************************************************"
 	@echo ""
 	@for f in $(TESTS); do $(bindir)/$$f; done
 

@@ -44,13 +44,21 @@ Build Process
     (to compile all C, Fortran and CPP tests)
 
 [6] make check
-    (to run all C, Fortran and CPP tests)
+    Run all C, Fortran and CPP tests in the temporary directory.
+    A testsuite outcome for C, CPP and Fortran tests is printed on terminal.
+    Only the exit statuses of the test executables are considered when determining the testsuite outcome.
+    A log file is also generated for each test in the C, CPP and Fortran folder where the user can read 
+    the actions have occurred.
+    
    
 [7] make install
     (if the /installing_directory is /usr/local, then
     libvofi.a (or libvofi.so) will be located in /usr/local/lib64, 
     vofi.h in /usr/local/include and the demo executables in /usr/local/bin)
 
+[8] make installcheck
+    Run all C, Fortran and CPP tests in the install directory. The output of each test is printed
+    on terminal to compare the results with the right ones. 
 
 Requirements
 ------------
