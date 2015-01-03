@@ -1,4 +1,4 @@
-#include "stddecl.h"
+#include "vofi_stddecl.h"
 
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION:                                                               *
@@ -11,7 +11,7 @@
  * OUTPUT: fh ("characteristic" function value)                               *
  * -------------------------------------------------------------------------- */
 
-real Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0) 
+real vofi_get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0) 
 {
   int i,k,isw;
   cint kmax = 100;                             /* max number of iterations    */

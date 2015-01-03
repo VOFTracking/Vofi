@@ -1,5 +1,5 @@
-#include "stddecl.h"
-#include "GL.h"
+#include "vofi_stddecl.h"
+#include "vofi_GL.h"
 
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION:                                                               *

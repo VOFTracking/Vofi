@@ -1,5 +1,5 @@
-#ifndef _stddecl_h_
-#define _stddecl_h_
+#ifndef VOFI_STDDECL_H
+#define VOFI_STDDECL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -76,17 +76,20 @@ typedef struct {
 } dir_data;
 
 /* function prototypes */
-/* */ 
+/* */
+
+/** Fortran APIs */
+real EXPORT(vofi_get_fh)(integrand,creal [],creal *,cint *,cint *); 
+real EXPORT(vofi_get_cc)(integrand,creal [],creal *,creal *,cint *);
+
 real get_segment_zero(integrand,creal [],creal [],creal [],creal,cint); 
 int check_side_consistency(integrand,creal [],creal [],creal [],creal);
 chk_data check_face_consistency(integrand,creal [],creal [],creal [],
                                 creal [],creal);
-real Get_fh(integrand,creal [],creal,cint,cint); 
-real get_fh(integrand,creal [],creal *,cint *,cint *); 
+
 dir_data get_dirs(integrand,creal [],real [],real [],real [],creal,creal,cint);
 int get_limits(integrand,creal [],real [],creal [],creal [],creal [],creal,cint);
-real Get_cc(integrand,creal [],creal,creal,cint); 
-real get_cc(integrand,creal [],creal *,creal *,cint *);
+
 void get_side_intersections(integrand,real [],creal [],real [],creal [],
 			    creal,int_cpt);
 void get_face_intersections(integrand,min_data,creal [],real [],creal [],

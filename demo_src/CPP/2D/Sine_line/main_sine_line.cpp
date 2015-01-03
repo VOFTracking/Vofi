@@ -8,6 +8,7 @@
 
 extern void check_area(creal);
 extern real impl_func(creal []);
+extern void init();
 
 //* -------------------------------------------------------------------------- *
 //* PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD CC                   *
@@ -24,7 +25,8 @@ int main()
 //* initialization of the color function with local Gauss integration          * 
 //* -------------------------------------------------------------------------- *
   
-  h0 = H/nx;                                                  //* grid spacing *
+  //* grid spacing *
+  h0 = H/nx;                                                  
   itrue = 1;
 
   //* put starting point in the center of the square *
@@ -32,8 +34,10 @@ int main()
   x0[1] = 0.5; 
   x0[2] = 0.;
   
+  init();
+  
   //* get the characteristic value fh of the implicit function *
-  fh = Get_fh(impl_func,x0,h0,ndim0,itrue);
+  fh = vofi_get_fh(impl_func,x0,h0,ndim0,itrue);
 
   //* put now starting point in (X0,Y0) to initialize the color function *
   x0[0] = X0; 
@@ -45,7 +49,7 @@ int main()
       xloc[0] = x0[0] + i*h0;
       xloc[1] = x0[1] + j*h0;
       
-      cc[i][j] = Get_cc(impl_func,xloc,h0,fh,ndim0);
+      cc[i][j] = vofi_get_cc(impl_func,xloc,h0,fh,ndim0);
    }
 
 

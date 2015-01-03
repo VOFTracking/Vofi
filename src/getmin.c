@@ -1,4 +1,4 @@
-#include "stddecl.h"
+#include "vofi_stddecl.h"
 
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION:                                                               *

@@ -8,8 +8,8 @@
 #define  H  1.0
 
 //* gaussian constants *
-#define YY0 0.22
+/*#define YY0 0.22
 #define A0  0.51
 #define XX0 0.541
-#define GA  60.3
+#define GA  60.3*/
 

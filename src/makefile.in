@@ -336,7 +336,7 @@ libvofi_la_SOURCES = checkconsistency.c getcc.c getdirs.c getfh.c getintersectio
 libvofi_la_LDFLAGS = -avoid-version -rpath $(libdir)
 libvofi_la_CPPFLAGS = -I$(top_srcdir)/include
 include_HEADERS = $(top_srcdir)/include/vofi.h
-noinst_HEADERS = $(top_srcdir)/include/stddecl.h $(top_srcdir)/include/GL.h
+noinst_HEADERS = $(top_srcdir)/include/vofi_stddecl.h $(top_srcdir)/include/vofi_GL.h
 all: all-am
 
 .SUFFIXES:

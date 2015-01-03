@@ -14,4 +14,4 @@ include_HEADERS     = $(top_srcdir)/include/vofi.h
 ## For having included files in  INSTallation (public headers)
 
 ## For having included files in DISTribution only (private headers)
-noinst_HEADERS = $(top_srcdir)/include/stddecl.h $(top_srcdir)/include/GL.h
+noinst_HEADERS = $(top_srcdir)/include/vofi_stddecl.h $(top_srcdir)/include/vofi_GL.h

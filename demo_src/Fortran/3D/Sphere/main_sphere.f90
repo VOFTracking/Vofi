@@ -9,7 +9,7 @@ PROGRAM SPHERE
   REAL(8), DIMENSION(NMX,NMY,NMZ) :: cc
   REAL(8), DIMENSION(3) :: xv,xloc
   REAL(8) :: h0,fh,vol_n
-  REAl(8), EXTERNAL :: IMPL_FUNC,GET_CC,GET_FH
+  REAl(8), EXTERNAL :: IMPL_FUNC,VOFI_GET_CC,VOFI_GET_FH
 
   ! *********************************************************************
   ! PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD 
@@ -20,7 +20,7 @@ PROGRAM SPHERE
 
   ! starting point to get fh
   xv(1) = 0.5D0; xv(2) = 0.5D0; xv(3) = 0.5D0;
-  fh = GET_FH(IMPL_FUNC,xv,h0,ndim0,itrue)
+  fh = VOFI_GET_FH(IMPL_FUNC,xv,h0,ndim0,itrue)
 
   ! put now starting point in (X0,Y0,Z0) to initialize the color function 
   xv(1) = X0; xv(2) = Y0; xv(3) = Z0;
@@ -33,7 +33,7 @@ PROGRAM SPHERE
         xloc(2) = xv(2) + (j-1.D0)*h0
         xloc(3) = xv(3) + (k-1.D0)*h0
 
-        cc(i,j,k) = GET_CC(IMPL_FUNC,xloc,h0,fh,ndim0)
+        cc(i,j,k) = VOFI_GET_CC(IMPL_FUNC,xloc,h0,fh,ndim0)
       END DO
     END DO
   END DO 

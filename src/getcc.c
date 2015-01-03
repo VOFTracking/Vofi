@@ -1,4 +1,4 @@
-#include "stddecl.h"
+#include "vofi_stddecl.h"
 
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION:                                                               *
@@ -9,7 +9,7 @@
  * OUTPUT: cc: volume fraction value                                          *
  * -------------------------------------------------------------------------- */
 
-real Get_cc(integrand impl_func,creal x0[],creal h0,creal fh,cint ndim0) 
+real vofi_get_cc(integrand impl_func,creal x0[],creal h0,creal fh,cint ndim0) 
 {
   int nsub;
   real pdir[NDIM],sdir[NDIM],tdir[NDIM],side[NSEG];

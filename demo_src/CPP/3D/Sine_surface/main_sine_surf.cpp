@@ -37,7 +37,7 @@ int main()
   x0[2] = 0.5; 
 
   /* get the characteristic value fh of the implicit function */
-  fh = Get_fh(impl_func,x0,h0,ndim0,itrue);
+  fh = vofi_get_fh(impl_func,x0,h0,ndim0,itrue);
  
   /* put now starting point in (X0,Y0,Z0) to initialize the color function */
   x0[0] = X0; 
@@ -56,7 +56,7 @@ int main()
       xloc[1] = x0[1] + j*h0;
       xloc[2] = x0[2] + k*h0;
       
-      cc[i][j][k] = Get_cc(impl_func,xloc,h0,fh,ndim0);
+      cc[i][j][k] = vofi_get_cc(impl_func,xloc,h0,fh,ndim0);
       /* DEBUG 2 
       fprintf(stderr,"min vertex (%6.3f,%6.3f,%6.3f) \n",xloc[0],xloc[1],xloc[2]);
       fprintf(stderr,"\ncc: %.16e \n",cc[i][j][k]);

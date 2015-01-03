@@ -103,7 +103,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_cap1_f_OBJECTS = main_cap1.$(OBJEXT) cap1.$(OBJEXT)
+am_cap1_f_OBJECTS = cap1.$(OBJEXT) main_cap1.$(OBJEXT)
 cap1_f_OBJECTS = $(am_cap1_f_OBJECTS)
 cap1_f_LDADD = $(LDADD)
 cap1_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
@@ -111,35 +111,35 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_cap2_f_OBJECTS = main_cap2.$(OBJEXT) cap2.$(OBJEXT)
+am_cap2_f_OBJECTS = cap2.$(OBJEXT) main_cap2.$(OBJEXT)
 cap2_f_OBJECTS = $(am_cap2_f_OBJECTS)
 cap2_f_LDADD = $(LDADD)
 cap2_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_cap3_f_OBJECTS = main_cap3.$(OBJEXT) cap3.$(OBJEXT)
+am_cap3_f_OBJECTS = cap3.$(OBJEXT) main_cap3.$(OBJEXT)
 cap3_f_OBJECTS = $(am_cap3_f_OBJECTS)
 cap3_f_LDADD = $(LDADD)
 cap3_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_ellipse_f_OBJECTS = main_ellipse.$(OBJEXT) ellipse.$(OBJEXT)
+am_ellipse_f_OBJECTS = ellipse.$(OBJEXT) main_ellipse.$(OBJEXT)
 ellipse_f_OBJECTS = $(am_ellipse_f_OBJECTS)
 ellipse_f_LDADD = $(LDADD)
 ellipse_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_gaussian_f_OBJECTS = main_gaussian.$(OBJEXT) gaussian.$(OBJEXT)
+am_gaussian_f_OBJECTS = gaussian.$(OBJEXT) main_gaussian.$(OBJEXT)
 gaussian_f_OBJECTS = $(am_gaussian_f_OBJECTS)
 gaussian_f_LDADD = $(LDADD)
 gaussian_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_rectangle_f_OBJECTS = main_rectangle.$(OBJEXT) rectangle.$(OBJEXT)
+am_rectangle_f_OBJECTS = rectangle.$(OBJEXT) main_rectangle.$(OBJEXT)
 rectangle_f_OBJECTS = $(am_rectangle_f_OBJECTS)
 rectangle_f_LDADD = $(LDADD)
 rectangle_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_sine_line_f_OBJECTS = main_sine_line.$(OBJEXT) sine_line.$(OBJEXT)
+am_sine_line_f_OBJECTS = sine_line.$(OBJEXT) main_sine_line.$(OBJEXT)
 sine_line_f_OBJECTS = $(am_sine_line_f_OBJECTS)
 sine_line_f_LDADD = $(LDADD)
 sine_line_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_sine_surf_f_OBJECTS = main_sine_surf.$(OBJEXT) sine_surf.$(OBJEXT)
+am_sine_surf_f_OBJECTS = sine_surf.$(OBJEXT) main_sine_surf.$(OBJEXT)
 sine_surf_f_OBJECTS = $(am_sine_surf_f_OBJECTS)
 sine_surf_f_LDADD = $(LDADD)
 sine_surf_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
-am_sphere_f_OBJECTS = main_sphere.$(OBJEXT) sphere.$(OBJEXT)
+am_sphere_f_OBJECTS = sphere.$(OBJEXT) main_sphere.$(OBJEXT)
 sphere_f_OBJECTS = $(am_sphere_f_OBJECTS)
 sphere_f_LDADD = $(LDADD)
 sphere_f_DEPENDENCIES = $(abs_top_builddir)/src/libvofi.la
@@ -537,15 +537,15 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-ellipse_f_SOURCES = ./2D/Ellipse/main_ellipse.f90   ./2D/Ellipse/ellipse.f90   
-gaussian_f_SOURCES = ./2D/Gaussian/main_gaussian.f90  ./2D/Gaussian/gaussian.f90  
-rectangle_f_SOURCES = ./2D/Rectangle/main_rectangle.f90 ./2D/Rectangle/rectangle.f90 
-sine_line_f_SOURCES = ./2D/Sine_line/main_sine_line.f90 ./2D/Sine_line/sine_line.f90 
-cap1_f_SOURCES = ./3D/Cap1/main_cap1.f90      ./3D/Cap1/cap1.f90       
-cap2_f_SOURCES = ./3D/Cap2/main_cap2.f90      ./3D/Cap2/cap2.f90       
-cap3_f_SOURCES = ./3D/Cap3/main_cap3.f90      ./3D/Cap3/cap3.f90       
-sine_surf_f_SOURCES = ./3D/Sine_surface/main_sine_surf.f90 ./3D/Sine_surface/sine_surf.f90 
-sphere_f_SOURCES = ./3D/Sphere/main_sphere.f90    ./3D/Sphere/sphere.f90    
+ellipse_f_SOURCES = ./2D/Ellipse/ellipse.f90 ./2D/Ellipse/main_ellipse.f90      
+gaussian_f_SOURCES = ./2D/Gaussian/gaussian.f90 ./2D/Gaussian/main_gaussian.f90  
+rectangle_f_SOURCES = ./2D/Rectangle/rectangle.f90 ./2D/Rectangle/main_rectangle.f90
+sine_line_f_SOURCES = ./2D/Sine_line/sine_line.f90 ./2D/Sine_line/main_sine_line.f90
+cap1_f_SOURCES = ./3D/Cap1/cap1.f90 ./3D/Cap1/main_cap1.f90  
+cap2_f_SOURCES = ./3D/Cap2/cap2.f90 ./3D/Cap2/main_cap2.f90      
+cap3_f_SOURCES = ./3D/Cap3/cap3.f90 ./3D/Cap3/main_cap3.f90       
+sine_surf_f_SOURCES = ./3D/Sine_surface/sine_surf.f90 ./3D/Sine_surface/main_sine_surf.f90 
+sphere_f_SOURCES = ./3D/Sphere/sphere.f90 ./3D/Sphere/main_sphere.f90   
 LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS = -rpath $(libdir)
@@ -684,23 +684,17 @@ distclean-compile:
 .f90.lo:
 	$(AM_V_FC)$(LTFCCOMPILE) -c -o $@ $<
 
-main_cap1.o: ./3D/Cap1/main_cap1.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap1.o `test -f './3D/Cap1/main_cap1.f90' || echo '$(srcdir)/'`./3D/Cap1/main_cap1.f90
-
-main_cap1.obj: ./3D/Cap1/main_cap1.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap1.obj `if test -f './3D/Cap1/main_cap1.f90'; then $(CYGPATH_W) './3D/Cap1/main_cap1.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap1/main_cap1.f90'; fi`
-
 cap1.o: ./3D/Cap1/cap1.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap1.o `test -f './3D/Cap1/cap1.f90' || echo '$(srcdir)/'`./3D/Cap1/cap1.f90
 
 cap1.obj: ./3D/Cap1/cap1.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap1.obj `if test -f './3D/Cap1/cap1.f90'; then $(CYGPATH_W) './3D/Cap1/cap1.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap1/cap1.f90'; fi`
 
-main_cap2.o: ./3D/Cap2/main_cap2.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap2.o `test -f './3D/Cap2/main_cap2.f90' || echo '$(srcdir)/'`./3D/Cap2/main_cap2.f90
+main_cap1.o: ./3D/Cap1/main_cap1.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap1.o `test -f './3D/Cap1/main_cap1.f90' || echo '$(srcdir)/'`./3D/Cap1/main_cap1.f90
 
-main_cap2.obj: ./3D/Cap2/main_cap2.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap2.obj `if test -f './3D/Cap2/main_cap2.f90'; then $(CYGPATH_W) './3D/Cap2/main_cap2.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap2/main_cap2.f90'; fi`
+main_cap1.obj: ./3D/Cap1/main_cap1.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap1.obj `if test -f './3D/Cap1/main_cap1.f90'; then $(CYGPATH_W) './3D/Cap1/main_cap1.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap1/main_cap1.f90'; fi`
 
 cap2.o: ./3D/Cap2/cap2.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap2.o `test -f './3D/Cap2/cap2.f90' || echo '$(srcdir)/'`./3D/Cap2/cap2.f90
@@ -708,11 +702,11 @@ cap2.o: ./3D/Cap2/cap2.f90
 cap2.obj: ./3D/Cap2/cap2.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap2.obj `if test -f './3D/Cap2/cap2.f90'; then $(CYGPATH_W) './3D/Cap2/cap2.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap2/cap2.f90'; fi`
 
-main_cap3.o: ./3D/Cap3/main_cap3.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap3.o `test -f './3D/Cap3/main_cap3.f90' || echo '$(srcdir)/'`./3D/Cap3/main_cap3.f90
+main_cap2.o: ./3D/Cap2/main_cap2.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap2.o `test -f './3D/Cap2/main_cap2.f90' || echo '$(srcdir)/'`./3D/Cap2/main_cap2.f90
 
-main_cap3.obj: ./3D/Cap3/main_cap3.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap3.obj `if test -f './3D/Cap3/main_cap3.f90'; then $(CYGPATH_W) './3D/Cap3/main_cap3.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap3/main_cap3.f90'; fi`
+main_cap2.obj: ./3D/Cap2/main_cap2.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap2.obj `if test -f './3D/Cap2/main_cap2.f90'; then $(CYGPATH_W) './3D/Cap2/main_cap2.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap2/main_cap2.f90'; fi`
 
 cap3.o: ./3D/Cap3/cap3.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap3.o `test -f './3D/Cap3/cap3.f90' || echo '$(srcdir)/'`./3D/Cap3/cap3.f90
@@ -720,11 +714,11 @@ cap3.o: ./3D/Cap3/cap3.f90
 cap3.obj: ./3D/Cap3/cap3.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o cap3.obj `if test -f './3D/Cap3/cap3.f90'; then $(CYGPATH_W) './3D/Cap3/cap3.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap3/cap3.f90'; fi`
 
-main_ellipse.o: ./2D/Ellipse/main_ellipse.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_ellipse.o `test -f './2D/Ellipse/main_ellipse.f90' || echo '$(srcdir)/'`./2D/Ellipse/main_ellipse.f90
+main_cap3.o: ./3D/Cap3/main_cap3.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap3.o `test -f './3D/Cap3/main_cap3.f90' || echo '$(srcdir)/'`./3D/Cap3/main_cap3.f90
 
-main_ellipse.obj: ./2D/Ellipse/main_ellipse.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_ellipse.obj `if test -f './2D/Ellipse/main_ellipse.f90'; then $(CYGPATH_W) './2D/Ellipse/main_ellipse.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Ellipse/main_ellipse.f90'; fi`
+main_cap3.obj: ./3D/Cap3/main_cap3.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_cap3.obj `if test -f './3D/Cap3/main_cap3.f90'; then $(CYGPATH_W) './3D/Cap3/main_cap3.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Cap3/main_cap3.f90'; fi`
 
 ellipse.o: ./2D/Ellipse/ellipse.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o ellipse.o `test -f './2D/Ellipse/ellipse.f90' || echo '$(srcdir)/'`./2D/Ellipse/ellipse.f90
@@ -732,11 +726,11 @@ ellipse.o: ./2D/Ellipse/ellipse.f90
 ellipse.obj: ./2D/Ellipse/ellipse.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o ellipse.obj `if test -f './2D/Ellipse/ellipse.f90'; then $(CYGPATH_W) './2D/Ellipse/ellipse.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Ellipse/ellipse.f90'; fi`
 
-main_gaussian.o: ./2D/Gaussian/main_gaussian.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_gaussian.o `test -f './2D/Gaussian/main_gaussian.f90' || echo '$(srcdir)/'`./2D/Gaussian/main_gaussian.f90
+main_ellipse.o: ./2D/Ellipse/main_ellipse.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_ellipse.o `test -f './2D/Ellipse/main_ellipse.f90' || echo '$(srcdir)/'`./2D/Ellipse/main_ellipse.f90
 
-main_gaussian.obj: ./2D/Gaussian/main_gaussian.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_gaussian.obj `if test -f './2D/Gaussian/main_gaussian.f90'; then $(CYGPATH_W) './2D/Gaussian/main_gaussian.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Gaussian/main_gaussian.f90'; fi`
+main_ellipse.obj: ./2D/Ellipse/main_ellipse.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_ellipse.obj `if test -f './2D/Ellipse/main_ellipse.f90'; then $(CYGPATH_W) './2D/Ellipse/main_ellipse.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Ellipse/main_ellipse.f90'; fi`
 
 gaussian.o: ./2D/Gaussian/gaussian.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o gaussian.o `test -f './2D/Gaussian/gaussian.f90' || echo '$(srcdir)/'`./2D/Gaussian/gaussian.f90
@@ -744,11 +738,11 @@ gaussian.o: ./2D/Gaussian/gaussian.f90
 gaussian.obj: ./2D/Gaussian/gaussian.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o gaussian.obj `if test -f './2D/Gaussian/gaussian.f90'; then $(CYGPATH_W) './2D/Gaussian/gaussian.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Gaussian/gaussian.f90'; fi`
 
-main_rectangle.o: ./2D/Rectangle/main_rectangle.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_rectangle.o `test -f './2D/Rectangle/main_rectangle.f90' || echo '$(srcdir)/'`./2D/Rectangle/main_rectangle.f90
+main_gaussian.o: ./2D/Gaussian/main_gaussian.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_gaussian.o `test -f './2D/Gaussian/main_gaussian.f90' || echo '$(srcdir)/'`./2D/Gaussian/main_gaussian.f90
 
-main_rectangle.obj: ./2D/Rectangle/main_rectangle.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_rectangle.obj `if test -f './2D/Rectangle/main_rectangle.f90'; then $(CYGPATH_W) './2D/Rectangle/main_rectangle.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Rectangle/main_rectangle.f90'; fi`
+main_gaussian.obj: ./2D/Gaussian/main_gaussian.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_gaussian.obj `if test -f './2D/Gaussian/main_gaussian.f90'; then $(CYGPATH_W) './2D/Gaussian/main_gaussian.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Gaussian/main_gaussian.f90'; fi`
 
 rectangle.o: ./2D/Rectangle/rectangle.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o rectangle.o `test -f './2D/Rectangle/rectangle.f90' || echo '$(srcdir)/'`./2D/Rectangle/rectangle.f90
@@ -756,11 +750,11 @@ rectangle.o: ./2D/Rectangle/rectangle.f90
 rectangle.obj: ./2D/Rectangle/rectangle.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o rectangle.obj `if test -f './2D/Rectangle/rectangle.f90'; then $(CYGPATH_W) './2D/Rectangle/rectangle.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Rectangle/rectangle.f90'; fi`
 
-main_sine_line.o: ./2D/Sine_line/main_sine_line.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_line.o `test -f './2D/Sine_line/main_sine_line.f90' || echo '$(srcdir)/'`./2D/Sine_line/main_sine_line.f90
+main_rectangle.o: ./2D/Rectangle/main_rectangle.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_rectangle.o `test -f './2D/Rectangle/main_rectangle.f90' || echo '$(srcdir)/'`./2D/Rectangle/main_rectangle.f90
 
-main_sine_line.obj: ./2D/Sine_line/main_sine_line.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_line.obj `if test -f './2D/Sine_line/main_sine_line.f90'; then $(CYGPATH_W) './2D/Sine_line/main_sine_line.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Sine_line/main_sine_line.f90'; fi`
+main_rectangle.obj: ./2D/Rectangle/main_rectangle.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_rectangle.obj `if test -f './2D/Rectangle/main_rectangle.f90'; then $(CYGPATH_W) './2D/Rectangle/main_rectangle.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Rectangle/main_rectangle.f90'; fi`
 
 sine_line.o: ./2D/Sine_line/sine_line.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sine_line.o `test -f './2D/Sine_line/sine_line.f90' || echo '$(srcdir)/'`./2D/Sine_line/sine_line.f90
@@ -768,11 +762,11 @@ sine_line.o: ./2D/Sine_line/sine_line.f90
 sine_line.obj: ./2D/Sine_line/sine_line.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sine_line.obj `if test -f './2D/Sine_line/sine_line.f90'; then $(CYGPATH_W) './2D/Sine_line/sine_line.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Sine_line/sine_line.f90'; fi`
 
-main_sine_surf.o: ./3D/Sine_surface/main_sine_surf.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_surf.o `test -f './3D/Sine_surface/main_sine_surf.f90' || echo '$(srcdir)/'`./3D/Sine_surface/main_sine_surf.f90
+main_sine_line.o: ./2D/Sine_line/main_sine_line.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_line.o `test -f './2D/Sine_line/main_sine_line.f90' || echo '$(srcdir)/'`./2D/Sine_line/main_sine_line.f90
 
-main_sine_surf.obj: ./3D/Sine_surface/main_sine_surf.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_surf.obj `if test -f './3D/Sine_surface/main_sine_surf.f90'; then $(CYGPATH_W) './3D/Sine_surface/main_sine_surf.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sine_surface/main_sine_surf.f90'; fi`
+main_sine_line.obj: ./2D/Sine_line/main_sine_line.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_line.obj `if test -f './2D/Sine_line/main_sine_line.f90'; then $(CYGPATH_W) './2D/Sine_line/main_sine_line.f90'; else $(CYGPATH_W) '$(srcdir)/./2D/Sine_line/main_sine_line.f90'; fi`
 
 sine_surf.o: ./3D/Sine_surface/sine_surf.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sine_surf.o `test -f './3D/Sine_surface/sine_surf.f90' || echo '$(srcdir)/'`./3D/Sine_surface/sine_surf.f90
@@ -780,17 +774,23 @@ sine_surf.o: ./3D/Sine_surface/sine_surf.f90
 sine_surf.obj: ./3D/Sine_surface/sine_surf.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sine_surf.obj `if test -f './3D/Sine_surface/sine_surf.f90'; then $(CYGPATH_W) './3D/Sine_surface/sine_surf.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sine_surface/sine_surf.f90'; fi`
 
-main_sphere.o: ./3D/Sphere/main_sphere.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sphere.o `test -f './3D/Sphere/main_sphere.f90' || echo '$(srcdir)/'`./3D/Sphere/main_sphere.f90
+main_sine_surf.o: ./3D/Sine_surface/main_sine_surf.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_surf.o `test -f './3D/Sine_surface/main_sine_surf.f90' || echo '$(srcdir)/'`./3D/Sine_surface/main_sine_surf.f90
 
-main_sphere.obj: ./3D/Sphere/main_sphere.f90
-	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sphere.obj `if test -f './3D/Sphere/main_sphere.f90'; then $(CYGPATH_W) './3D/Sphere/main_sphere.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sphere/main_sphere.f90'; fi`
+main_sine_surf.obj: ./3D/Sine_surface/main_sine_surf.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sine_surf.obj `if test -f './3D/Sine_surface/main_sine_surf.f90'; then $(CYGPATH_W) './3D/Sine_surface/main_sine_surf.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sine_surface/main_sine_surf.f90'; fi`
 
 sphere.o: ./3D/Sphere/sphere.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sphere.o `test -f './3D/Sphere/sphere.f90' || echo '$(srcdir)/'`./3D/Sphere/sphere.f90
 
 sphere.obj: ./3D/Sphere/sphere.f90
 	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o sphere.obj `if test -f './3D/Sphere/sphere.f90'; then $(CYGPATH_W) './3D/Sphere/sphere.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sphere/sphere.f90'; fi`
+
+main_sphere.o: ./3D/Sphere/main_sphere.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sphere.o `test -f './3D/Sphere/main_sphere.f90' || echo '$(srcdir)/'`./3D/Sphere/main_sphere.f90
+
+main_sphere.obj: ./3D/Sphere/main_sphere.f90
+	$(AM_V_FC)$(FC) $(AM_FCFLAGS) $(FCFLAGS) -c -o main_sphere.obj `if test -f './3D/Sphere/main_sphere.f90'; then $(CYGPATH_W) './3D/Sphere/main_sphere.f90'; else $(CYGPATH_W) '$(srcdir)/./3D/Sphere/main_sphere.f90'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
