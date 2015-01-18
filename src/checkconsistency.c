@@ -13,7 +13,7 @@
 int check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal 
 			   sidedir[],creal h0)
 {
-  int i,f_iat;
+  int i,f_iat, ftmp;
   real xs[NDIM],dh,f0,f1,fs,ft;
 
   fs = fe[0]+fe[1];
@@ -39,8 +39,17 @@ int check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal
     for (i=0; i<NDIM; i++)
       xs[i] = x0[i] + dh*sidedir[i];
     fs = f_iat*impl_func(xs);
+    ftmp = f_iat;
     if (fs >= ft)
-      f_iat = 0;    
+      f_iat = 0;
+    /* extra check for very high curvature and multiple intersections */
+    if (!f_iat) { 
+    for (i=0; i<NDIM; i++)
+      xs[i] = x0[i] + 0.5*h0*sidedir[i];
+    fs = ftmp*impl_func(xs);
+    if (fs < ft)
+      f_iat = ftmp; 
+    }    
   }
 
   return f_iat;

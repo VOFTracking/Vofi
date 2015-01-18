@@ -93,7 +93,14 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
 	}
 	fe[0] = impl_func(x20);
 	fe[1] = impl_func(x21);
-	ht = get_segment_zero(impl_func,fe,x20,pdir,h0,true_sign);
+	if (fe[0]*fe[1] < 0.)
+	  ht = get_segment_zero(impl_func,fe,x20,pdir,h0,true_sign);
+	else {                        /* weird situation with multiple zeroes */
+	  if (fe[0]+fe[1] < 0.)
+	    ht = h0;
+	  else
+	    ht = 0.;
+	}
 	/* DEBUG 4 */
 
 	GL_1D += (*ptinw)*ht;
