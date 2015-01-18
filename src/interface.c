@@ -3,8 +3,8 @@
 
 /* ------------------------------------------------------------------- *
  * DESCRIPTION:                                                        *
- * FORTRAN to C interface for the function vofi_get_fh                      *
- * INPUT and OUTPUT: see vofi_get_fh                                        *
+ * FORTRAN to C interface for the function vofi_Get_fh                      *
+ * INPUT and OUTPUT: see vofi_Get_fh                                        *
  * ------------------------------------------------------------------- */
 
 real EXPORT(vofi_get_fh)(integrand impl_func,creal x0[],creal *H0,cint *Ndim0,cint *iX0)
@@ -13,15 +13,15 @@ real EXPORT(vofi_get_fh)(integrand impl_func,creal x0[],creal *H0,cint *Ndim0,ci
   cint ndim0 = *Ndim0, ix0 = *iX0;
   real Fh;
 
-  Fh = vofi_get_fh(impl_func,x0,h0,ndim0,ix0); 
+  Fh = vofi_Get_fh(impl_func,x0,h0,ndim0,ix0); 
 
   return Fh;
 }
 
 /* ------------------------------------------------------------------- *
  * DESCRIPTION:                                                        *
- * FORTRAN to C interface for the function vofi_get_cc                      *
- * INPUT and OUTPUT: see vofi_get_cc                                        *
+ * FORTRAN to C interface for the function vofi_Get_cc                      *
+ * INPUT and OUTPUT: see vofi_Get_cc                                        *
  * ------------------------------------------------------------------- */
 
 real EXPORT(vofi_get_cc)(integrand impl_func,creal x0[],creal *H0,creal *Fh,cint *Ndim0)
@@ -30,7 +30,7 @@ real EXPORT(vofi_get_cc)(integrand impl_func,creal x0[],creal *H0,creal *Fh,cint
   cint ndim0 = *Ndim0;
   real CC;
   
-  CC = vofi_get_cc(impl_func,x0,h0,fh,ndim0);
+  CC = vofi_Get_cc(impl_func,x0,h0,fh,ndim0);
 
   return CC;
 }

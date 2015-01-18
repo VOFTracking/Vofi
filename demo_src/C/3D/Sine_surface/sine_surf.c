@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 #include "sine_surf.h"
 
 typedef const double creal;
@@ -10,8 +11,43 @@ typedef double real;
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION (reference phase where f(x,y,z) < 0):                          *
  * sinusoidal surface inside the cube [0,1]x[0,1]x[0,1]                       *
- * f(x,y,z) = z - A0 - B0*sin(C1*pi*x + pi*D1)*sin(C1*pi*x + pi*E1)           *
+ * f(x,y,z) = z - a0 - b0*sin(c1*pi*x + pi*d1)*sin(c1*pi*x + pi*e1)           *
  * -------------------------------------------------------------------------- */
+
+static double a0 = 0.5;
+static double b0 = 1./6.;
+static double c1 = 1.6;
+static double d1 = 1./7.;
+static double e1 = 1./5.;
+
+
+/* -------------------------------------------------------------------------- */
+
+void init()
+{
+
+  /* initialize random number generator. */
+  srand(time(0));  
+  
+
+  double scalingfactor = 0.05;
+ 
+  /* b0 --> from 1.15 to 1.20 */
+  b0 = 1.15 + ((double)rand() / RAND_MAX)*scalingfactor;
+  
+  /* c1 --> from 1.6 to 1.65 */
+  c1 = 1.6 + ((double)rand() / RAND_MAX)*scalingfactor;
+   
+  /* d1 --> from 0.12 to 0.17 */
+  d1 = 0.12 + ((double)rand() / RAND_MAX)*scalingfactor;
+ 
+  /* e1 --> from 0.15 to 0.25 */
+  e1 = 0.15 + ((double)rand() / RAND_MAX)*scalingfactor;
+  
+  return;
+}
+
+/* -------------------------------------------------------------------------- */
 
 real impl_func(creal xy[])
 {
@@ -21,7 +57,7 @@ real impl_func(creal xy[])
   y = xy[1];
   z = xy[2];
 
-  f0 = z - A0 - B0*sin(MYPI*(C1*x+D1))*sin(MYPI*(C1*y+E1));
+  f0 = z - a0 - b0*sin(M_PI*(c1*x+d1))*sin(M_PI*(c1*y+e1));
 
   return f0;
 }
@@ -31,7 +67,8 @@ void check_volume(creal vol_n)
 {
   double vol_a;
 
-  vol_a = 0.5;
+  //vol_a = 0.5;
+  vol_a = a0 + (b0/(c1*M_PI*c1*M_PI))*(cos(d1*M_PI) - cos((d1+c1)*M_PI))*(cos(e1*M_PI) - cos((e1+c1)*M_PI)); 
 
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"--------------- C: sinusoidal surface check ---------------\n");
@@ -40,14 +77,14 @@ void check_volume(creal vol_n)
   fprintf (stdout,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
   fprintf (stdout,"relative error   : %23.16e\n",fabs(vol_a-vol_n)/vol_a); 
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
-  fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"analytical volume:  5.0000000000000000e-01\n");
-  fprintf (stdout,"numerical  volume:  5.0000000000000022e-01\n\n");
-  fprintf (stdout,"absolute error   :  2.2204460492503131e-16\n");
-  fprintf (stdout,"relative error   :  4.4408920985006262e-16\n");
-  fprintf (stdout,"------------- C: end sinusoidal surface check -------------\n");
-  fprintf (stdout,"-----------------------------------------------------------\n");
+//   fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
+//   fprintf (stdout,"-----------------------------------------------------------\n");
+//   fprintf (stdout,"analytical volume:  5.0000000000000000e-01\n");
+//   fprintf (stdout,"numerical  volume:  5.0000000000000022e-01\n\n");
+//   fprintf (stdout,"absolute error   :  2.2204460492503131e-16\n");
+//   fprintf (stdout,"relative error   :  4.4408920985006262e-16\n");
+//   fprintf (stdout,"------------- C: end sinusoidal surface check -------------\n");
+//   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"\n");
 
   return;

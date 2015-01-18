@@ -16,8 +16,8 @@ extern "C" {
 #endif
   
 /** C/C++ APIs */
-real vofi_get_fh(integrand,creal [],creal,cint,cint); 
-real vofi_get_cc(integrand,creal [],creal,creal,cint);
+real vofi_Get_fh(integrand,creal [],creal,cint,cint); 
+real vofi_Get_cc(integrand,creal [],creal,creal,cint);
 
 #ifdef __cplusplus
 }
