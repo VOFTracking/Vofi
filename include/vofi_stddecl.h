@@ -82,23 +82,23 @@ typedef struct {
 real EXPORT(vofi_get_fh)(integrand,creal [],creal *,cint *,cint *); 
 real EXPORT(vofi_get_cc)(integrand,creal [],creal *,creal *,cint *);
 
-real get_segment_zero(integrand,creal [],creal [],creal [],creal,cint); 
-int check_side_consistency(integrand,creal [],creal [],creal [],creal);
-chk_data check_face_consistency(integrand,creal [],creal [],creal [],
+real vofi_get_segment_zero(integrand,creal [],creal [],creal [],creal,cint); 
+int vofi_check_side_consistency(integrand,creal [],creal [],creal [],creal);
+chk_data vofi_check_face_consistency(integrand,creal [],creal [],creal [],
                                 creal [],creal);
 
-dir_data get_dirs(integrand,creal [],real [],real [],real [],creal,creal,cint);
-int get_limits(integrand,creal [],real [],creal [],creal [],creal [],creal,cint);
+dir_data vofi_get_dirs(integrand,creal [],real [],real [],real [],creal,creal,cint);
+int vofi_get_limits(integrand,creal [],real [],creal [],creal [],creal [],creal,cint);
 
-void get_side_intersections(integrand,real [],creal [],real [],creal [],
+void vofi_get_side_intersections(integrand,real [],creal [],real [],creal [],
 			    creal,int_cpt);
-void get_face_intersections(integrand,min_data,creal [],real [],creal [],
+void vofi_get_face_intersections(integrand,min_data,creal [],real [],creal [],
 			    creal [],creal,int_cpt);
-min_data get_segment_min(integrand,creal [],creal [],creal [],creal,cint,cint);
-min_data get_face_min(integrand,creal [],creal [],creal [],chk_data,creal);
+min_data vofi_get_segment_min(integrand,creal [],creal [],creal [],creal,cint,cint);
+min_data vofi_get_face_min(integrand,creal [],creal [],creal [],chk_data,creal);
 
-real get_area(integrand,creal [],creal [],creal [],creal [],creal,cint,cint);
-real get_volume(integrand,creal [],creal [],creal [],creal [],creal [],creal,
+real vofi_get_area(integrand,creal [],creal [],creal [],creal [],creal,cint,cint);
+real vofi_get_volume(integrand,creal [],creal [],creal [],creal [],creal [],creal,
 		  cint,cint);
 
 #endif

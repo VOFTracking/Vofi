@@ -16,7 +16,7 @@
  * (hence: 0/1)                                                               *
  * -------------------------------------------------------------------------- */
 
-dir_data get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
+dir_data vofi_get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
 	      real tdir[],creal h0,creal fh,cint ndim0)
 {
   int i,j,k,m,n,np1,np0,nmax,kmax,jt,js,jp,npt_with_grad;

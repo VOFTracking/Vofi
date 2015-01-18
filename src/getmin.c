@@ -13,7 +13,7 @@
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[], 
+min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[], 
 		 creal s0,cint f_sign,cint max_iter)
 {
   int i,j,iter,not_conv,igold,iseca;
@@ -252,7 +252,7 @@ min_data get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[],
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[], 
+min_data vofi_get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[], 
                       chk_data ivga,creal h0)
 {
   int i,not_conv,iter,k,ipt,iss;
@@ -326,7 +326,7 @@ min_data get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[],
   while (not_conv  && iter < max_iter) {                    /* iterative loop */
     /* DEBUG 1 */
 
-    xfsa = get_segment_min(impl_func,fe,xs0,nmdr,ss0,ivga.iat,max_iter_line); 
+    xfsa = vofi_get_segment_min(impl_func,fe,xs0,nmdr,ss0,ivga.iat,max_iter_line); 
 
     for (i=0;i<NDIM;i++)                    
       xs0[i] = xfsa.xval[i];

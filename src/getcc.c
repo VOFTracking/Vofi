@@ -16,15 +16,15 @@ real vofi_Get_cc(integrand impl_func,creal x0[],creal h0,creal fh,cint ndim0)
   real cc;
   dir_data icps; 
 
-  icps = get_dirs(impl_func,x0,pdir,sdir,tdir,h0,fh,ndim0);
+  icps = vofi_get_dirs(impl_func,x0,pdir,sdir,tdir,h0,fh,ndim0);
   if (icps.icc >= 0)
     cc = (real) icps.icc;
   else {
-    nsub = get_limits(impl_func,x0,side,pdir,sdir,tdir,h0,ndim0);
+    nsub = vofi_get_limits(impl_func,x0,side,pdir,sdir,tdir,h0,ndim0);
     if (ndim0 == 2) 
-      cc = get_area(impl_func,x0,side,pdir,sdir,h0,nsub,icps.ipt);
+      cc = vofi_get_area(impl_func,x0,side,pdir,sdir,h0,nsub,icps.ipt);
     else 
-      cc =  get_volume(impl_func,x0,side,pdir,sdir,tdir,h0,nsub,icps.ipt);
+      cc =  vofi_get_volume(impl_func,x0,side,pdir,sdir,tdir,h0,nsub,icps.ipt);
   }
   
   return cc;

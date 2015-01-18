@@ -10,7 +10,7 @@
  * start of new subdivisions                                                  *
  * -------------------------------------------------------------------------- */
 
-void get_side_intersections(integrand impl_func,real fe[],creal x0[],real 
+void vofi_get_side_intersections(integrand impl_func,real fe[],creal x0[],real 
 		       lim_intg[],creal stdir[],creal h0,int_cpt nsub)
 {
   int f_iat; 
@@ -19,20 +19,20 @@ void get_side_intersections(integrand impl_func,real fe[],creal x0[],real
   min_data xfsa;
   
   if (fe[0]*fe[1] < 0.0) {
-    dh0 = get_segment_zero(impl_func,fe,x0,stdir,h0,true_sign);
+    dh0 = vofi_get_segment_zero(impl_func,fe,x0,stdir,h0,true_sign);
     if (fe[0] > 0.0)
       dh0 = h0 - dh0;
     lim_intg[*nsub] = dh0;
     (*nsub)++;
   }
   else {
-    f_iat = check_side_consistency(impl_func,fe,x0,stdir,h0); 
+    f_iat = vofi_check_side_consistency(impl_func,fe,x0,stdir,h0); 
     if (f_iat != 0) {
-      xfsa = get_segment_min(impl_func,fe,x0,stdir,h0,f_iat,max_iter);
+      xfsa = vofi_get_segment_min(impl_func,fe,x0,stdir,h0,f_iat,max_iter);
       if (xfsa.iat != 0) {
 	fh0 = fe[1];
 	fe[1] = xfsa.fval;
-	dh0 = get_segment_zero(impl_func,fe,x0,stdir,xfsa.sval,true_sign);
+	dh0 = vofi_get_segment_zero(impl_func,fe,x0,stdir,xfsa.sval,true_sign);
 	if (fe[0] > 0.0 || fe[1] < 0.0)
 	  dh0 = xfsa.sval - dh0;
 	lim_intg[*nsub] = dh0;
@@ -40,7 +40,7 @@ void get_side_intersections(integrand impl_func,real fe[],creal x0[],real
 	ss = h0 - xfsa.sval;
 	fe[0] = fe[1]; 
 	fe[1] = fh0;
-	dh0 = get_segment_zero(impl_func,fe,xfsa.xval,stdir,ss,true_sign);
+	dh0 = vofi_get_segment_zero(impl_func,fe,xfsa.xval,stdir,ss,true_sign);
 	if (fe[0] > 0.0 || fe[1] < 0.0)
 	  dh0 = ss - dh0;
 	lim_intg[*nsub] = xfsa.sval + dh0;
@@ -62,7 +62,7 @@ void get_side_intersections(integrand impl_func,real fe[],creal x0[],real
  * start of new subdivisions                                                  *
  * -------------------------------------------------------------------------- */
 
-void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real 
+void vofi_get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real 
 	      lim_intg[],creal sdir[],creal tdir[],creal h0,int_cpt nsub)
 {
   int i,k,iter,js,jt,not_conv,ipt,ist,f_iat;
@@ -96,7 +96,7 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
   pt2[js] = x0[js] + h0;            
   fe[1] = f_iat*impl_func(pt2);
   if (fe[1] > 0.) {
-    ds0 = get_segment_zero(impl_func,fe,pt0,indir,ss0,f_iat);
+    ds0 = vofi_get_segment_zero(impl_func,fe,pt0,indir,ss0,f_iat);
     pt2[js] = pt0[js] + ds0;
   } 
   /* DEBUG 1 */
@@ -108,7 +108,7 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
   indir[js] = -1.;
   fe[1] = f_iat*impl_func(pt1);
   if (fe[1] > 0.) {
-    ds0 = get_segment_zero(impl_func,fe,pt0,indir,ss0,f_iat);
+    ds0 = vofi_get_segment_zero(impl_func,fe,pt0,indir,ss0,f_iat);
     pt1[js] = pt0[js] - ds0;
   }
   /* DEBUG 2 */
@@ -143,7 +143,7 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
       /* DEBUG 5 */
 
       if (fe[1] > 0.) {
-	ds0 = get_segment_zero(impl_func,fe,mp1,exdir,sst,f_iat);
+	ds0 = vofi_get_segment_zero(impl_func,fe,mp1,exdir,sst,f_iat);
 	sst = ds0;
       }
       /* DEBUG 6 */
@@ -188,7 +188,7 @@ void get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real
 	  ist++;
 	}
         if (fe[0]*fe[1] < 0.) {         /* get other zero along secondary dir */
-	  ds0 = get_segment_zero(impl_func,fe,ptt,indir,sss,f_iat);
+	  ds0 = vofi_get_segment_zero(impl_func,fe,ptt,indir,sss,f_iat);
 	  for (i=0;i<NDIM;i++) 
 	    pt2[i] = ptt[i] + ds0*indir[i];
 	}

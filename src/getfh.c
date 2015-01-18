@@ -93,7 +93,7 @@ real vofi_Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0)
       fe[1] = f2;
       for (i=0;i<ndim0;i++) 
 	der[i] = (x2[i]-x1[i])/delta;	
-      dd = get_segment_zero(impl_func,fe,x1,der,delta,1);
+      dd = vofi_get_segment_zero(impl_func,fe,x1,der,delta,1);
       for (i=0;i<ndim0;i++) {
 	if (f1 <= f2) 
 	  x1[i] = x1[i] + dd*der[i];

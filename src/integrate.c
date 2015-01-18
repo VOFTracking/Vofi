@@ -11,7 +11,7 @@
  * OUTPUT: area: normalized value of the cut area or 2D volume fraction       *
  * -------------------------------------------------------------------------- */
 
-double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal 
+double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal 
 		pdir[],creal sdir[],creal h0,cint nintsub,cint nintpt)
 {
   int i,ns,k,npt,cut_rect;
@@ -94,7 +94,7 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
 	fe[0] = impl_func(x20);
 	fe[1] = impl_func(x21);
 	if (fe[0]*fe[1] < 0.)
-	  ht = get_segment_zero(impl_func,fe,x20,pdir,h0,true_sign);
+	  ht = vofi_get_segment_zero(impl_func,fe,x20,pdir,h0,true_sign);
 	else {                        /* weird situation with multiple zeroes */
 	  if (fe[0]+fe[1] < 0.)
 	    ht = h0;
@@ -131,7 +131,7 @@ double get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
  * OUTPUT: vol: normalized value of the cut volume or 3D volume fraction      *
  * -------------------------------------------------------------------------- */
 
-double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal 
+double vofi_get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal 
 		  pdir[],creal sdir[],creal tdir[],creal h0,cint nextsub,
 		  cint nintpt)
 {
@@ -166,9 +166,9 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
       if (fe[0]*fe[1] <= 0.)
 	cut_hexa = 1;        
       else {
-	f_iat = check_side_consistency(impl_func,fe,x1,sdir,h0); 
+	f_iat = vofi_check_side_consistency(impl_func,fe,x1,sdir,h0); 
 	if (f_iat != 0) { 
-	  xfsa = get_segment_min(impl_func,fe,x1,sdir,h0,f_iat,max_iter);
+	  xfsa = vofi_get_segment_min(impl_func,fe,x1,sdir,h0,f_iat,max_iter);
 	  cut_hexa = xfsa.iat;        
 	}
       }
@@ -181,9 +181,9 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
       if (fe[0]*fe[1] <= 0.)
 	cut_hexa = 1;        
       else {
-	f_iat = check_side_consistency(impl_func,fe,x2,sdir,h0); 
+	f_iat = vofi_check_side_consistency(impl_func,fe,x2,sdir,h0); 
 	if (f_iat != 0) {
-	  xfsa = get_segment_min(impl_func,fe,x2,sdir,h0,f_iat,max_iter);
+	  xfsa = vofi_get_segment_min(impl_func,fe,x2,sdir,h0,f_iat,max_iter);
 	  cut_hexa = xfsa.iat;        
 	}
       }
@@ -223,8 +223,8 @@ double get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
 	xis = cs + 0.5*ds*(*ptexx);
 	for (i=0;i<NDIM;i++) 
 	  x1[i] = x0[i] + tdir[i]*xis;
-	nintsub = get_limits(impl_func,x1,int_lim_intg,pdir,sdir,tdir,h0,stdir);
-	area_n = get_area(impl_func,x1,int_lim_intg,pdir,sdir,h0,nintsub,nintpt);
+	nintsub = vofi_get_limits(impl_func,x1,int_lim_intg,pdir,sdir,tdir,h0,stdir);
+	area_n = vofi_get_area(impl_func,x1,int_lim_intg,pdir,sdir,h0,nintsub,nintpt);
 	/* DEBUG 4 */
 
  	GL_1D += (*ptexw)*area_n;

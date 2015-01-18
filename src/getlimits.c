@@ -11,7 +11,7 @@
  * each subdivision (lim_intg[0] = 0, lim_intg[nsub] = h0)                    *
  * -------------------------------------------------------------------------- */
 
-int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
+int vofi_get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	       creal sdir[],creal tdir[],creal h0,cint stdir)
 {
   int i,j,k,iv,nsub,nvp,nvn;
@@ -29,7 +29,7 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
       }
       fe[0] = impl_func(x1);
       fe[1] = impl_func(x2);
-      get_side_intersections(impl_func,fe,x1,lim_intg,sdir,h0,&nsub);
+      vofi_get_side_intersections(impl_func,fe,x1,lim_intg,sdir,h0,&nsub);
     }
   }
   else {                                /* get the external limits along tdir */
@@ -54,7 +54,7 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	  else
 	    nvn += 2;
 	}
-	get_side_intersections(impl_func,fe,x1,lim_intg,tdir,h0,&nsub);
+	vofi_get_side_intersections(impl_func,fe,x1,lim_intg,tdir,h0,&nsub);
 	/* DEBUG 3 */
 
       }
@@ -64,11 +64,11 @@ int get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	xfsa.iat = 0;
 	for (i=0;i<NDIM;i++) 
 	  x1[i] = x0[i] + k*pdir[i]*h0;
-	fvga = check_face_consistency(impl_func,fv,x1,sdir,tdir,h0); 
+	fvga = vofi_check_face_consistency(impl_func,fv,x1,sdir,tdir,h0); 
 	if (fvga. iat != 0)
-	  xfsa = get_face_min(impl_func,x1,sdir,tdir,fvga,h0);
+	  xfsa = vofi_get_face_min(impl_func,x1,sdir,tdir,fvga,h0);
 	if (xfsa.iat != 0)
-	  get_face_intersections(impl_func,xfsa,x1,lim_intg,sdir,tdir,h0,&nsub);
+	  vofi_get_face_intersections(impl_func,xfsa,x1,lim_intg,sdir,tdir,h0,&nsub);
 	/* DEBUG 5 */
 
       } 

@@ -10,7 +10,7 @@
  * at both endpoints)                                                         *
  * -------------------------------------------------------------------------- */
 
-int check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal 
+int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal 
 			   sidedir[],creal h0)
 {
   int i,f_iat, ftmp;
@@ -66,7 +66,7 @@ int check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal
  * f_iat in the previous function                                             *
  * -------------------------------------------------------------------------- */
 
-chk_data check_face_consistency(integrand impl_func,creal fv[],creal x0[],creal 
+chk_data vofi_check_face_consistency(integrand impl_func,creal fv[],creal x0[],creal 
 				sdir[],creal tdir[],creal h0)
 {
   int i,iss,ist,iat;
