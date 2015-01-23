@@ -25,27 +25,32 @@ static double yc = 0.475;
 
 /* -------------------------------------------------------------------------- */
 
-void init()
+void init(cint randominput)
 {
 
-  /* initialize random number generator. */
-  srand(time(0));  
+  if(randominput) {
+    
+    /* initialize random number generator. */
+    srand(time(0));  
   
-  /* a1 --> from 0.15 to 0.19 */
-  double axesscalingfactor = 0.04;
-  a1 = 0.15 + ((double)rand() / RAND_MAX)*axesscalingfactor;
-  /* a1 --> from 0.19 to 0.23 */
-  b1 = 0.19 + ((double)rand() / RAND_MAX)*axesscalingfactor;
+    /* a1 --> from 0.15 to 0.19 */
+    double axesscalingfactor = 0.04;
+    a1 = 0.15 + ((double)rand() / RAND_MAX)*axesscalingfactor;
+    /* a1 --> from 0.19 to 0.23 */
+    b1 = 0.19 + ((double)rand() / RAND_MAX)*axesscalingfactor;
   
-  /* alpha --> from zero to pi/2 */
-  double alphascalingfactor = M_PI_2;
-  alpha = ((double)rand() / RAND_MAX)*alphascalingfactor;
+    /* alpha --> from zero to pi/2 */
+    double alphascalingfactor = M_PI_2;
+    alpha = ((double)rand() / RAND_MAX)*alphascalingfactor;
   
-  /* xc & yc --> from 0.4 to 0.6 */
-  double x0 = 0.45;
-  double centerscalingfactor = 0.1;
-  xc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
-  yc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+    /* xc & yc --> from 0.4 to 0.6 */
+    double x0 = 0.45;
+    double centerscalingfactor = 0.1;
+    xc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+    yc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+  
+    
+  }
   
   return;
 }
@@ -77,18 +82,12 @@ real impl_func(creal xy[])
 
 /* -------------------------------------------------------------------------- */
 
-void check_area(creal area_n)
+void check_area(creal area_n, cint randominput)
 {
   real area_a;
   
   area_a = M_PI*a1*b1;
   
-  /*fprintf (stdout, "a1 : %23.16f\n", a1);
-  fprintf (stdout, "b1 : %23.16f\n", b1);
-  fprintf (stdout, "alpha : %23.16f\n", alpha);
-  fprintf (stdout, "xc : %23.16f\n", xc);
-  fprintf (stdout, "yc : %23.16f\n", yc);*/
-
   
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"--------------------- C: ellipse check --------------------\n");
@@ -97,14 +96,16 @@ void check_area(creal area_n)
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));
   fprintf (stdout,"relative error  : %23.16e\n",fabs(area_a-area_n)/area_a);
   fprintf (stdout,"-----------------------------------------------------------\n");
-  /*fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
-  fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"analytical area :  1.1215485773315563e-01\n");
-  fprintf (stdout,"numerical  area :  1.1215485773315678e-01\n\n");
-  fprintf (stdout,"absolute error  :  1.1518563880485999e-15\n");
-  fprintf (stdout,"relative error  :  1.0270231814560841e-14\n");
-  fprintf (stdout,"------------------- C: end ellipse check ------------------\n");
-  fprintf (stdout,"-----------------------------------------------------------\n");*/
+  if(!randominput) {
+    fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
+    fprintf (stdout,"-----------------------------------------------------------\n");
+    fprintf (stdout,"analytical area :  1.1215485773315563e-01\n");
+    fprintf (stdout,"numerical  area :  1.1215485773315678e-01\n\n");
+    fprintf (stdout,"absolute error  :  1.1518563880485999e-15\n");
+    fprintf (stdout,"relative error  :  1.0270231814560841e-14\n");
+    fprintf (stdout,"------------------- C: end ellipse check ------------------\n");
+    fprintf (stdout,"-----------------------------------------------------------\n");
+  }
   fprintf (stdout,"\n");
 
   return;
