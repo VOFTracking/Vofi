@@ -13,6 +13,7 @@ FILE *fp;
 extern void check_volume(creal);
 extern real impl_func(creal []);
 extern int cont_line(real *,real *,cint);
+extern void init();
 
 /* ------------------------------------------------------------------- *
  * PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD CC            *
@@ -35,6 +36,8 @@ int main()
   x0[0] = 0.5;
   x0[1] = 0.5; 
   x0[2] = 0.5; 
+   
+  init();
 
   /* get the characteristic value fh of the implicit function */
   fh = vofi_Get_fh(impl_func,x0,h0,ndim0,itrue);

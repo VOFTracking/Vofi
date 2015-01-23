@@ -1,5 +1,6 @@
 PROGRAM SINESURF
 
+  USE SINESURFACE_MOD
   IMPLICIT NONE
   INTEGER, PARAMETER :: NMX = 5, NMY = 5, NMZ = 5 
   INTEGER, PARAMETER :: NDIM = 3, N2D = 2, N3D = 3
@@ -9,7 +10,7 @@ PROGRAM SINESURF
   REAL(8), DIMENSION(NMX,NMY,NMZ) :: cc
   REAL(8), DIMENSION(3) :: xv,xloc
   REAL(8) :: h0,fh,vol_n
-  REAl(8), EXTERNAL :: IMPL_FUNC,VOFI_GET_CC,VOFI_GET_FH
+  REAl(8), EXTERNAL :: VOFI_GET_CC,VOFI_GET_FH
 
   ! *********************************************************************
   ! PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD 
@@ -17,6 +18,8 @@ PROGRAM SINESURF
  
   h0 = H/nx
   itrue = 1
+  
+  CALL INIT()
 
   ! starting point to get fh
   xv(1) = 0.5D0; xv(2) = 0.5D0; xv(3) = 0.5D0;
