@@ -9,17 +9,26 @@ PROGRAM SINESURF
   INTEGER :: i,j,k,itrue
   REAL(8), DIMENSION(NMX,NMY,NMZ) :: cc
   REAL(8), DIMENSION(3) :: xv,xloc
+  CHARACTER(len=32) :: arg
+  LOGICAL :: randominput = .FALSE. 
+
   REAL(8) :: h0,fh,vol_n
   REAl(8), EXTERNAL :: VOFI_GET_CC,VOFI_GET_FH
 
   ! *********************************************************************
   ! PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD 
   ! *********************************************************************
- 
+  DO i = 1, iargc()
+    CALL getarg(i, arg)
+    IF(arg == '-r' .OR. arg == '--randominput') THEN
+      randominput = .TRUE.
+    END IF
+  END DO 
+
   h0 = H/nx
   itrue = 1
   
-  CALL INIT()
+  CALL INIT(randominput)
 
   ! starting point to get fh
   xv(1) = 0.5D0; xv(2) = 0.5D0; xv(3) = 0.5D0;
@@ -54,6 +63,6 @@ PROGRAM SINESURF
   
   vol_n = vol_n*h0*h0*h0
 
-  CALL check_volume(vol_n)
+  CALL check_volume(vol_n, randominput)
 
 END PROGRAM SINESURF

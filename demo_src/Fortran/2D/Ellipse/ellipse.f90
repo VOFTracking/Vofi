@@ -38,38 +38,43 @@ SUBROUTINE INIT_RANDOM_SEED()
 END SUBROUTINE INIT_RANDOM_SEED
 
 
-SUBROUTINE INIT()  
+SUBROUTINE INIT(randominput)  
 
   IMPLICIT NONE
   
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8) :: seed
   REAL(8), PARAMETER :: axesscalingfactor  = 0.04D0
   REAL(8), PARAMETER :: alphascalingfactor  = mypi*0.5D0
   REAL(8), PARAMETER :: centerscalingfactor  = 0.1D0
   REAL(8), PARAMETER :: x0  = 0.45D0
-    
+
   INTRINSIC RANDOM_NUMBER  
-  
-  CALL INIT_RANDOM_SEED()
-  
-  ! a1 --> from 0.15 to 0.19
-  CALL RANDOM_NUMBER(seed) 
-  a1 = 0.15D0 + seed*axesscalingfactor
-  
-  ! b1 --> from 0.19 to 0.23
-  CALL RANDOM_NUMBER(seed)
-  b1 = 0.19D0 + seed*axesscalingfactor
+    
+  IF(randominput .EQV. .TRUE.) THEN
 
-  ! alpha --> from zero to pi/2
-  CALL RANDOM_NUMBER(seed) 
-  alpha = seed*alphascalingfactor;
+    CALL INIT_RANDOM_SEED()
+  
+    ! a1 --> from 0.15 to 0.19
+    CALL RANDOM_NUMBER(seed) 
+    a1 = 0.15D0 + seed*axesscalingfactor
+  
+    ! b1 --> from 0.19 to 0.23
+    CALL RANDOM_NUMBER(seed)
+    b1 = 0.19D0 + seed*axesscalingfactor
 
-  ! xc & yc --> from 0.4 to 0.6 
-  CALL RANDOM_NUMBER(seed)  
-  xc = x0 + seed*centerscalingfactor;
+    ! alpha --> from zero to pi/2
+    CALL RANDOM_NUMBER(seed) 
+    alpha = seed*alphascalingfactor;
 
-  CALL RANDOM_NUMBER(seed)
-  yc = x0 + seed*centerscalingfactor;
+    ! xc & yc --> from 0.4 to 0.6 
+    CALL RANDOM_NUMBER(seed)  
+    xc = x0 + seed*centerscalingfactor;
+
+    CALL RANDOM_NUMBER(seed)
+    yc = x0 + seed*centerscalingfactor;
+
+  END IF
   
 END SUBROUTINE INIT
 
@@ -105,9 +110,10 @@ END FUNCTION IMPL_FUNC
 
 !* -------------------------------------------------------------------------- *
 
-SUBROUTINE CHECK_AREA(areanum)
+SUBROUTINE CHECK_AREA(areanum, randominput)
 
   IMPLICIT NONE
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8), INTENT(IN) :: areanum
   REAL(8) :: areana
 
@@ -123,15 +129,17 @@ SUBROUTINE CHECK_AREA(areanum)
   write(*,102) DABS(areanum-areana)
   write(*,103) DABS(areanum-areana)/areana
   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
-!   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'analytical area :  1.1215485773315563E-01'
-!   write(*,*) 'numerical  area :  1.1215485773315677E-01'
-!   write(*,*) ' '
-!   write(*,*) 'absolute error  :  1.1379786002407855E-15'
-!   write(*,*) 'relative error  :  1.0146494081855289E-14'
-!   write(*,*) '------------------ F: end ellipse check -------------------'
-!   write(*,*) '-----------------------------------------------------------'
+  IF(randominput .EQV. .FALSE.) THEN
+    write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
+    write(*,*) '-----------------------------------------------------------'
+    write(*,*) 'analytical area :  1.1215485773315563E-01'
+    write(*,*) 'numerical  area :  1.1215485773315677E-01'
+    write(*,*) ' '
+    write(*,*) 'absolute error  :  1.1379786002407855E-15'
+    write(*,*) 'relative error  :  1.0146494081855289E-14'
+    write(*,*) '------------------ F: end ellipse check -------------------'
+    write(*,*) '-----------------------------------------------------------'
+  END IF
   write(*,*) ' '
   100 FORMAT(' analytical area : ', ES23.16)
   101 FORMAT(' numerical  area : ', ES23.16)

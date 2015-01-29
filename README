@@ -55,8 +55,6 @@ Build Process
     (to compile only C tests)
     
 [6] make check
-<<<<<<< HEAD
-
     (in demo_src: run all C, Fortran and CPP tests in the temporary 
      directory; in demo_src/C: run only C tests)
      
@@ -66,14 +64,6 @@ Build Process
     A log file is also generated for each test in the C, CPP and Fortran 
     folders where the user can check the integration result in his/her 
     platform and in our computer (for example, cap1_c.log)   
-=======
-    Run all C, Fortran and CPP tests in the temporary directory.
-    A testsuite outcome for C, CPP and Fortran tests is printed on terminal.
-    Only the exit statuses of the test executables are considered when determining the testsuite outcome.
-    A log file is also generated for each test in the C, CPP and Fortran folder where the user can read 
-    the actions have occurred.
-    
->>>>>>> 61e63d4549176cd64e0240f6f7a5076c766eb900
    
 [7] make install
     (if the installing_directory is /usr/local, then libvofi.a 

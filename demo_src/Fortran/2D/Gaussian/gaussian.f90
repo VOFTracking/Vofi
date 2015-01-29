@@ -34,34 +34,37 @@ SUBROUTINE INIT_RANDOM_SEED()
 END SUBROUTINE INIT_RANDOM_SEED
 
 
-SUBROUTINE INIT()  
+SUBROUTINE INIT(randominput)  
 
   IMPLICIT NONE
   
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8) :: seed
   REAL(8), PARAMETER :: scalingfactor  = 0.06D0
-
     
   INTRINSIC RANDOM_NUMBER  
+
+  IF(randominput .EQV. .TRUE.) THEN
   
-  CALL INIT_RANDOM_SEED()
+    CALL INIT_RANDOM_SEED()
 
-  ! yy0 --> from 0.19 to 0.25
-  CALL RANDOM_NUMBER(seed) 
-  yy0 = 0.19D0 + seed*scalingfactor
+    ! yy0 --> from 0.19 to 0.25
+    CALL RANDOM_NUMBER(seed) 
+    yy0 = 0.19D0 + seed*scalingfactor
  
-  ! xx0 --> from 0.511 to 0.561 
-  CALL RANDOM_NUMBER(seed)
-  xx0 = 0.511D0 + seed*scalingfactor
+    ! xx0 --> from 0.511 to 0.561 
+    CALL RANDOM_NUMBER(seed)
+    xx0 = 0.511D0 + seed*scalingfactor
 
-  ! a0 --> from 0.48 to 0.54
-  CALL RANDOM_NUMBER(seed) 
-  a0 = 0.48D0 + seed*scalingfactor;
+    ! a0 --> from 0.48 to 0.54
+    CALL RANDOM_NUMBER(seed) 
+    a0 = 0.48D0 + seed*scalingfactor;
 
-  ! ga --> from 60.00 to 0.60.6 
-  CALL RANDOM_NUMBER(seed)  
-  ga = 60.D0 + seed*scalingfactor;
+    ! ga --> from 60.00 to 0.60.6 
+    CALL RANDOM_NUMBER(seed)  
+    ga = 60.D0 + seed*scalingfactor;
 
+  END IF
   
 END SUBROUTINE INIT
 
@@ -86,13 +89,13 @@ END FUNCTION IMPL_FUNC
 
 !* -------------------------------------------------------------------------- *
 
-SUBROUTINE CHECK_AREA(areanum)
+SUBROUTINE CHECK_AREA(areanum, randominput)
 
   IMPLICIT NONE
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8), INTENT(IN) :: areanum
   REAL(8) :: areana
 
-  !areana = 0.3364089454607542483401167D0
   ! analytical integration with x in [0,1] 
   areana = yy0 + 0.5*a0*SQRT(mypi/ga)*(ERF(SQRT(ga)*(1.-xx0) )-ERF(-SQRT(ga)*xx0));
 
@@ -104,15 +107,17 @@ SUBROUTINE CHECK_AREA(areanum)
   write(*,102) DABS(areanum-areana)
   write(*,103) DABS(areanum-areana)/areana
   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
-!   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'analytical area :  3.3640894546075423E-01'
-!   write(*,*) 'numerical  area :  3.3640894546075717E-01'
-!   write(*,*) ' '
-!   write(*,*) 'absolute error  :  2.9420910152566648E-15'
-!   write(*,*) 'relative error  :  8.7455790190926772E-15'
-!   write(*,*) '------------------ F: end gaussian check ------------------'
-!   write(*,*) '-----------------------------------------------------------'
+  IF(randominput .EQV. .FALSE.) THEN
+    write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
+    write(*,*) '-----------------------------------------------------------'
+    write(*,*) 'analytical area :  3.3640894546075423E-01'
+    write(*,*) 'numerical  area :  3.3640894546075717E-01'
+    write(*,*) ' '
+    write(*,*) 'absolute error  :  2.9420910152566648E-15'
+    write(*,*) 'relative error  :  8.7455790190926772E-15'
+    write(*,*) '------------------ F: end gaussian check ------------------'
+    write(*,*) '-----------------------------------------------------------'
+  END IF
   write(*,*) ' '
   100 FORMAT(' analytical area : ', ES23.16)
   101 FORMAT(' numerical  area : ', ES23.16)

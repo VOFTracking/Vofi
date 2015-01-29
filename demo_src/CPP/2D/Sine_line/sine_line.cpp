@@ -25,21 +25,23 @@ static double d0 = 14.0;
 
 /* -------------------------------------------------------------------------- */
 
-void init()
+void init(cint randominput)
 {
 
-  /* initialize random number generator. */
-  srand(time(0));  
+  if(randominput) {
+    /* initialize random number generator. */
+    srand(time(0));  
   
-  /* a0 --> from 0.45 to 0.55 */
-  double scalingfactor = 0.1;
-  a0 = 0.45 + ((double)rand() / RAND_MAX)*scalingfactor;
-  /* b0 --> from 0.20 to 0.30 */
-  b0 = 0.20 + ((double)rand() / RAND_MAX)*scalingfactor;
-  /* c0 --> from 0.35 to 0.45 */
-  c0 = 0.35 + ((double)rand() / RAND_MAX)*scalingfactor;  
-  /* d0 --> from 13.95 to 14.05 */
-  d0 = 13.95 + ((double)rand() / RAND_MAX)*scalingfactor;
+    /* a0 --> from 0.45 to 0.55 */
+    double scalingfactor = 0.1;
+    a0 = 0.45 + ((double)rand() / RAND_MAX)*scalingfactor;
+    /* b0 --> from 0.20 to 0.30 */
+    b0 = 0.20 + ((double)rand() / RAND_MAX)*scalingfactor;
+    /* c0 --> from 0.35 to 0.45 */
+    c0 = 0.35 + ((double)rand() / RAND_MAX)*scalingfactor;  
+    /* d0 --> from 13.95 to 14.05 */
+    d0 = 13.95 + ((double)rand() / RAND_MAX)*scalingfactor;
+  }
   
   return;
 }
@@ -60,7 +62,7 @@ real impl_func(creal xy[])
 
 //* -------------------------------------------------------------------------- *
 
-void check_area(creal area_n)
+void check_area(creal area_n, cint randominput)
 {
   real area_a;
 
@@ -78,14 +80,16 @@ void check_area(creal area_n)
   cout << "relative error  : " << scientific << setw(23) << setprecision(16) 
        << fabs(area_a-area_n)/area_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-//   cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
-//   cout << "-----------------------------------------------------------" << endl;
-//   cout << "analytical area :  5.0000000000000000e-01" << endl;
-//   cout << "numerical  area :  4.9999999999993749e-01" << endl << endl;
-//   cout << "absolute error  :  6.2505556286396313e-14" << endl;
-//   cout << "relative error  :  1.2501111257279263e-13" << endl;
-//   cout << "----------------- CPP: end sine line check ----------------" << endl;
-//   cout << "-----------------------------------------------------------" << endl; 
+  if(!randominput) {
+    cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
+    cout << "-----------------------------------------------------------" << endl;
+    cout << "analytical area :  5.0000000000000000e-01" << endl;
+    cout << "numerical  area :  4.9999999999993749e-01" << endl << endl;
+    cout << "absolute error  :  6.2505556286396313e-14" << endl;
+    cout << "relative error  :  1.2501111257279263e-13" << endl;
+    cout << "----------------- CPP: end sine line check ----------------" << endl;
+    cout << "-----------------------------------------------------------" << endl; 
+  }
   cout << endl;
 
   return;

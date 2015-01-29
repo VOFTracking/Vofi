@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "ellipse.h"
 
 
 typedef const double creal;
@@ -91,6 +92,19 @@ void check_area(creal area_n, cint randominput)
   
   fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"--------------------- C: ellipse check --------------------\n");
+  fprintf (stdout," * ellipse inside the square [0,1]x[0,1] in a %dX%d grid  *\n", NMX, NMY);
+  fprintf (stdout," * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6   *\n");
+  fprintf (stdout," * PARAMETERS:                                            *\n");
+  fprintf (stdout," * (xc,yc): center of the ellipse;                        *\n");
+  fprintf (stdout," * ALPHA: angle between two axes x' and x;                *\n");                
+  fprintf (stdout," * (a1,b1): semiaxis along the two ellipse axes x' and y' *\n");
+  fprintf (stdout,"-----------------------------------------------------------\n");
+  fprintf (stdout,"a1:    %23.16e\n",a1);
+  fprintf (stdout,"b1:    %23.16e\n",b1);
+  fprintf (stdout,"alpha: %23.16e\n",alpha);
+  fprintf (stdout,"xc:    %23.16e\n",xc);
+  fprintf (stdout,"yc:    %23.16e\n",yc);
+  fprintf (stdout,"-----------------------------------------------------------\n");
   fprintf (stdout,"analytical area : %23.16e\n",area_a);
   fprintf (stdout,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));
@@ -99,10 +113,10 @@ void check_area(creal area_n, cint randominput)
   if(!randominput) {
     fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
     fprintf (stdout,"-----------------------------------------------------------\n");
-    fprintf (stdout,"analytical area :  1.1215485773315563e-01\n");
-    fprintf (stdout,"numerical  area :  1.1215485773315678e-01\n\n");
-    fprintf (stdout,"absolute error  :  1.1518563880485999e-15\n");
-    fprintf (stdout,"relative error  :  1.0270231814560841e-14\n");
+    fprintf (stdout,"analytical area :  1.1215485773315562e-01\n");
+    fprintf (stdout,"numerical  area :  1.1215485773315680e-01\n\n");
+    fprintf (stdout,"absolute error  :  1.1796119636642288e-15\n");
+    fprintf (stdout,"relative error  :  1.0517707279971946e-14\n");
     fprintf (stdout,"------------------- C: end ellipse check ------------------\n");
     fprintf (stdout,"-----------------------------------------------------------\n");
   }

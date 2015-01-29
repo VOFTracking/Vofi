@@ -1,25 +1,35 @@
 #include <cstdio>
 #include <cmath>
+#include <cstring>
 #include "vofi.h"
 #include "sine_line.h"
 
 #define NDIM  3
 #define N2D   2
 
-extern void check_area(creal);
+extern void check_area(creal, cint);
 extern real impl_func(creal []);
-extern void init();
+extern void init(cint);
 
 //* -------------------------------------------------------------------------- *
 //* PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD CC                   *
 //* -------------------------------------------------------------------------- *
 
-int main()
+int main(int argc, char *argv[])
 {
   cint nx=NMX, ny=NMY, ndim0=N2D;
   int i,j,itrue;
   real cc[NMX][NMY],x0[NDIM],xloc[NDIM];
   double h0,fh,area_n;
+  int randominput = 0;  
+  
+  for (int count = 1; count < argc; ++count)
+  {
+    if (!strcmp(argv[count], "-r") || !strcmp(argv[count], "--randominput")) 
+    {
+      randominput = 1;
+    }
+  }
   
 //* -------------------------------------------------------------------------- *
 //* initialization of the color function with local Gauss integration          * 
@@ -34,7 +44,7 @@ int main()
   x0[1] = 0.5; 
   x0[2] = 0.;
   
-  init();
+  init(randominput);
   
   //* get the characteristic value fh of the implicit function *
   fh = vofi_Get_fh(impl_func,x0,h0,ndim0,itrue);
@@ -62,7 +72,7 @@ int main()
   
   area_n = area_n*h0*h0;
 
-  check_area(area_n);
+  check_area(area_n, randominput);
 
   return 0;
 }

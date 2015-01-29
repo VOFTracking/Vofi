@@ -27,27 +27,31 @@ static double yc = 0.44;
 
 /* -------------------------------------------------------------------------- */
 
-void init()
+void init(cint randominput)
 {
 
-  /* initialize random number generator. */
-  srand(time(0));  
+  if(randominput) {
   
-  /* a1 --> from 0.17 to 0.23 */
-  double axesscalingfactor = 0.06;
-  a1 = 0.17 + ((double)rand() / RAND_MAX)*axesscalingfactor;
-  /* a1 --> from 0.27 to 0.33 */
-  b1 = 0.27 + ((double)rand() / RAND_MAX)*axesscalingfactor;
+    /* initialize random number generator. */
+    srand(time(0));  
   
-  /* alpha --> from zero to pi/2 */
-  double alphascalingfactor = M_PI_2;
-  alpha = ((double)rand() / RAND_MAX)*alphascalingfactor;
+    /* a1 --> from 0.17 to 0.23 */
+    double axesscalingfactor = 0.06;
+    a1 = 0.17 + ((double)rand() / RAND_MAX)*axesscalingfactor;
+    /* a1 --> from 0.27 to 0.33 */
+    b1 = 0.27 + ((double)rand() / RAND_MAX)*axesscalingfactor;
   
-  /* xc & yc --> from 0.4 to 0.6 */
-  double x0 = 0.45;
-  double centerscalingfactor = 0.1;
-  xc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
-  yc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+    /* alpha --> from zero to pi/2 */
+    double alphascalingfactor = M_PI_2;
+    alpha = ((double)rand() / RAND_MAX)*alphascalingfactor;
+  
+    /* xc & yc --> from 0.4 to 0.6 */
+    double x0 = 0.45;
+    double centerscalingfactor = 0.1;
+    xc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+    yc = x0 + ((double)rand() / RAND_MAX)*centerscalingfactor;
+    
+  }
   
   return;
 }
@@ -78,7 +82,7 @@ real impl_func(creal xy[])
 
 //* -------------------------------------------------------------------------- *
 
-void check_area(creal area_n)
+void check_area(creal area_n, cint randominput)
 {
   real area_a;
   
@@ -95,14 +99,16 @@ void check_area(creal area_n)
   cout << "relative error  : " << scientific << setw(23) << setprecision(16) 
        << fabs(area_a-area_n)/area_a << endl;
   cout << "-----------------------------------------------------------" << endl;
-//   cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
-//   cout << "-----------------------------------------------------------" << endl;
-//   cout << "analytical area :  2.3999999999999999e-01" << endl;
-//   cout << "numerical  area :  2.3999999999999996e-01" << endl << endl;
-//   cout << "absolute error  :  2.7755575615628914e-17" << endl;
-//   cout << "relative error  :  1.1564823173178715e-16" << endl;
-//   cout << "----------------- CPP: end rectangle check ----------------" << endl;
-//   cout << "-----------------------------------------------------------" << endl; 
+  if(!randominput) {
+    cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
+    cout << "-----------------------------------------------------------" << endl;
+    cout << "analytical area :  2.3999999999999999e-01" << endl;
+    cout << "numerical  area :  2.3999999999999996e-01" << endl << endl;
+    cout << "absolute error  :  2.7755575615628914e-17" << endl;
+    cout << "relative error  :  1.1564823173178715e-16" << endl;
+    cout << "----------------- CPP: end rectangle check ----------------" << endl;
+    cout << "-----------------------------------------------------------" << endl; 
+  }
   cout << endl;
   
   return;

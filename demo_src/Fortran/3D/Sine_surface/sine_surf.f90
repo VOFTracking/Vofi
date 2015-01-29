@@ -34,32 +34,37 @@ SUBROUTINE INIT_RANDOM_SEED()
 END SUBROUTINE INIT_RANDOM_SEED
 
 
-SUBROUTINE INIT()  
+SUBROUTINE INIT(randominput)  
 
   IMPLICIT NONE
   
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8) :: seed
   REAL(8), PARAMETER :: scalingfactor  = 0.05D0
     
   INTRINSIC RANDOM_NUMBER  
   
-  CALL INIT_RANDOM_SEED()
+  IF(randominput .EQV. .TRUE.) THEN
+
+    CALL INIT_RANDOM_SEED()
   
-  !B0 --> from 1.15 to 1.20 
-  CALL RANDOM_NUMBER(seed) 
-  B0 = 1.15D0 + seed*scalingfactor
+    !B0 --> from 1.15 to 1.20 
+    CALL RANDOM_NUMBER(seed) 
+    B0 = 1.15D0 + seed*scalingfactor
   
-  !C1 --> from 1.6 to 1.65
-  CALL RANDOM_NUMBER(seed) 
-  C1 = 1.6D0 + seed*scalingfactor
+    !C1 --> from 1.6 to 1.65
+    CALL RANDOM_NUMBER(seed) 
+    C1 = 1.6D0 + seed*scalingfactor
    
-  !D1 --> from 0.12 to 0.17
-  CALL RANDOM_NUMBER(seed) 
-  D1 = 0.12D0 + seed*scalingfactor
+    !D1 --> from 0.12 to 0.17
+    CALL RANDOM_NUMBER(seed) 
+    D1 = 0.12D0 + seed*scalingfactor
  
-  !E1 --> from 0.15 to 0.25
-  CALL RANDOM_NUMBER(seed) 
-  E1 = 0.15D0 + seed*scalingfactor
+    !E1 --> from 0.15 to 0.25
+    CALL RANDOM_NUMBER(seed) 
+    E1 = 0.15D0 + seed*scalingfactor
+
+  END IF
   
 END SUBROUTINE INIT
 
@@ -85,9 +90,10 @@ END FUNCTION IMPL_FUNC
 
 !* -------------------------------------------------------------------------- *
 
-SUBROUTINE CHECK_VOLUME(volnum)
+SUBROUTINE CHECK_VOLUME(volnum, randominput)
 
   IMPLICIT NONE
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8),INTENT(IN) :: volnum
   REAL(8) :: volana
 
@@ -104,15 +110,17 @@ SUBROUTINE CHECK_VOLUME(volnum)
   write(*,102) DABS(volnum-volana)
   write(*,103) DABS(volnum-volana)/volana
   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
-!   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'analytical volume:  5.0000000000000000E-01'
-!   write(*,*) 'numerical  volume:  4.9999999999999994E-01'
-!   write(*,*) ' '
-!   write(*,*) 'absolute error   :  5.5511151231257827E-17'
-!   write(*,*) 'relative error   :  1.1102230246251565E-16'
-!   write(*,*) '------------- F: end sinusoidal surface check -------------'
-!   write(*,*) '-----------------------------------------------------------'
+  IF(randominput .EQV. .FALSE.) THEN
+    write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
+    write(*,*) '-----------------------------------------------------------'
+    write(*,*) 'analytical volume:  5.0000000000000000E-01'
+    write(*,*) 'numerical  volume:  4.9999999999999994E-01'
+    write(*,*) ' '
+    write(*,*) 'absolute error   :  5.5511151231257827E-17'
+    write(*,*) 'relative error   :  1.1102230246251565E-16'
+    write(*,*) '------------- F: end sinusoidal surface check -------------'
+    write(*,*) '-----------------------------------------------------------'
+  END IF
   write(*,*) ' '
    100 FORMAT(' analytical volume: ', ES23.16)
    101 FORMAT(' numerical  volume: ', ES23.16)

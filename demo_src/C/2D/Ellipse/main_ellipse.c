@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
   x0[1] = 0.5; 
   x0[2] = 0.;
   
+  /* initialize with random values if randominput is equal to 1 */
   init(randominput);
   
   /* get the characteristic value fh of the implicit function */

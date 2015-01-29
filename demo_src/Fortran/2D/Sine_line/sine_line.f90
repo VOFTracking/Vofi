@@ -34,34 +34,37 @@ SUBROUTINE INIT_RANDOM_SEED()
 END SUBROUTINE INIT_RANDOM_SEED
 
 
-SUBROUTINE INIT()  
+SUBROUTINE INIT(randominput)  
 
   IMPLICIT NONE
-  
+
+  LOGICAL, INTENT(IN) :: randominput  
   REAL(8) :: seed
   REAL(8), PARAMETER :: scalingfactor  = 0.1D0
 
-    
   INTRINSIC RANDOM_NUMBER  
+
+  IF(randominput .EQV. .TRUE.) THEN
   
-  CALL INIT_RANDOM_SEED()
+    CALL INIT_RANDOM_SEED()
 
-  ! a0 --> from 0.45 to 0.55
-  CALL RANDOM_NUMBER(seed) 
-  a0 = 0.45D0 + seed*scalingfactor
+    ! a0 --> from 0.45 to 0.55
+    CALL RANDOM_NUMBER(seed) 
+    a0 = 0.45D0 + seed*scalingfactor
  
-  ! b0 --> from 0.20 to 0.30
-  CALL RANDOM_NUMBER(seed)
-  b0 = 0.20D0 + seed*scalingfactor
+    ! b0 --> from 0.20 to 0.30
+    CALL RANDOM_NUMBER(seed)
+    b0 = 0.20D0 + seed*scalingfactor
 
-  ! c0 --> from 0.35 to 0.45 
-  CALL RANDOM_NUMBER(seed) 
-  c0 = 0.35D0 + seed*scalingfactor;
+    ! c0 --> from 0.35 to 0.45 
+    CALL RANDOM_NUMBER(seed) 
+    c0 = 0.35D0 + seed*scalingfactor;
 
-  ! d0 --> from 13.95 to 14.05
-  CALL RANDOM_NUMBER(seed)  
-  d0 = 13.95D0 + seed*scalingfactor;
+    ! d0 --> from 13.95 to 14.05
+    CALL RANDOM_NUMBER(seed)  
+    d0 = 13.95D0 + seed*scalingfactor;
 
+  END IF
   
 END SUBROUTINE INIT
 
@@ -86,9 +89,10 @@ END FUNCTION IMPL_FUNC
 
 !* -------------------------------------------------------------------------- *
 
-SUBROUTINE CHECK_AREA(areanum)
+SUBROUTINE CHECK_AREA(areanum, randominput)
 
   IMPLICIT NONE
+  LOGICAL, INTENT(IN) :: randominput
   REAL(8), INTENT(IN) :: areanum
   REAL(8) :: areana
 
@@ -104,15 +108,17 @@ SUBROUTINE CHECK_AREA(areanum)
   write(*,102) DABS(areanum-areana)
   write(*,103) DABS(areanum-areana)/areana
   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
-!   write(*,*) '-----------------------------------------------------------'
-!   write(*,*) 'analytical area :  5.0000000000000000E-01'
-!   write(*,*) 'numerical  area :  4.9999999999993749E-01'
-!   write(*,*) ' '
-!   write(*,*) 'absolute error  :  6.2505556286396313E-14'
-!   write(*,*) 'relative error  :  1.2501111257279263E-13'
-!   write(*,*) '----------------- F: end sine line check ------------------'
-!   write(*,*) '-----------------------------------------------------------'
+  IF(randominput .EQV. .FALSE.) THEN
+    write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
+    write(*,*) '-----------------------------------------------------------'
+    write(*,*) 'analytical area :  5.0000000000000000E-01'
+    write(*,*) 'numerical  area :  4.9999999999993749E-01'
+    write(*,*) ' '
+    write(*,*) 'absolute error  :  6.2505556286396313E-14'
+    write(*,*) 'relative error  :  1.2501111257279263E-13'
+    write(*,*) '----------------- F: end sine line check ------------------'
+    write(*,*) '-----------------------------------------------------------'
+  END IF
   write(*,*) ' '
   100 FORMAT(' analytical area : ', ES23.16)
   101 FORMAT(' numerical  area : ', ES23.16)

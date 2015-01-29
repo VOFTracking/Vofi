@@ -8,6 +8,8 @@ PROGRAM GAUSSIAN
   INTEGER :: i,j,itrue
   REAL(8), DIMENSION(NMX,NMY) :: cc
   REAL(8), DIMENSION(3) :: xv,xloc
+  CHARACTER(len=32) :: arg
+  LOGICAL :: randominput = .FALSE. 
 
   REAL(8) :: h0,fh,area_n
   REAl(8), EXTERNAL :: VOFI_GET_CC,VOFI_GET_FH
@@ -15,12 +17,18 @@ PROGRAM GAUSSIAN
   ! *********************************************************************
   ! PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD 
   ! *********************************************************************
- 
+  DO i = 1, iargc()
+    CALL getarg(i, arg)
+    IF(arg == '-r' .OR. arg == '--randominput') THEN
+      randominput = .TRUE.
+    END IF
+  END DO
+
   ! grid spacing 
   h0 = H/nx
   itrue = 1
 
-  CALL INIT()
+  CALL INIT(randominput)
 
   ! starting point to get fh
   xv(1) = 0.5D0; xv(2) = 0.5D0; xv(3) = 0.0D0;
@@ -51,6 +59,6 @@ PROGRAM GAUSSIAN
   
   area_n = area_n*h0*h0
 
-  CALL CHECK_AREA(area_n)
+  CALL CHECK_AREA(area_n, randominput)
 
 END PROGRAM GAUSSIAN
