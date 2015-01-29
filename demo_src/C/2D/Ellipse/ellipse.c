@@ -90,15 +90,15 @@ void check_area(creal area_n, cint randominput)
   area_a = M_PI*a1*b1;
   
   
-  fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"--------------------- C: ellipse check --------------------\n");
-  fprintf (stdout," * ellipse inside the square [0,1]x[0,1] in a %dX%d grid  *\n", NMX, NMY);
-  fprintf (stdout," * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6   *\n");
-  fprintf (stdout," * PARAMETERS:                                            *\n");
-  fprintf (stdout," * (xc,yc): center of the ellipse;                        *\n");
-  fprintf (stdout," * ALPHA: angle between two axes x' and x;                *\n");                
-  fprintf (stdout," * (a1,b1): semiaxis along the two ellipse axes x' and y' *\n");
-  fprintf (stdout,"-----------------------------------------------------------\n");
+  fprintf (stdout,"--------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: ellipse check -----------------------------\n");
+  fprintf (stdout," * ellipse inside the square [%.1f,%.1f]x[%.1f,%.1f] in a %dX%d grid   *\n", X0, X0+H, Y0, Y0+H, NMX, NMY);
+  fprintf (stdout," * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6            *\n");
+  fprintf (stdout," * PARAMETERS:                                                     *\n");
+  fprintf (stdout," * (a1,b1): semiaxis along the two ellipse axes x' and y'          *\n");
+  fprintf (stdout," * ALPHA: angle between two axes x' and x;                         *\n");                
+  fprintf (stdout," * (xc,yc): center of the ellipse;                                 *\n");
+  fprintf (stdout,"--------------------------------------------------------------------\n");
   fprintf (stdout,"a1:    %23.16e\n",a1);
   fprintf (stdout,"b1:    %23.16e\n",b1);
   fprintf (stdout,"alpha: %23.16e\n",alpha);
