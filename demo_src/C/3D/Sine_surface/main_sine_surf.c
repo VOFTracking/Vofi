@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include "vofi.h"
 #include "sine_surf.h"
 
@@ -7,21 +8,30 @@
 #define N2D   2
 #define N3D   3
 
-extern void check_volume(creal);
+extern void check_volume(creal, cint);
 extern real impl_func(creal []);
-extern int cont_line(real *,real *,cint);
-extern void init();
+extern void init(cint);
 
 /* -------------------------------------------------------------------------- *
  * PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD                      *
  * -------------------------------------------------------------------------- */
 
-int main()
+int main(int argc, char *argv[])
 {
   cint nx=NMX,ny=NMY,nz=NMZ,ndim0=N3D;
   int i,j,k,itrue;
   real cc[NMX][NMY][NMZ],x0[NDIM],xloc[NDIM];
   double h0,fh,vol_n;
+  int randominput = 0;  
+  int count;
+  
+  for (count = 1; count < argc; ++count)
+  {
+    if (!strcmp(argv[count], "-r") || !strcmp(argv[count], "--randominput")) 
+    {
+      randominput = 1;
+    }
+  }
 
 /* -------------------------------------------------------------------------- *
  * initialization of the color function with local Gauss integration          * 
@@ -35,7 +45,7 @@ int main()
   x0[1] = 0.5; 
   x0[2] = 0.5; 
   
-  init();
+  init(randominput);
 
   /* get the characteristic value fh of the implicit function */
   fh = vofi_Get_fh(impl_func,x0,h0,ndim0,itrue);
@@ -66,7 +76,7 @@ int main()
   
   vol_n = vol_n*h0*h0*h0;
 
-  check_volume(vol_n);
+  check_volume(vol_n, randominput);
 
   return 0;
 }
