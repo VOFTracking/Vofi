@@ -10,8 +10,8 @@
  * at both endpoints)                                                         *
  * -------------------------------------------------------------------------- */
 
-int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal 
-			   sidedir[],creal h0)
+int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],
+			        creal sidedir[],creal h0)
 {
   int i,f_iat, ftmp;
   real xs[NDIM],dh,f0,f1,fs,ft;
@@ -42,6 +42,7 @@ int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal
     ftmp = f_iat;
     if (fs >= ft)
       f_iat = 0;
+
     /* extra check for very high curvature and multiple intersections */
     if (!f_iat) { 
     for (i=0; i<NDIM; i++)
@@ -66,8 +67,8 @@ int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],creal
  * f_iat in the previous function                                             *
  * -------------------------------------------------------------------------- */
 
-chk_data vofi_check_face_consistency(integrand impl_func,creal fv[],creal x0[],creal 
-				sdir[],creal tdir[],creal h0)
+chk_data vofi_check_face_consistency(integrand impl_func,creal fv[],creal x0[],
+				     creal sdir[],creal tdir[],creal h0)
 {
   int i,iss,ist,iat;
   real x1[NDIM],xs[NDIM],xt[NDIM],fl[NVER],f0,fs,ft,dh0;

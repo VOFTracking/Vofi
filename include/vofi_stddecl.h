@@ -76,9 +76,8 @@ typedef struct {
 } dir_data;
 
 /* function prototypes */
-/* */
 
-/** Fortran APIs */
+/* Fortran APIs */
 real EXPORT(vofi_get_fh)(integrand,creal [],creal *,cint *,cint *); 
 real EXPORT(vofi_get_cc)(integrand,creal [],creal *,creal *,cint *);
 

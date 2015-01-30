@@ -5,11 +5,10 @@
 The  VOFI library initializes the volume fraction scalar field 
 in a computational mesh with cubic cells given an analytic expression 
 f(x,y,z) for the interface. The implicit function f is specified
-by the user, the interface is located where f(x,y,z) = 0 and 
-the reference phase where f(x,y,z) < 0. 
+by the user, the interface is the zero level set of the function,
+f(x,y,z) = 0, and the reference phase is located where f(x,y,z) < 0. 
 Each routine in the directory 'src' contains a brief description
 of what it does and of the I/O variables. 
-
 
 
 vofi-specific configuration options
@@ -25,17 +24,17 @@ Build Process
 [2] Choose a local (e.g. /home/username) or system (e.g. /usr/local)
     destination for '/installing_directory' which is write-able
 
-[3] The default c-compiler flags are 
+[3] The default c-compiler flags are: 
     "-O2 -fomit-frame-pointer -ffast-math -Wall". 
     The user can change the default value by setting the environment 
     variable CFLAGS 
     (e.g. "export CFLAGS=-g" to compile the library in debug mode)
     
 [4] ./configure --prefix=/installing_directory
-    By default, a shared library is built on platforms that support it;
-    the user can specify modified forms of the configure flags 
-    "--enable-shared" and "--enable-static" to choose whether shared 
-    and/or static libraries are built
+    (by default, a shared library is built on platforms that support it;
+     the user can specify modified forms of the configure flags 
+     "--enable-shared" and "--enable-static" to choose whether shared 
+     and/or static libraries are built)
 
 [5] make all
     (to build the library and to compile tests) 
@@ -56,40 +55,33 @@ Build Process
     
 [6] make check
     (in demo_src: run all C, Fortran and CPP tests in the temporary 
-     directory; in demo_src/C: run only C tests)
-     
-    A testsuite outcome for C, CPP and Fortran tests is printed both on 
-    terminal and in the file test-suite.log, containing only the summary 
-    of the exit status of each executable.
-    A log file is also generated for each test in the C, CPP and Fortran 
-    folders where the user can check the integration result in his/her 
-    platform and in our computer (for example, cap1_c.log)   
+     directory; in demo_src/C: run only C tests.
+     A testsuite outcome for C, CPP and Fortran tests is printed both on 
+     terminal and in the file test-suite.log, containing only the summary 
+     of the exit status of each executable.
+     A log file is also generated for each test in the C, CPP and Fortran 
+     folders where the user can check the integration result in his/her 
+     platform and in our computer, for example the file cap1_c.log)   
    
 [7] make install
-    (if the installing_directory is /usr/local, then libvofi.a 
-    (or libvofi.so) will be located in /usr/local/lib64, vofi.h in 
-    /usr/local/include and the demo executables in /usr/local/bin)
+    (if the installing_directory is /usr/local, then libvofi.a, 
+     or libvofi.so, will be located in /usr/local/lib64, vofi.h in 
+     /usr/local/include and the demo executables in /usr/local/bin)
 
 [8] make installcheck
-    Run all C, Fortran and CPP tests with the installed version of the 
-    library. The output of each test is printed on terminal together 
-    with the results obtained in our computer 
-
-[8] make installcheck
-    Run all C, Fortran and CPP tests in the install directory. The output of each test is printed
-    on terminal to compare the results with the right ones. 
+    (run all C, Fortran and CPP tests with the installed version of the 
+     library. The output of each test is printed on terminal together 
+     with the results obtained in our computer )
 
 Requirements
 ------------
 
-The vofi library has no particular requirement other than a 
-reasonably modern C, Fortran and C++ compiler  
-
+The vofi library has no particular requirement other than  
+reasonably modern C, Fortran and C++ compilers  
 
 
 Brief description of the files and directories in the distribution
 ==================================================================
-
 
 
 Files in the top directory
@@ -99,7 +91,6 @@ Files in the top directory
 configure.ac: file to generate the configure script by autoconf
 makefile.am:  file to generate makefile.in by automake
 README:       this file
-
 
 The other files:
 ----------------
@@ -112,14 +103,13 @@ test-driver   AUTHORS       COPYING
 have been generated automatically by the GNU autotools.  
 
 
-
 Subirectories of the top directory
 ==================================
 
 
 demo_src   include   m4   src
 
- 
+
 Subdirectory demo_src:
 ----------------------
 
@@ -172,11 +162,11 @@ Subdirectory include:
 
 It contains three include files:
 
-GL.h   stddecl.h   vofi.h
+vofi_GL.h   vofi_stddecl.h   vofi.h
 
-GL.h: it contains nodes and weights for the Gauss-Legendre's integration
+vofi_GL.h: it contains nodes and weights for the Gauss-Legendre's integration
 
-stddecl.h: it contains several declarations used by the library routines
+vofi_stddecl.h: it contains several declarations used by the library routines
 
 vofi.h: it contains the functions prototype and should be included by
         the user when calling the VOFI routines
@@ -189,10 +179,12 @@ It contains the Libtool macro files:
 
 libtool.m4   lt~obsolete.m4   ltoptions.m4   ltsugar.m4   ltversion.m4
 
-These macro processor files are used toghther with aclocal.m4 by the GNU autotools (aclocal, libtoolize and autoconf)
-to generate the configure script (configure). During configuration, the libtool script is generated by config.status
-and ltmain.sh files. The libtool is the invoked as needed at run time by the make command as a wrapper around compilers,
-linkers, install and cleanup programs.
+These macro processor files are used toghther with aclocal.m4 by the GNU 
+autotools (aclocal, libtoolize and autoconf) to generate the configure 
+script (configure). During configuration, the libtool script is generated 
+by config.status and ltmain.sh files. The libtool is then invoked as needed 
+at run time by the make command as a wrapper around compilers, linkers, 
+install and cleanup programs.
 
 
 Subdirectory src:
@@ -217,16 +209,15 @@ getcc.c: driver to compute the integration limits and the volume fraction
 
 (3)
 getdirs.c: it checks if the cells is either full or empty, if not
-           it determines the primary, secondary and tertiary
-           coordinate directions
+           it determines the main, second and third coordinate directions
 
 (4)
 getfh.c: it computes the characteristic function value fh
 
 (5)
 getintersections.c: it contains two functions to compute the interface
-                    intersection(s) with a cell side and inside a face;
-                    these are the internal/external limits of integration
+                    intersection(s) with a cell side and inside a face,
+                    these are internal/external limits of integration
 
 (6)
 getlimits.c: it subdivides the side along the secondary or tertiary
@@ -235,7 +226,7 @@ getlimits.c: it subdivides the side along the secondary or tertiary
 
 (7)
 getmin.c: it contains two functions to compute the function minimum 
-          in a given segment and in a cell face, the search is
+          either in a given segment or in a cell face, the search is
           stopped if a sign change is detected 
 
 (8)
@@ -247,4 +238,4 @@ integrate.c: it contains two functions to compute the normalized cut
 
 (10)
 interface.c: it contains two functions to call from Fortran the
-             coresponding C functions
+             corresponding C functions

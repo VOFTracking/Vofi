@@ -12,7 +12,7 @@
  * -------------------------------------------------------------------------- */
 
 int vofi_get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
-	       creal sdir[],creal tdir[],creal h0,cint stdir)
+	            creal sdir[],creal tdir[],creal h0,cint stdir)
 {
   int i,j,k,iv,nsub,nvp,nvn;
   real fv[NVER],x1[NDIM],x2[NDIM],fe[NEND],ds,ls;
@@ -68,7 +68,8 @@ int vofi_get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
 	if (fvga. iat != 0)
 	  xfsa = vofi_get_face_min(impl_func,x1,sdir,tdir,fvga,h0);
 	if (xfsa.iat != 0)
-	  vofi_get_face_intersections(impl_func,xfsa,x1,lim_intg,sdir,tdir,h0,&nsub);
+	  vofi_get_face_intersections(impl_func,xfsa,x1,lim_intg,sdir,tdir,h0,
+                                      &nsub);
 	/* DEBUG 5 */
 
       } 

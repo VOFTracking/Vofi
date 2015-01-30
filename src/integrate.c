@@ -12,7 +12,7 @@
  * -------------------------------------------------------------------------- */
 
 double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal 
-		pdir[],creal sdir[],creal h0,cint nintsub,cint nintpt)
+                     pdir[],creal sdir[],creal h0,cint nintsub,cint nintpt)
 {
   int i,ns,k,npt,cut_rect;
   cint true_sign = 1;
@@ -41,7 +41,7 @@ double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
     if (fe[0]*fe[1] <= 0.)
       cut_rect = 1;        
     
-    if (!cut_rect) {                     /* no interface: full/empty rectangle */
+    if (!cut_rect) {                    /* no interface: full/empty rectangle */
       if (fe[0] < 0.0)
 	area += ds*h0; 
       /* DEBUG 2 */
@@ -131,9 +131,9 @@ double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
  * OUTPUT: vol: normalized value of the cut volume or 3D volume fraction      *
  * -------------------------------------------------------------------------- */
 
-double vofi_get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal 
-		  pdir[],creal sdir[],creal tdir[],creal h0,cint nextsub,
-		  cint nintpt)
+double vofi_get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],
+		       creal pdir[],creal sdir[],creal tdir[],creal h0,
+		       cint nextsub,cint nintpt)
 {
   int i,ns,k,nexpt,cut_hexa,f_iat,nintsub;
   cint stdir=2,max_iter=50;
@@ -223,8 +223,10 @@ double vofi_get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],creal
 	xis = cs + 0.5*ds*(*ptexx);
 	for (i=0;i<NDIM;i++) 
 	  x1[i] = x0[i] + tdir[i]*xis;
-	nintsub = vofi_get_limits(impl_func,x1,int_lim_intg,pdir,sdir,tdir,h0,stdir);
-	area_n = vofi_get_area(impl_func,x1,int_lim_intg,pdir,sdir,h0,nintsub,nintpt);
+	nintsub = vofi_get_limits(impl_func,x1,int_lim_intg,pdir,sdir,tdir,h0,
+                                  stdir);
+	area_n = vofi_get_area(impl_func,x1,int_lim_intg,pdir,sdir,h0,nintsub,
+                               nintpt);
 	/* DEBUG 4 */
 
  	GL_1D += (*ptexw)*area_n;

@@ -13,8 +13,8 @@
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],creal dir[], 
-		 creal s0,cint f_sign,cint max_iter)
+min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],
+                              creal dir[],creal s0,cint f_sign,cint max_iter)
 {
   int i,j,iter,not_conv,igold,iseca;
   real xs[NDIM],fs,fu,ft,fv,fa,fb,p,q,r;
@@ -67,7 +67,6 @@ min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],creal di
     sc = 0.5*(sa + sb);
     tol = EPS_M*fabs(ss) + EPS_LOC;
     t2 = 2.0*tol;
-
     /* DEBUG 2 */
 
     /* check if the stopping criterion is satisfied */
@@ -161,7 +160,6 @@ min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],creal di
 	else if (fu <= fv || sv == ss || sv == st)
 	  { CPSF(sv,su,fv,fu); }
       }
-
       /* DEBUG 7 */
 
       /* every other golden-section step, check a linear extrapolation step */
@@ -252,8 +250,8 @@ min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],creal di
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data vofi_get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdir[], 
-                      chk_data ivga,creal h0)
+min_data vofi_get_face_min(integrand impl_func,creal x0[],creal sdir[],
+                           creal tdir[],chk_data ivga,creal h0)
 {
   int i,not_conv,iter,k,ipt,iss;
   cint max_iter = 50, max_iter_line = 50; 
@@ -326,7 +324,8 @@ min_data vofi_get_face_min(integrand impl_func,creal x0[],creal sdir[],creal tdi
   while (not_conv  && iter < max_iter) {                    /* iterative loop */
     /* DEBUG 1 */
 
-    xfsa = vofi_get_segment_min(impl_func,fe,xs0,nmdr,ss0,ivga.iat,max_iter_line); 
+    xfsa = vofi_get_segment_min(impl_func,fe,xs0,nmdr,ss0,ivga.iat,
+                                max_iter_line); 
 
     for (i=0;i<NDIM;i++)                    
       xs0[i] = xfsa.xval[i];

@@ -17,7 +17,7 @@
  * -------------------------------------------------------------------------- */
 
 dir_data vofi_get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
-	      real tdir[],creal h0,creal fh,cint ndim0)
+	               real tdir[],creal h0,creal fh,cint ndim0)
 {
   int i,j,k,m,n,np1,np0,nmax,kmax,jt,js,jp,npt_with_grad;
   int cpos[NDIM],cneg[NDIM];
@@ -109,7 +109,7 @@ dir_data vofi_get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
     for (n=0;n<NDIM;n++)
       gradf_ave[n] = fabs(gradf_ave[n]);  
 
-    /* get primary, secondary, tertiary directions */
+    /* get main, second, and third directions */
     jp = 0; js = 1; jt = 2; 
     if (gradf_ave[1] > gradf_ave[0]) {
       jp = 1; js = 0;

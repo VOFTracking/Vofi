@@ -11,8 +11,8 @@
  * OUTPUT: sz: length of the segment where f is negative                      *
  * -------------------------------------------------------------------------- */
 
-real vofi_get_segment_zero(integrand impl_func,creal fe[],creal x0[],creal dir[], 
-		      creal s0,cint f_sign)
+real vofi_get_segment_zero(integrand impl_func,creal fe[],creal x0[],
+                           creal dir[],creal s0,cint f_sign)
 {
   int not_conv,iss,i,iter;
   cint max_iter=25;

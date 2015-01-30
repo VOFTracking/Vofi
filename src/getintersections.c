@@ -11,7 +11,7 @@
  * -------------------------------------------------------------------------- */
 
 void vofi_get_side_intersections(integrand impl_func,real fe[],creal x0[],real 
-		       lim_intg[],creal stdir[],creal h0,int_cpt nsub)
+		                 lim_intg[],creal stdir[],creal h0,int_cpt nsub)
 {
   int f_iat; 
   cint true_sign=1,max_iter=50;   
@@ -62,8 +62,9 @@ void vofi_get_side_intersections(integrand impl_func,real fe[],creal x0[],real
  * start of new subdivisions                                                  *
  * -------------------------------------------------------------------------- */
 
-void vofi_get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],real 
-	      lim_intg[],creal sdir[],creal tdir[],creal h0,int_cpt nsub)
+void vofi_get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],
+                                 real lim_intg[],creal sdir[],creal tdir[],
+                                 creal h0,int_cpt nsub)
 {
   int i,k,iter,js,jt,not_conv,ipt,ist,f_iat;
   cint max_iter = 50;
@@ -100,7 +101,6 @@ void vofi_get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],re
     pt2[js] = pt0[js] + ds0;
   } 
   /* DEBUG 1 */
-
 
   /* get zero or boundary point pt1 along secondary direction with ss -> 0 */
   ss0 = pt0[js] - x0[js];    
