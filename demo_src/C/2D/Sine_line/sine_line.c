@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "sine_line.h"
 
 typedef const double creal;
 typedef const int cint;
@@ -67,8 +68,16 @@ void check_area(creal area_n, cint randominput)
   /* analytical integration with x in [0,1]  */
   area_a = a0 + b0*(-cos((c0 + 1./d0)*M_PI) + cos(M_PI/d0))/(c0*M_PI);
 
+  fprintf (stdout,"------------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: sine line check -------------------------------\n");
+  fprintf (stdout," * sinusoidal line in the square [%.1f,%.1f]x[%.1f,%.1f] in a %dX%d grid   *\n", X0, X0+H, Y0, Y0+H, NMX, NMY);
+  fprintf (stdout," * f(x,y) = y - b0*sin(c0 pi x+ pi/d0) - a0                            *\n");
+  fprintf (stdout,"------------------------------------------------------------------------\n");
+  fprintf (stdout,"a0:    %23.16e\n",a0);
+  fprintf (stdout,"b0:    %23.16e\n",b0);
+  fprintf (stdout,"c0:    %23.16e\n",c0);
+  fprintf (stdout,"d0:    %23.16e\n",d0);
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"-------------------- C: sine line check -------------------\n");
   fprintf (stdout,"analytical area : %23.16e\n",area_a);
   fprintf (stdout,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));

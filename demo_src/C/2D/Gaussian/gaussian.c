@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-
+#include "gaussian.h"
 
 typedef const double creal;
 typedef const int cint;
@@ -71,8 +71,16 @@ void check_area(creal area_n, cint randominput)
   /* analytical integration with x in [0,1]  */
   area_a = yy0 + 0.5*a0*sqrt(M_PI/ga)*(erf(sqrt(ga)*(1.-xx0) )-erf(-sqrt(ga)*xx0));
   
-  fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"-------------------- C: gaussian check --------------------\n");
+  fprintf (stdout,"----------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: gaussian check ------------------------------\n");
+  fprintf (stdout," * gaussian line in the square [%.1f,%.1f]x[%.1f,%.1f] in a %dX%d grid   *\n", X0, X0+H, Y0, Y0+H, NMX, NMY);
+  fprintf (stdout," * f(x,y) = y - yy0 - a0 exp[-ga (x - xx0)^2]                        *\n");
+  fprintf (stdout,"----------------------------------------------------------------------\n");
+  fprintf (stdout,"yy0:   %23.16e\n",yy0);
+  fprintf (stdout,"xx0:   %23.16e\n",xx0);
+  fprintf (stdout,"a0:    %23.16e\n",a0);
+  fprintf (stdout,"ga:    %23.16e\n",ga);
+  fprintf (stdout,"--------------------------------------------------------------------\n");
   fprintf (stdout,"analytical area : %23.16e\n",area_a);
   fprintf (stdout,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));
@@ -81,10 +89,10 @@ void check_area(creal area_n, cint randominput)
   if(!randominput) {
     fprintf (stdout,"with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2\n");
     fprintf (stdout,"-----------------------------------------------------------\n");
-    fprintf (stdout,"analytical area :  3.3640894546075423e-01\n");
+    fprintf (stdout,"analytical area :  3.3640894546075428e-01\n");
     fprintf (stdout,"numerical  area :  3.3640894546075722e-01\n\n");
-    fprintf (stdout,"absolute error  :  2.9976021664879227e-15\n");
-    fprintf (stdout,"relative error  :  8.9105899439812180e-15\n");
+    fprintf (stdout,"absolute error  :  2.9420910152566648e-15\n");
+    fprintf (stdout,"relative error  :  8.7455790190926756e-15\n");
     fprintf (stdout,"------------------ C: end gaussian check ------------------\n");
     fprintf (stdout,"-----------------------------------------------------------\n");
   }

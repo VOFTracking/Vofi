@@ -73,8 +73,17 @@ void check_volume(creal vol_n, cint randominput)
 
   vol_a = a0 + (b0/(c1*M_PI*c1*M_PI))*(cos(d1*M_PI) - cos((d1+c1)*M_PI))*(cos(e1*M_PI) - cos((e1+c1)*M_PI)); 
 
+  fprintf (stdout,"--------------------------------------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: sinusoidal surface check ------------------------------------------------\n");
+  fprintf (stdout," * sinusoidal surface inside the cube in the cube [%.1f,%.1f]x[%.1f,%.1f]x[%.1f,%.1f] in a %dX%dX%d grid  *\n", X0, X0+H, Y0, Y0+H, Z0, Z0+H, NMX, NMY, NMZ);
+  fprintf (stdout," * f(x,y,z) = z - a0 - b0*sin(c1*pi*x + pi*d1)*sin(c1*pi*x + pi*e1)                              *\n");
+  fprintf (stdout,"--------------------------------------------------------------------------------------------------\n");
+  fprintf (stdout,"a0:    %23.16e\n",a0);
+  fprintf (stdout,"b0:    %23.16e\n",b0);
+  fprintf (stdout,"c1:    %23.16e\n",c1);
+  fprintf (stdout,"d1:    %23.16e\n",d1);
+  fprintf (stdout,"e1:    %23.16e\n",e1);
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"--------------- C: sinusoidal surface check ---------------\n");
   fprintf (stdout,"analytical volume: %23.16e\n",vol_a);
   fprintf (stdout,"numerical  volume: %23.16e\n\n",vol_n);
   fprintf (stdout,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));

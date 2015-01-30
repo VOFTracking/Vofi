@@ -87,10 +87,10 @@ void check_area(creal area_n, cint randominput)
   if(!randominput) {
     cout << "with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2" << endl;
     cout << "-----------------------------------------------------------" << endl;
-    cout << "analytical area :  3.3640894546075423e-01" << endl;
+    cout << "analytical area :  3.3640894546075428e-01" << endl;
     cout << "numerical  area :  3.3640894546075717e-01" << endl << endl;
-    cout << "absolute error  :  2.9420910152566648e-15" << endl;
-    cout << "relative error  :  8.7455790190926772e-15" << endl;
+    cout << "absolute error  :  2.8865798640254070e-15" << endl;
+    cout << "relative error  :  8.5805680942041349e-15" << endl;
     cout << "----------------- CPP: end gaussian check -----------------" << endl;
     cout << "-----------------------------------------------------------" << endl;
   }

@@ -110,11 +110,11 @@ SUBROUTINE CHECK_AREA(areanum, randominput)
   IF(randominput .EQV. .FALSE.) THEN
     write(*,*) 'with Intel i7 3.4 GHz + Linux openSUSE 13.1 + gcc 4.8.1 -O2'
     write(*,*) '-----------------------------------------------------------'
-    write(*,*) 'analytical area :  3.3640894546075423E-01'
+    write(*,*) 'analytical area :  3.3640894546075428E-01'
     write(*,*) 'numerical  area :  3.3640894546075717E-01'
     write(*,*) ' '
-    write(*,*) 'absolute error  :  2.9420910152566648E-15'
-    write(*,*) 'relative error  :  8.7455790190926772E-15'
+    write(*,*) 'absolute error  :  2.8865798640254070E-15'
+    write(*,*) 'relative error  :  8.5805680942041349E-15'
     write(*,*) '------------------ F: end gaussian check ------------------'
     write(*,*) '-----------------------------------------------------------'
   END IF

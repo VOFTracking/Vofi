@@ -85,8 +85,21 @@ void check_area(creal area_n, cint randominput)
   
   area_a = 4.*a1*b1;
 
+  fprintf (stdout,"----------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: rectangle check -----------------------------\n");
+  fprintf (stdout," * rectangle inside the square [%.1f,%.1f]x[%.1f,%.1f] in a %dX%d grid   *\n", X0, X0+H, Y0, Y0+H, NMX, NMY);
+  fprintf (stdout," * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6              *\n");
+  fprintf (stdout," * PARAMETERS:                                                       *\n");
+  fprintf (stdout," * (a1,b1): half sides along the local x' and y' axes                *\n");
+  fprintf (stdout," * ALPHA: angle between two axes x' and x;                           *\n");                
+  fprintf (stdout," * (xc,yc): center of the rectangle;                                 *\n");
+  fprintf (stdout,"----------------------------------------------------------------------\n");
+  fprintf (stdout,"a1:    %23.16e\n",a1);
+  fprintf (stdout,"b1:    %23.16e\n",b1);
+  fprintf (stdout,"alpha: %23.16e\n",alpha);
+  fprintf (stdout,"xc:    %23.16e\n",xc);
+  fprintf (stdout,"yc:    %23.16e\n",yc);
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"-------------------- C: rectangle check -------------------\n");
   fprintf (stdout,"analytical area : %23.16e\n",area_a);
   fprintf (stdout,"numerical  area : %23.16e\n\n",area_n);
   fprintf (stdout,"absolute error  : %23.16e\n",fabs(area_a-area_n));

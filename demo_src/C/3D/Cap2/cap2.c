@@ -10,7 +10,7 @@ typedef double real;
 
 /* -------------------------------------------------------------------------- *
  * DESCRIPTION (reference phase where f(x,y,z) < 0):                          *
- * ellipsoidal cap inside the domain [-1,1]x[0,1]x[0,1]                       *
+ * ellipsoidal cap inside the domain [-1,1]x[0,2]x[0,2]                       *
  * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6                       *
  * f(x,y,z) = f(x,y) + (z-ZC)^2/C2                                            *
  * INPUT PARAMETERS:                                                          *
@@ -53,8 +53,24 @@ void check_volume(creal vol_n)
   h0 = C1 + ZC;
   vol_a = MYPI*A1*B1*h0*h0*(1. - h0/(3.*C1))/C1;
 
+  fprintf (stdout,"------------------------------------------------------------------------------------\n");
+  fprintf (stdout,"--------------------- C: cap check (2 cell) ----------------------------------------\n");
+  fprintf (stdout," * ellipsoidal cap inside the cube [%.1f,%.1f]x[%.1f,%.1f]x[%.1f,%.1f] in a %dX%dX%d grid  *\n", X0, X0+H, Y0, Y0+H, Z0, Z0+H, NMX, NMY, NMZ);
+  fprintf (stdout," * f(x,y) = c1*x^2 + c2*y^2 + c3*x*y + c4*x + c5*y - c6                            *\n");
+  fprintf (stdout," * f(x,y,z) = f(x,y) + (z-ZC)^2/C2                                                 *\n");
+  fprintf (stdout," * PARAMETERS:                                                                     *\n");
+  fprintf (stdout," * (A1,B1,C1): semiaxis along the three ellipsoid (local) axes: x',y',z'           *\n");
+  fprintf (stdout," * ALPHA: angle between two axes x' and x (in the x-y plane);                      *\n");                
+  fprintf (stdout," * (XC,YC,ZC) center of the ellipsoid;                                             *\n");
+  fprintf (stdout,"------------------------------------------------------------------------------------\n");
+  fprintf (stdout,"a1:    %23.16e\n",A1);
+  fprintf (stdout,"b1:    %23.16e\n",B1);
+  fprintf (stdout,"b1:    %23.16e\n",C1);
+  fprintf (stdout,"alpha: %23.16e\n",ALPHA);
+  fprintf (stdout,"xc:    %23.16e\n",XC);
+  fprintf (stdout,"yc:    %23.16e\n",YC);
+  fprintf (stdout,"zc:    %23.16e\n",ZC);
   fprintf (stdout,"-----------------------------------------------------------\n");
-  fprintf (stdout,"------------------ C: cap check (2 cells) -----------------\n");
   fprintf (stdout,"analytical volume: %23.16e\n",vol_a);
   fprintf (stdout,"numerical  volume: %23.16e\n\n",vol_n);
   fprintf (stdout,"absolute error   : %23.16e\n",fabs(vol_a-vol_n));
