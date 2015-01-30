@@ -17,6 +17,8 @@ LDADD                 = $(abs_top_builddir)/src/libvofi.la
 AM_CPPFLAGS           = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS            = -rpath $(libdir)
 
+DISTCLEANFILES = ellipse_mod.mod  gaussian_mod.mod  rectangle_mod.mod  sineline_mod.mod  sinesurface_mod.mod
+
 installcheck:
 	@echo ""
 	@echo "*************************************************************"

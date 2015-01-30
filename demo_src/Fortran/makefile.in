@@ -549,6 +549,7 @@ sphere_f_SOURCES = ./3D/Sphere/sphere.f90 ./3D/Sphere/main_sphere.f90
 LDADD = $(abs_top_builddir)/src/libvofi.la 
 AM_CPPFLAGS = -I$(abs_top_srcdir)/include 
 AM_LDFLAGS = -rpath $(libdir)
+DISTCLEANFILES = ellipse_mod.mod  gaussian_mod.mod  rectangle_mod.mod  sineline_mod.mod  sinesurface_mod.mod
 all: all-am
 
 .SUFFIXES:
@@ -1134,6 +1135,7 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
