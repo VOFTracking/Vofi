@@ -10,7 +10,6 @@ f(x,y,z) = 0, and the reference phase is located where f(x,y,z) < 0.
 Each routine in the directory 'src' contains a brief description
 of what it does and of the I/O variables. 
 
-
 vofi-specific configuration options
 ======================================
 
@@ -56,7 +55,7 @@ Build Process
 [6] make check
     (in demo_src: run all C, Fortran and CPP tests in the temporary 
      directory; in demo_src/C: run only C tests.
-     A testsuite outcome for C, CPP and Fortran tests is printed both on 
+     A tests uite outcome for C, CPP and Fortran tests is printed both on 
      terminal and in the file test-suite.log, containing only the summary 
      of the exit status of each executable.
      A log file is also generated for each test in the C, CPP and Fortran 
@@ -72,6 +71,21 @@ Build Process
     (run all C, Fortran and CPP tests with the installed version of the 
      library. The output of each test is printed on terminal together 
      with the results obtained in our computer )
+
+[9] a few routines can run with random input parameters with a seed 
+    based on the CPU clock, in demo_src/C these are the following 
+    five executables: 
+    ellipse_c, gaussian_c, rectangle_c, sine_line_c, sine_surf_c. 
+
+    To run the ellipse test with static parameters type 
+    ./ellipse_c
+
+    while with random parameters type one of the two
+    ./ellipse_c -r 
+    ./ellipse_c --randominput
+
+    The same approach applies also to the corresponding executables in 
+    demo_src/CPP and demo_src/Fortran
 
 Requirements
 ------------
