@@ -9,6 +9,12 @@ f(x,y,z) = 0, and the reference phase is located where f(x,y,z) < 0.
 Each routine in the directory 'src' contains a brief description
 of what it does and of the I/O variables. 
 
+The algorithm implemented in the library has been described in the following papers:
+
+[1] S Bnà, S Manservisi, R Scardovelli, P Yecko, S Zaleski, "Numerical integration of implicit functions for the initialization of the VOF function", Computers & Fluids 113, 42-52, [doi:10.1016/j.compfluid.2014.04.010] 
+
+[2] S Bnà, S Manservisi, R Scardovelli, P Yecko, S Zaleski, "VOFI -- A library to initialize the volume fraction scalar field", Computer Physics Communications, Computer Physics Communications, 2015, [doi:10.1016/j.cpc.2015.10.026]
+
 ## Vofi-specific configuration options
 
 #### Build Process
