@@ -1,1 +1,3 @@
 *.m4 linguist-vendored
+*.am linguist-vendored
+*.in linguist-vendored
