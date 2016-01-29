@@ -2,3 +2,5 @@
 *.sh linguist-vendored
 *.sub linguist-vendored
 *.guess linguist-vendored
+missing linguist-vendored
+test-driver linguist-vendored
