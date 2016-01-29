@@ -1,3 +1,4 @@
 *.m4 linguist-vendored
 *.sh linguist-vendored
-
+*.sub linguist-vendored
+*.guess linguist-vendored
