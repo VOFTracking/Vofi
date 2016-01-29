@@ -7,3 +7,4 @@ test-driver linguist-vendored
 install-sh linguist-vendored
 depcomp linguist-vendored
 configure linguist-vendored
+demo_src/* linguist-vendored
