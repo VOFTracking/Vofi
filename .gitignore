@@ -4,4 +4,4 @@
 *.DS_Store
 *.swp
 *.out
-.directory 
+*.directory 
