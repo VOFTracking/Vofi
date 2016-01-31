@@ -11,14 +11,14 @@
  * OUTPUT: fh ("characteristic" function value)                               *
  * -------------------------------------------------------------------------- */
 
-real vofi_Get_fh(integrand impl_func,creal x0[],creal h0,cint ndim0,cint ix0) 
+vofi_real vofi_Get_fh(integrand impl_func,vofi_creal x0[],vofi_creal h0,vofi_cint ndim0,vofi_cint ix0) 
 {
   int i,k,isw;
-  cint kmax = 100;                             /* max number of iterations    */
-  creal gamma = 0.01;                          /* min step along the gradient */
-  creal dh = 1.e-5;                            /* for 1st deriv. with c.f.d.  */
-  real x1[NDIM],x2[NDIM],xn1[NDIM],xn2[NDIM],der[NDIM],fe[NEND];
-  real f1,f2,fh,delta,dd,hb;
+  vofi_cint kmax = 100;                             /* max number of iterations    */
+  vofi_creal gamma = 0.01;                          /* min step along the gradient */
+  vofi_creal dh = 1.e-5;                            /* for 1st deriv. with c.f.d.  */
+  vofi_real x1[NDIM],x2[NDIM],xn1[NDIM],xn2[NDIM],der[NDIM],fe[NEND];
+  vofi_real f1,f2,fh,delta,dd,hb;
 
   fh = 4.*h0;                                          /* default value of fh */
   isw = 1;

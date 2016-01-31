@@ -44,19 +44,19 @@
 #define NLSZ     3
 #define NSEG    10
 
-typedef double real;
-typedef const double creal;
-typedef const int cint;
-typedef int * const int_cpt;
-typedef double (*integrand) (creal []);
+typedef double vofi_real;
+typedef const double vofi_creal;
+typedef const int vofi_cint;
+typedef int * const vofi_int_cpt;
+typedef double (*integrand) (vofi_creal []);
 
 /* xval: coordinates of the minimum or where the sign has changed, fval: local
    function value, sval: distance from the starting point, if applicable,
    iat: sign to have f>0, or if = 0 there is no minimum or no sign change */  
 typedef struct {
-  real xval[NDIM]; 
-  real fval; 
-  real sval; 
+  vofi_real xval[NDIM]; 
+  vofi_real fval; 
+  vofi_real sval; 
   int iat; 
 } min_data;
 
@@ -78,27 +78,27 @@ typedef struct {
 /* function prototypes */
 
 /* Fortran APIs */
-real EXPORT(vofi_get_fh)(integrand,creal [],creal *,cint *,cint *); 
-real EXPORT(vofi_get_cc)(integrand,creal [],creal *,creal *,cint *);
+vofi_real EXPORT(vofi_get_fh)(integrand,vofi_creal [],vofi_creal *,vofi_cint *,vofi_cint *); 
+vofi_real EXPORT(vofi_get_cc)(integrand,vofi_creal [],vofi_creal *,vofi_creal *,vofi_cint *);
 
-real vofi_get_segment_zero(integrand,creal [],creal [],creal [],creal,cint); 
-int vofi_check_side_consistency(integrand,creal [],creal [],creal [],creal);
-chk_data vofi_check_face_consistency(integrand,creal [],creal [],creal [],
-                                creal [],creal);
+vofi_real vofi_get_segment_zero(integrand,vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal,vofi_cint); 
+int vofi_check_side_consistency(integrand,vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal);
+chk_data vofi_check_face_consistency(integrand,vofi_creal [],vofi_creal [],vofi_creal [],
+                                vofi_creal [],vofi_creal);
 
-dir_data vofi_get_dirs(integrand,creal [],real [],real [],real [],creal,creal,cint);
-int vofi_get_limits(integrand,creal [],real [],creal [],creal [],creal [],creal,cint);
+dir_data vofi_get_dirs(integrand,vofi_creal [],vofi_real [],vofi_real [],vofi_real [],vofi_creal,vofi_creal,vofi_cint);
+int vofi_get_limits(integrand,vofi_creal [],vofi_real [],vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal,vofi_cint);
 
-void vofi_get_side_intersections(integrand,real [],creal [],real [],creal [],
-			    creal,int_cpt);
-void vofi_get_face_intersections(integrand,min_data,creal [],real [],creal [],
-			    creal [],creal,int_cpt);
-min_data vofi_get_segment_min(integrand,creal [],creal [],creal [],creal,cint,cint);
-min_data vofi_get_face_min(integrand,creal [],creal [],creal [],chk_data,creal);
+void vofi_get_side_intersections(integrand,vofi_real [],vofi_creal [],vofi_real [],vofi_creal [],
+			    vofi_creal,vofi_int_cpt);
+void vofi_get_face_intersections(integrand,min_data,vofi_creal [],vofi_real [],vofi_creal [],
+			   vofi_creal [],vofi_creal,vofi_int_cpt);
+min_data vofi_get_segment_min(integrand,vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal,vofi_cint,vofi_cint);
+min_data vofi_get_face_min(integrand,vofi_creal [],vofi_creal [],vofi_creal [],chk_data,vofi_creal);
 
-real vofi_get_area(integrand,creal [],creal [],creal [],creal [],creal,cint,cint);
-real vofi_get_volume(integrand,creal [],creal [],creal [],creal [],creal [],creal,
-		  cint,cint);
+vofi_real vofi_get_area(integrand,vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal,vofi_cint,vofi_cint);
+vofi_real vofi_get_volume(integrand,vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal [],vofi_creal,
+		  vofi_cint,vofi_cint);
 
 #endif
 

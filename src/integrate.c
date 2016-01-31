@@ -11,14 +11,14 @@
  * OUTPUT: area: normalized value of the cut area or 2D volume fraction       *
  * -------------------------------------------------------------------------- */
 
-double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal 
-                     pdir[],creal sdir[],creal h0,cint nintsub,cint nintpt)
+double vofi_get_area(integrand impl_func,vofi_creal x0[],vofi_creal int_lim_intg[],vofi_creal 
+                     pdir[],vofi_creal sdir[],vofi_creal h0,vofi_cint nintsub,vofi_cint nintpt)
 {
   int i,ns,k,npt,cut_rect;
-  cint true_sign = 1;
-  real x1[NDIM],x20[NDIM],x21[NDIM],fe[NEND];
-  real area,ds,cs,xis,ht,GL_1D;
-  creal *ptinw, *ptinx;
+  vofi_cint true_sign = 1;
+  vofi_real x1[NDIM],x20[NDIM],x21[NDIM],fe[NEND];
+  vofi_real area,ds,cs,xis,ht,GL_1D;
+  vofi_creal *ptinw, *ptinx;
 
   /* GRAPHICS I */
 
@@ -131,15 +131,15 @@ double vofi_get_area(integrand impl_func,creal x0[],creal int_lim_intg[],creal
  * OUTPUT: vol: normalized value of the cut volume or 3D volume fraction      *
  * -------------------------------------------------------------------------- */
 
-double vofi_get_volume(integrand impl_func,creal x0[],creal ext_lim_intg[],
-		       creal pdir[],creal sdir[],creal tdir[],creal h0,
-		       cint nextsub,cint nintpt)
+double vofi_get_volume(integrand impl_func,vofi_creal x0[],vofi_creal ext_lim_intg[],
+		       vofi_creal pdir[],vofi_creal sdir[],vofi_creal tdir[],vofi_creal h0,
+		       vofi_cint nextsub,vofi_cint nintpt)
 {
   int i,ns,k,nexpt,cut_hexa,f_iat,nintsub;
-  cint stdir=2,max_iter=50;
-  real x1[NDIM],x2[NDIM],x3[NDIM],fe[NEND],int_lim_intg[NSEG];
-  real vol,ds,cs,xis,f1,f2,area_n,GL_1D;
-  creal *ptexw, *ptexx;
+  vofi_cint stdir=2,max_iter=50;
+  vofi_real x1[NDIM],x2[NDIM],x3[NDIM],fe[NEND],int_lim_intg[NSEG];
+  vofi_real vol,ds,cs,xis,f1,f2,area_n,GL_1D;
+  vofi_creal *ptexw, *ptexx;
   min_data xfsa;
   
   vol = 0.;

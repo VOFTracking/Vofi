@@ -10,12 +10,12 @@
  * start of new subdivisions                                                  *
  * -------------------------------------------------------------------------- */
 
-void vofi_get_side_intersections(integrand impl_func,real fe[],creal x0[],real 
-		                 lim_intg[],creal stdir[],creal h0,int_cpt nsub)
+void vofi_get_side_intersections(integrand impl_func,vofi_real fe[],vofi_creal x0[],vofi_real 
+		                 lim_intg[],vofi_creal stdir[],vofi_creal h0,vofi_int_cpt nsub)
 {
   int f_iat; 
-  cint true_sign=1,max_iter=50;   
-  real dh0,fh0,ss;    
+  vofi_cint true_sign=1,max_iter=50;   
+  vofi_real dh0,fh0,ss;    
   min_data xfsa;
   
   if (fe[0]*fe[1] < 0.0) {
@@ -62,16 +62,16 @@ void vofi_get_side_intersections(integrand impl_func,real fe[],creal x0[],real
  * start of new subdivisions                                                  *
  * -------------------------------------------------------------------------- */
 
-void vofi_get_face_intersections(integrand impl_func,min_data xfsa,creal x0[],
-                                 real lim_intg[],creal sdir[],creal tdir[],
-                                 creal h0,int_cpt nsub)
+void vofi_get_face_intersections(integrand impl_func,min_data xfsa,vofi_creal x0[],
+                                 vofi_real lim_intg[],vofi_creal sdir[],vofi_creal tdir[],
+                                 vofi_creal h0,vofi_int_cpt nsub)
 {
   int i,k,iter,js,jt,not_conv,ipt,ist,f_iat;
-  cint max_iter = 50;
-  real pt0[NDIM],pt1[NDIM],pt2[NDIM],ptt[NDIM],mp0[NDIM],mp1[NDIM];
-  real ss[NDIM],exdir[NDIM],indir[NDIM],fe[NEND];
-  real ss0,ds0,fpt0,sss,sst,ssx,ssy,tol2,normdir,d1,d2,a1,a2;
-  creal tol = EPS_M; 
+  vofi_cint max_iter = 50;
+  vofi_real pt0[NDIM],pt1[NDIM],pt2[NDIM],ptt[NDIM],mp0[NDIM],mp1[NDIM];
+  vofi_real ss[NDIM],exdir[NDIM],indir[NDIM],fe[NEND];
+  vofi_real ss0,ds0,fpt0,sss,sst,ssx,ssy,tol2,normdir,d1,d2,a1,a2;
+  vofi_creal tol = EPS_M; 
  
   /* GRAPHICS I */
   tol2 = 2.*tol;

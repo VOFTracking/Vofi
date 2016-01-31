@@ -10,11 +10,11 @@
  * at both endpoints)                                                         *
  * -------------------------------------------------------------------------- */
 
-int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],
-			        creal sidedir[],creal h0)
+int vofi_check_side_consistency(integrand impl_func,vofi_creal fe[],vofi_creal x0[],
+			        vofi_creal sidedir[],vofi_creal h0)
 {
   int i,f_iat, ftmp;
-  real xs[NDIM],dh,f0,f1,fs,ft;
+  vofi_real xs[NDIM],dh,f0,f1,fs,ft;
 
   fs = fe[0]+fe[1];
   if (fs > 0.) 
@@ -67,11 +67,11 @@ int vofi_check_side_consistency(integrand impl_func,creal fe[],creal x0[],
  * f_iat in the previous function                                             *
  * -------------------------------------------------------------------------- */
 
-chk_data vofi_check_face_consistency(integrand impl_func,creal fv[],creal x0[],
-				     creal sdir[],creal tdir[],creal h0)
+chk_data vofi_check_face_consistency(integrand impl_func,vofi_creal fv[],vofi_creal x0[],
+				     vofi_creal sdir[],vofi_creal tdir[],vofi_creal h0)
 {
   int i,iss,ist,iat;
-  real x1[NDIM],xs[NDIM],xt[NDIM],fl[NVER],f0,fs,ft,dh0;
+  vofi_real x1[NDIM],xs[NDIM],xt[NDIM],fl[NVER],f0,fs,ft,dh0;
   chk_data ivga;
   
   f0 = 0.;

@@ -8,9 +8,9 @@
 #define N2D   2
 #define N3D   3
 
-extern void check_volume(creal, cint);
-extern real impl_func(creal []);
-extern void init(cint);
+extern void check_volume(vofi_creal, vofi_cint);
+extern vofi_real impl_func(vofi_creal []);
+extern void init(vofi_cint);
 
 /* -------------------------------------------------------------------------- *
  * PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD                      *
@@ -18,9 +18,9 @@ extern void init(cint);
 
 int main(int argc, char *argv[])
 {
-  cint nx=NMX,ny=NMY,nz=NMZ,ndim0=N3D;
+  vofi_cint nx=NMX,ny=NMY,nz=NMZ,ndim0=N3D;
   int i,j,k,itrue;
-  real cc[NMX][NMY][NMZ],x0[NDIM],xloc[NDIM];
+  vofi_real cc[NMX][NMY][NMZ],x0[NDIM],xloc[NDIM];
   double h0,fh,vol_n;
   int randominput = 0;  
   int count;

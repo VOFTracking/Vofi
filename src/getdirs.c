@@ -16,16 +16,16 @@
  * (hence: 0/1)                                                               *
  * -------------------------------------------------------------------------- */
 
-dir_data vofi_get_dirs(integrand impl_func,creal x0[],real pdir[],real sdir[],
-	               real tdir[],creal h0,creal fh,cint ndim0)
+dir_data vofi_get_dirs(integrand impl_func,vofi_creal x0[],vofi_real pdir[],vofi_real sdir[],
+	               vofi_real tdir[],vofi_creal h0,vofi_creal fh,vofi_cint ndim0)
 {
   int i,j,k,m,n,np1,np0,nmax,kmax,jt,js,jp,npt_with_grad;
   int cpos[NDIM],cneg[NDIM];
-  creal dh = 1.e-5;                             /* for 1st deriv. with c.f.d. */
-  creal hh = 0.5*h0;
-  real df0[NLSZ][NLSX][NLSY][NDIM],f0[NLSZ][NLSX][NLSY];
-  real x1[NDIM],x2[NDIM],xp[NDIM],xm[NDIM],gradf_ave[NDIM];
-  real f1,maxomega,minomega,delomega,tmp,denom;
+  vofi_creal dh = 1.e-5;                             /* for 1st deriv. with c.f.d. */
+  vofi_creal hh = 0.5*h0;
+  vofi_real df0[NLSZ][NLSX][NLSY][NDIM],f0[NLSZ][NLSX][NLSY];
+  vofi_real x1[NDIM],x2[NDIM],xp[NDIM],xm[NDIM],gradf_ave[NDIM];
+  vofi_real f1,maxomega,minomega,delomega,tmp,denom;
   dir_data icps;
 
   /* data initialization */

@@ -9,16 +9,16 @@
  * OUTPUT: cc: volume fraction value                                          *
  * -------------------------------------------------------------------------- */
 
-real vofi_Get_cc(integrand impl_func,creal x0[],creal h0,creal fh,cint ndim0) 
+vofi_real vofi_Get_cc(integrand impl_func,vofi_creal x0[],vofi_creal h0,vofi_creal fh,vofi_cint ndim0) 
 {
   int nsub;
-  real pdir[NDIM],sdir[NDIM],tdir[NDIM],side[NSEG];
-  real cc;
+  vofi_real pdir[NDIM],sdir[NDIM],tdir[NDIM],side[NSEG];
+  vofi_real cc;
   dir_data icps; 
 
   icps = vofi_get_dirs(impl_func,x0,pdir,sdir,tdir,h0,fh,ndim0);
   if (icps.icc >= 0)
-    cc = (real) icps.icc;
+    cc = (vofi_real) icps.icc;
   else {
     nsub = vofi_get_limits(impl_func,x0,side,pdir,sdir,tdir,h0,ndim0);
     if (ndim0 == 2) 

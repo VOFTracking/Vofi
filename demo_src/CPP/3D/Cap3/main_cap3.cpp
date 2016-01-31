@@ -10,9 +10,9 @@
 /* only for graphics */
 FILE *fp;
 
-extern void check_volume(creal);
-extern real impl_func(creal []);
-extern int cont_line(real *,real *,cint);
+extern void check_volume(vofi_creal);
+extern vofi_real impl_func(vofi_creal []);
+extern int cont_line(vofi_real *,vofi_real *,vofi_cint);
 
 //* ------------------------------------------------------------------- *
 //* PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD CC            *
@@ -20,9 +20,9 @@ extern int cont_line(real *,real *,cint);
 
 int main()
 {
-  cint nx=NMX,ny=NMY,nz=NMZ,ndim0=N3D;
+  vofi_cint nx=NMX,ny=NMY,nz=NMZ,ndim0=N3D;
   int i,j,k,itrue;
-  real cc[NMX][NMY][NMZ],x0[NDIM],xloc[NDIM];
+  vofi_real cc[NMX][NMY][NMZ],x0[NDIM],xloc[NDIM];
   double h0,fh,vol_n;
 
 //* -------------------------------------------------------------------------- *

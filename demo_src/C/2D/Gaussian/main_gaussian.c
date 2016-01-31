@@ -7,9 +7,9 @@
 #define NDIM  3
 #define N2D   2
 
-extern void check_area(creal, cint);
-extern real impl_func(creal []);
-extern void init(cint);
+extern void check_area(vofi_creal, vofi_cint);
+extern vofi_real impl_func(vofi_creal []);
+extern void init(vofi_cint);
 
 /* -------------------------------------------------------------------------- *
  * PROGRAM TO INITIALIZE THE COLOR FUNCTION SCALAR FIELD CC                   *
@@ -17,9 +17,9 @@ extern void init(cint);
 
 int main(int argc, char *argv[])
 {
-  cint nx=NMX, ny=NMY, ndim0=N2D;
+  vofi_cint nx=NMX, ny=NMY, ndim0=N2D;
   int i,j,itrue;
-  real cc[NMX][NMY],x0[NDIM],xloc[NDIM];
+  vofi_real cc[NMX][NMY],x0[NDIM],xloc[NDIM];
   double h0,fh,area_n;
   int randominput = 0;  
   int count;

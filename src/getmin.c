@@ -13,13 +13,13 @@
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],
-                              creal dir[],creal s0,cint f_sign,cint max_iter)
+min_data vofi_get_segment_min(integrand impl_func,vofi_creal fe[],vofi_creal x0[],
+                              vofi_creal dir[],vofi_creal s0,vofi_cint f_sign,vofi_cint max_iter)
 {
   int i,j,iter,not_conv,igold,iseca;
-  real xs[NDIM],fs,fu,ft,fv,fa,fb,p,q,r;
-  real sa,sb,ss,su,st,sv,se,sd,sc,sm,fm,sp,fp,sz,fz;
-  real GRIS,tol,t2;
+  vofi_real xs[NDIM],fs,fu,ft,fv,fa,fb,p,q,r;
+  vofi_real sa,sb,ss,su,st,sv,se,sd,sc,sm,fm,sp,fp,sz,fz;
+  vofi_real GRIS,tol,t2;
   min_data xfsa;
 
   /* square of the inverse of the golden ratio */
@@ -250,16 +250,16 @@ min_data vofi_get_segment_min(integrand impl_func,creal fe[],creal x0[],
  * of a point with a different function sign                                  *
  * -------------------------------------------------------------------------- */
 
-min_data vofi_get_face_min(integrand impl_func,creal x0[],creal sdir[],
-                           creal tdir[],chk_data ivga,creal h0)
+min_data vofi_get_face_min(integrand impl_func,vofi_creal x0[],vofi_creal sdir[],
+                           vofi_creal tdir[],chk_data ivga,vofi_creal h0)
 {
   int i,not_conv,iter,k,ipt,iss;
-  cint max_iter = 50, max_iter_line = 50; 
-  real xs0[NDIM],xs1[NDIM], xs2[NDIM], xt1[NDIM], xt2[NDIM],res[NDIM],hes[NDIM];
-  real rs0[NDIM],hs0[NDIM],pcrs[NDIM],nmdr[NDIM],cndr[NDIM], ss[NDIM], fe[NEND];
-  real eps2,fp0,fs1,fs2,ft1,ft2,dfs,dft,d2fs,d2ft,mcd,ss0,ss1,beta;
-  real del0,delnew,delold,delmid,d1,d2,a1,a2;
-  creal dh = 1.e-04;               /* for 1st and 2nd derivatives with c.f.d. */   
+  vofi_cint max_iter = 50, max_iter_line = 50; 
+  vofi_real xs0[NDIM],xs1[NDIM], xs2[NDIM], xt1[NDIM], xt2[NDIM],res[NDIM],hes[NDIM];
+  vofi_real rs0[NDIM],hs0[NDIM],pcrs[NDIM],nmdr[NDIM],cndr[NDIM], ss[NDIM], fe[NEND];
+  vofi_real eps2,fp0,fs1,fs2,ft1,ft2,dfs,dft,d2fs,d2ft,mcd,ss0,ss1,beta;
+  vofi_real del0,delnew,delold,delmid,d1,d2,a1,a2;
+  vofi_creal dh = 1.e-04;               /* for 1st and 2nd derivatives with c.f.d. */   
   min_data xfsa;
 
   eps2 = EPS_E*EPS_E;

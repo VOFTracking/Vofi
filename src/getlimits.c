@@ -11,11 +11,11 @@
  * each subdivision (lim_intg[0] = 0, lim_intg[nsub] = h0)                    *
  * -------------------------------------------------------------------------- */
 
-int vofi_get_limits(integrand impl_func,creal x0[],real lim_intg[],creal pdir[],
-	            creal sdir[],creal tdir[],creal h0,cint stdir)
+int vofi_get_limits(integrand impl_func,vofi_creal x0[],vofi_real lim_intg[],vofi_creal pdir[],
+	            vofi_creal sdir[],vofi_creal tdir[],vofi_creal h0,vofi_cint stdir)
 {
   int i,j,k,iv,nsub,nvp,nvn;
-  real fv[NVER],x1[NDIM],x2[NDIM],fe[NEND],ds,ls;
+  vofi_real fv[NVER],x1[NDIM],x2[NDIM],fe[NEND],ds,ls;
   chk_data fvga; 
   min_data xfsa;
   
