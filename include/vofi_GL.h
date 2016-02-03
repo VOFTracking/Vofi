@@ -1,6 +1,29 @@
-/* -------------------------------------------------------------------------- *
- * Nodes and weights for Gauss-Legendre integration (4,8,12,16,20)            *
- * -------------------------------------------------------------------------- */
+/****************************************************************************
+ * Copyright (C) 2015 by Simone Bnà(a), Sandro Manservisi(a),               *
+ * Ruben Scardovelli(a), Philip Yecko(b) and Stephane Zaleski(c,d)          *
+ * (a) DIN–Lab. di Montecuccolino, Università di Bologna,                   *
+ *     Via dei Colli 16, 40136 Bologna, Italy                               *
+ * (b) Physics Department, Cooper Union, New York, NY, USA                  *
+ * (c) Sorbonne Universités, UPMC Univ Paris 06, UMR 7190,                  *
+ *     Institut Jean Le Rond d’Alembert, F-75005, Paris, France             *
+ * (d) CNRS, UMR 7190, Institut Jean Le Rond d’Alembert, F-75005,           *
+ *     Paris, France                                                        *
+ *                                                                          *
+ * You should have received a copy of the CPC license along with Vofi.      *
+ * If not, see http://cpc.cs.qub.ac.uk/licence/licence.html.                *
+ *                                                                          *
+ * e-mail: ruben.scardovelli@unibo.it                                       *
+ *                                                                          *
+ ****************************************************************************/
+
+/**
+ * @file vofi_GL.h
+ * @authors Simone Bnà, Sandro Manservisi, Ruben Scardovelli, 
+ *          Philip Yecko and Stephane Zaleski 
+ * @date  12 November 2015
+ * @brief Nodes and weights for Gauss-Legendre integration (4,8,12,16,20).
+ */
+
 
 #ifndef GL_H
 #define GL_H

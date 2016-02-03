@@ -1,3 +1,32 @@
+/****************************************************************************
+ * Copyright (C) 2015 by Simone Bnà(a), Sandro Manservisi(a),               *
+ * Ruben Scardovelli(a), Philip Yecko(b) and Stephane Zaleski(c,d)          *
+ * (a) DIN–Lab. di Montecuccolino, Università di Bologna,                   *
+ *     Via dei Colli 16, 40136 Bologna, Italy                               *
+ * (b) Physics Department, Cooper Union, New York, NY, USA                  *
+ * (c) Sorbonne Universités, UPMC Univ Paris 06, UMR 7190,                  *
+ *     Institut Jean Le Rond d’Alembert, F-75005, Paris, France             *
+ * (d) CNRS, UMR 7190, Institut Jean Le Rond d’Alembert, F-75005,           *
+ *     Paris, France                                                        *
+ *                                                                          *
+ * You should have received a copy of the CPC license along with Vofi.      *
+ * If not, see http://cpc.cs.qub.ac.uk/licence/licence.html.                *
+ *                                                                          *
+ * e-mail: ruben.scardovelli@unibo.it                                       *
+ *                                                                          *
+ ****************************************************************************/
+
+/**
+ * @file getmin.c
+ * @authors Simone Bnà, Sandro Manservisi, Ruben Scardovelli, 
+ *          Philip Yecko and Stephane Zaleski 
+ * @date  12 November 2015
+ * @brief It contains two functions to compute the function minimum 
+ *        either in a given segment or in a cell face, the search is
+ *        stopped if a sign change is detected. 
+ */
+
+
 #include "vofi_stddecl.h"
 
 /* -------------------------------------------------------------------------- *
