@@ -17,7 +17,7 @@
  ****************************************************************************/
 
 /**
- * @file getcc.h
+ * @file getcc.c
  * @authors Simone Bnà, Sandro Manservisi, Ruben Scardovelli, 
  *          Philip Yecko and Stephane Zaleski 
  * @date  12 November 2015
