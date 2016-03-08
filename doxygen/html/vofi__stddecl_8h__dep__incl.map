@@ -1,0 +1,12 @@
+<map id="/home/adminuser/Software/Devel/vofiproject/Vofi/include/vofi_stddecl.h" name="/home/adminuser/Software/Devel/vofiproject/Vofi/include/vofi_stddecl.h">
+<area shape="rect" id="node3" href="$checkconsistency_8c.html" title="It contains two functions to check the consistency with a minimum on a cell side and on a cell face; ..." alt="" coords="5,109,189,165"/>
+<area shape="rect" id="node5" href="$getcc_8c.html" title="Driver to compute the integration limits and the volume fraction in two and three dimensions..." alt="" coords="213,109,397,165"/>
+<area shape="rect" id="node7" href="$getdirs_8c.html" title="It checks if the cells is either full or empty, if not it determines the main, second and third coord..." alt="" coords="421,109,605,165"/>
+<area shape="rect" id="node9" href="$getfh_8c.html" title="It computes the characteristic function value fh. " alt="" coords="629,109,813,165"/>
+<area shape="rect" id="node11" href="$getintersections_8c.html" title="It contains two functions to compute the interface intersection(s) with a cell side and inside a face..." alt="" coords="837,109,1021,165"/>
+<area shape="rect" id="node13" href="$getlimits_8c.html" title="It subdivides the side along the secondary or tertiary direction to define rectangles or rectangular ..." alt="" coords="1045,109,1229,165"/>
+<area shape="rect" id="node15" href="$getmin_8c.html" title="It contains two functions to compute the function minimum either in a given segment or in a cell face..." alt="" coords="1253,109,1437,165"/>
+<area shape="rect" id="node17" href="$getzero_8c.html" title="it computes the zero in a given segment. " alt="" coords="1461,109,1645,165"/>
+<area shape="rect" id="node19" href="$integrate_8c.html" title="It contains two functions to call from Fortran the corresponding C functions. " alt="" coords="1669,109,1853,165"/>
+<area shape="rect" id="node21" href="$interface_8c.html" title="FORTRAN to C interface for the functions vofi_Get_fh vofi_Get_cc. " alt="" coords="1877,109,2061,165"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="vofi_get_segment_zero" name="vofi_get_segment_zero">
+<area shape="rect" id="node3" href="$getfh_8c.html#aa30e2ac283990be72ff8b4648575cd5d" title="Starting from point x0 get a zero of the implicit function given by the user, using gradient ascent/d..." alt="" coords="263,5,353,32"/>
+<area shape="rect" id="node7" href="$getintersections_8c.html#a2cdea19d2d0a7127bb40e4e2a390ff35" title="compute the interface intersections, if any, with a given cell side; these are new internal/external ..." alt="" coords="216,56,400,83"/>
+<area shape="rect" id="node18" href="$getintersections_8c.html#af4ee9311bb8ae634bfaf57b52a9eeb05" title="get the external limits of integration that are inside the face. these are new internal/external limi..." alt="" coords="216,107,400,133"/>
+<area shape="rect" id="node21" href="$integrate_8c.html#a0a30baee860ca1ac3ee4c0842bb69490" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="449,157,553,184"/>
+<area shape="rect" id="node5" href="$interface_8c.html#afff65cd2b213f16f1112f354ade22457" title="Starting from point x0 get a zero of the implicit function given by the user, using gradient ascent/d..." alt="" coords="458,5,545,32"/>
+<area shape="rect" id="node9" href="$getlimits_8c.html#a2781cb0f3cf4e1e83860d4c2590f5d21" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="448,81,555,108"/>
+<area shape="rect" id="node11" href="$getcc_8c.html#a6587484e95543423b658fb592c674301" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="771,107,864,133"/>
+<area shape="rect" id="node15" href="$integrate_8c.html#af409cf530665e389e9d8d8dcb01ec206" title="compute the normalized cut volume with a double Gauss&#45;Legendre quadrature " alt="" coords="603,107,723,133"/>
+<area shape="rect" id="node13" href="$interface_8c.html#a6fb2d0c45c6af8fa3559d1e826514404" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="912,107,1003,133"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="vofi_get_cc" name="vofi_get_cc">
+<area shape="rect" id="node3" href="$vofi_8h.html#ad4c7dddcc7e602dd3ac824e6c0d3aeb2" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="144,111,237,137"/>
+<area shape="rect" id="node5" href="$vofi__stddecl_8h.html#a61e934a4f8f5038db4656ae5ca81ac4e" title="compute the value of the implicit function on a 3x3(x3) local grid. " alt="" coords="296,35,395,61"/>
+<area shape="rect" id="node7" href="$vofi__stddecl_8h.html#ac56a54d3a40e1df2b5f33469c0c7817c" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="453,136,560,163"/>
+<area shape="rect" id="node25" href="$vofi__stddecl_8h.html#aa66035cce8ef936ed488fa031472f358" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="455,85,559,112"/>
+<area shape="rect" id="node28" href="$vofi__stddecl_8h.html#a2ae8ccb94870bdafbf5ee2210777b8a4" title="compute the normalized cut volume with a double Gauss&#45;Legendre quadrature " alt="" coords="285,187,405,213"/>
+<area shape="rect" id="node9" href="$vofi__stddecl_8h.html#ac708961feeaa93284564e34d2eeeea05" title="compute the interface intersections, if any, with a given cell side; these are new internal/external ..." alt="" coords="615,136,799,163"/>
+<area shape="rect" id="node17" href="$vofi__stddecl_8h.html#ad3e8988708db3def445bc3cd421441ad" title="check consistency with a minimum in a cell face. " alt="" coords="608,85,805,112"/>
+<area shape="rect" id="node19" href="$vofi__stddecl_8h.html#a5a253eed6fb35876cc7d9af5b163c5a5" title="compute the function minimum in a cell face, the search is immediately stopped if a sign change is de..." alt="" coords="641,187,772,213"/>
+<area shape="rect" id="node22" href="$vofi__stddecl_8h.html#a51f5f25f5a50e810f9c0f87baecf92c4" title="get the external limits of integration that are inside the face. these are new internal/external limi..." alt="" coords="615,35,799,61"/>
+<area shape="rect" id="node11" href="$vofi__stddecl_8h.html#aedeca9ed2ea78af7d460a30c5fa9cf34" title="compute the zero in a given segment of length s0, the zero is strictly bounded, i.e. f(0)*f(s0) &lt; 0. " alt="" coords="871,35,1033,61"/>
+<area shape="rect" id="node13" href="$vofi__stddecl_8h.html#a76c05d0ec4e7e0fb085bb0e46ab6a1ef" title="check consistency with a minimum in a cell side. " alt="" coords="853,136,1051,163"/>
+<area shape="rect" id="node15" href="$vofi__stddecl_8h.html#aa2caea3bb31e8e7fa8059cb33738bb08" title="compute the function minimum in a given segment of length s0, the search is immediately stopped if a ..." alt="" coords="874,187,1030,213"/>
+</map>

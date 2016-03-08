@@ -1,0 +1,6 @@
+<map id="vofi_get_face_intersections" name="vofi_get_face_intersections">
+<area shape="rect" id="node3" href="$getlimits_8c.html#a2781cb0f3cf4e1e83860d4c2590f5d21" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="237,5,344,32"/>
+<area shape="rect" id="node5" href="$getcc_8c.html#a6587484e95543423b658fb592c674301" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="560,5,653,32"/>
+<area shape="rect" id="node9" href="$integrate_8c.html#af409cf530665e389e9d8d8dcb01ec206" title="compute the normalized cut volume with a double Gauss&#45;Legendre quadrature " alt="" coords="392,31,512,57"/>
+<area shape="rect" id="node7" href="$interface_8c.html#a6fb2d0c45c6af8fa3559d1e826514404" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="701,5,792,32"/>
+</map>

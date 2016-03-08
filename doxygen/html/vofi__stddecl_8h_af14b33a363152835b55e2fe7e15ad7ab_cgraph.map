@@ -1,0 +1,4 @@
+<map id="vofi_get_fh" name="vofi_get_fh">
+<area shape="rect" id="node3" href="$vofi_8h.html#aed1b6142427b054d2bd258032cd6098c" title="Starting from point x0 get a zero of the implicit function given by the user, using gradient ascent/d..." alt="" coords="142,5,231,32"/>
+<area shape="rect" id="node5" href="$vofi__stddecl_8h.html#aedeca9ed2ea78af7d460a30c5fa9cf34" title="compute the zero in a given segment of length s0, the zero is strictly bounded, i.e. f(0)*f(s0) &lt; 0. " alt="" coords="280,5,443,32"/>
+</map>

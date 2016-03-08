@@ -1,0 +1,9 @@
+<map id="vofi_get_limits" name="vofi_get_limits">
+<area shape="rect" id="node3" href="$vofi__stddecl_8h.html#ac708961feeaa93284564e34d2eeeea05" title="compute the interface intersections, if any, with a given cell side; these are new internal/external ..." alt="" coords="167,56,351,83"/>
+<area shape="rect" id="node11" href="$vofi__stddecl_8h.html#ad3e8988708db3def445bc3cd421441ad" title="check consistency with a minimum in a cell face. " alt="" coords="160,157,357,184"/>
+<area shape="rect" id="node13" href="$vofi__stddecl_8h.html#a5a253eed6fb35876cc7d9af5b163c5a5" title="compute the function minimum in a cell face, the search is immediately stopped if a sign change is de..." alt="" coords="193,107,324,133"/>
+<area shape="rect" id="node16" href="$vofi__stddecl_8h.html#a51f5f25f5a50e810f9c0f87baecf92c4" title="get the external limits of integration that are inside the face. these are new internal/external limi..." alt="" coords="167,5,351,32"/>
+<area shape="rect" id="node5" href="$vofi__stddecl_8h.html#aedeca9ed2ea78af7d460a30c5fa9cf34" title="compute the zero in a given segment of length s0, the zero is strictly bounded, i.e. f(0)*f(s0) &lt; 0. " alt="" coords="423,5,585,32"/>
+<area shape="rect" id="node7" href="$vofi__stddecl_8h.html#a76c05d0ec4e7e0fb085bb0e46ab6a1ef" title="check consistency with a minimum in a cell side. " alt="" coords="405,56,603,83"/>
+<area shape="rect" id="node9" href="$vofi__stddecl_8h.html#aa2caea3bb31e8e7fa8059cb33738bb08" title="compute the function minimum in a given segment of length s0, the search is immediately stopped if a ..." alt="" coords="426,107,582,133"/>
+</map>

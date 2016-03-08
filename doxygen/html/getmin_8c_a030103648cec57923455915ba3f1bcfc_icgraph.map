@@ -1,0 +1,8 @@
+<map id="vofi_get_segment_min" name="vofi_get_segment_min">
+<area shape="rect" id="node3" href="$getintersections_8c.html#a2cdea19d2d0a7127bb40e4e2a390ff35" title="compute the interface intersections, if any, with a given cell side; these are new internal/external ..." alt="" coords="211,5,395,32"/>
+<area shape="rect" id="node11" href="$integrate_8c.html#af409cf530665e389e9d8d8dcb01ec206" title="compute the normalized cut volume with a double Gauss&#45;Legendre quadrature " alt="" coords="597,107,717,133"/>
+<area shape="rect" id="node14" href="$getmin_8c.html#a5e1c7b84281c6e162b5d7587db3ad54d" title="compute the function minimum in a cell face, the search is immediately stopped if a sign change is de..." alt="" coords="237,56,368,83"/>
+<area shape="rect" id="node5" href="$getlimits_8c.html#a2781cb0f3cf4e1e83860d4c2590f5d21" title="subdivide the side along the secondary/tertiary (2/3) direction to define rectangles/rectangular hexa..." alt="" coords="443,56,549,83"/>
+<area shape="rect" id="node7" href="$getcc_8c.html#a6587484e95543423b658fb592c674301" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="765,81,859,108"/>
+<area shape="rect" id="node9" href="$interface_8c.html#a6fb2d0c45c6af8fa3559d1e826514404" title="Driver to compute the volume fraction value in a given cell in two and three dimensions. " alt="" coords="907,81,997,108"/>
+</map>
