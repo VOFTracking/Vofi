@@ -10,6 +10,7 @@ Each routine in the directory 'src' contains a brief description
 of what it does and of the I/O variables. 
 
 The algorithm implemented in the library has been described in the following papers:
+
 [1] S Bnà, S Manservisi, R Scardovelli, P Yecko, S Zaleski, "Numerical integration of implicit functions for the initialization of the VOF function", Computers & Fluids 113, 42-52,
 [doi:10.1016/j.compfluid.2014.04.010](http://dx.doi.org/10.1016/j.compfluid.2014.04.010) 
 
